@@ -75,7 +75,7 @@ class Archer {
 const cp1 = () => {
     const name = document.getElementById('name1').value;
     const proff = eval(document.getElementById('proff1').value);
-    p1 = new proff(name);
+    window.p1 = new proff(name);
     //Displaying name of freshly created player (checking if player was created)
     document.getElementById("player1").innerHTML = p1.name + " created";
 }
@@ -86,7 +86,7 @@ const cp1 = () => {
 const cp2 = () => {
     const name = document.getElementById('name2').value;
     const proff = eval(document.getElementById('proff2').value);
-    p2 = new proff(name);
+    window.p2 = new proff(name);
     //Displaying name of freshly created player (checking if player was created)
     document.getElementById("player2").innerHTML = p2.name + " created";
 }

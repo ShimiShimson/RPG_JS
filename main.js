@@ -10,10 +10,15 @@ let myHeading = document.querySelector('h1');
 myHeading.textContent = 'MAIN.JS IS WORKING!';
 
 import {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers} from "./scripts/hero_creation.js";
-export {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers};
 
 
+//window.cp1 = cp1;
+//window.cp2 = cp2;
 
+document.querySelector('#cp1').addEventListener('click', cp1);
+document.querySelector('#cp2').addEventListener('click', cp2);
+document.querySelector('#saveplayers').addEventListener('click', saveplayers);
+document.querySelector('#loadplayers').addEventListener('click', loadplayers);
 
 
 
