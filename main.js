@@ -2,7 +2,7 @@
 /*
 use enum for class creation
 
-change input for class creation from text to select
+change input for class creation from text to select DONE!
 */
 
 //testing if main.js is properly connected with index.html
@@ -11,10 +11,13 @@ myHeading.textContent = 'MAIN.JS IS WORKING!';
 
 import {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers} from "./scripts/hero_creation.js";
 
-
+// Another way to solve problems with onClick and modules by using window object
 //window.cp1 = cp1;
 //window.cp2 = cp2;
+window.attacking = attacking;
 
+
+//This solutiom is better as it does not pollute global scope
 document.querySelector('#cp1').addEventListener('click', cp1);
 document.querySelector('#cp2').addEventListener('click', cp2);
 document.querySelector('#saveplayers').addEventListener('click', saveplayers);
@@ -41,7 +44,7 @@ Dodge: ${p1.dodge}
 
 
 // attack and Dodge mechanic
-/*
+
 function attacking (att, def){
     console.log(att.proff + " attack is " + att.attack);
     console.log(def.proff + " has " + def.hp + " hp");
@@ -60,7 +63,7 @@ function attacking (att, def){
         return def.proff + " got hit by " + att.proff + " and lost " + att.attack + " hp \nNow he has " + def.hp + " hp";
     }
 }
-*/
+
 
 
 
