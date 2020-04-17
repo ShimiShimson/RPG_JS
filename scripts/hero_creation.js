@@ -75,7 +75,7 @@ class Archer {
 const cp1 = () => {
     const name = document.getElementById('name1').value;
     const proff = eval(document.getElementById('proff1').value);
-    p1 = new proff(name);
+    window.p1 = new proff(name);
     //Displaying name of freshly created player (checking if player was created)
     document.getElementById("player1").innerHTML = p1.name + " created";
 }
@@ -86,7 +86,7 @@ const cp1 = () => {
 const cp2 = () => {
     const name = document.getElementById('name2').value;
     const proff = eval(document.getElementById('proff2').value);
-    p2 = new proff(name);
+    window.p2 = new proff(name);
     //Displaying name of freshly created player (checking if player was created)
     document.getElementById("player2").innerHTML = p2.name + " created";
 }
@@ -98,6 +98,7 @@ const saveplayers = () => {
     localStorage.setItem("sp1", JSON.stringify(p1));
     localStorage.setItem("sp2", JSON.stringify(p2));
     document.getElementById("gamesaved").innerHTML = "Game saved";
+    
 }
 
 //Loading player1 and player2 from local storage
@@ -105,14 +106,16 @@ const loadplayers = () =>{
     const sp1 = JSON.parse(localStorage.getItem("sp1"));
     const sp2 = JSON.parse(localStorage.getItem("sp2"));
     if (sp1 != null && sp1 != undefined){
-        p1 = sp1;
+        //I don't understand exactly why but declaring this as "p1 = sp1" (previous code) instead of "window.p1 = sp1", accessing p1 from another file is throwing "ReferenceError: p1 is not defined" 
+        window.p1 = sp1;
         console.log(p1);
         document.getElementById("gameloaded").innerHTML = p1.name + " loaded!";
     } else {
         console.log("Error during loading Player 1!");
     }
     if (sp2 != null && sp2 != undefined){
-        p2 = sp2;
+        //I don't understand exactly why but declaring this as "p2 = sp2" (previous code) instead of "window.p2 = sp2", accessing p2 from another file is throwing "ReferenceError: p2 is not defined"
+        window.p2 = sp2;
         console.log(p2);
         document.getElementById("gameloaded").innerHTML += " " + p2.name + " loaded!";
     } else {
