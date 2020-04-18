@@ -1,8 +1,6 @@
 
 /*
-use enum for class creation
 
-change input for class creation from text to select DONE!
 */
 
 //testing if main.js is properly connected with index.html
@@ -11,9 +9,7 @@ myHeading.textContent = 'MAIN.JS IS WORKING!';
 
 import {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers} from "./scripts/hero_creation.js";
 
-// Another way to solve problems with onClick and modules by using window object
-//window.cp1 = cp1;
-//window.cp2 = cp2;
+
 window.attacking = attacking;
 
 
@@ -22,8 +18,6 @@ document.querySelector('#cp1').addEventListener('click', cp1);
 document.querySelector('#cp2').addEventListener('click', cp2);
 document.querySelector('#saveplayers').addEventListener('click', saveplayers);
 document.querySelector('#loadplayers').addEventListener('click', loadplayers);
-
-
 
 /*
 console.log(p1);
@@ -35,10 +29,6 @@ attack: ${p1.attack}
 Dodge: ${p1.dodge}
 `;
 */
-
-
-
-
 
 
 
