@@ -1,0 +1,71 @@
+<!--
+    This is third version of RPG GAME (0.1). Runs on local server. Save/Load mechanic working. Manipulating p1 through console working.
+-->
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+body {
+    font-family: monospace;
+    font-size: 20px;
+    background-color: #333333;
+    color: #f1f1f1;
+}
+</style>
+<script src="main.js" type="module">
+</script>
+
+</head>
+<body>
+    
+
+<h1>MY GAME JS</h1>
+<div><label for="name1">Choose name for Player1:</label>
+<br>
+<input type="text" id="name1" />
+<br>
+<label for="proff1">Choose proffession for Player1:</label>
+<br>
+<select id="proff1">
+    <option value="1">Assassin</option>
+    <option value="2">Barbarian</option>
+    <option value="3">Sorceress</option>
+    <option value="4">Archer</option>
+</select>
+
+<button id="cp1">Confirm</button>
+<br>
+<br>
+</div>
+<div>
+<label for="name2">Choose name for Player2:</label>
+<br>
+<input type="text" id="name2" />
+<br>
+<label for="proff2">Choose proffession for Player2:</label>
+<br>
+<select id="proff2">
+    <option value="1">Assassin</option>
+    <option value="2">Barbarian</option>
+    <option value="3">Sorceress</option>
+    <option value="4">Archer</option>
+</select>
+</select>
+<button id="cp2">Confirm</button>
+</div>
+<br>
+<div>
+<button id="saveplayers">Save game</button>
+</div>
+<br>
+<div>
+<button id="loadplayers">Load game</button>
+</div>
+<div id="player1"></div>
+<div id="player2"></div>
+<div id="gamesaved"></div>
+<div id="gameloaded"></div>
+
+
+</body>
+</html>
