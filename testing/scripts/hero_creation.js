@@ -1,5 +1,7 @@
 //exporting all functions
-export {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers};
+//export {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers};
+
+
 
 
 
@@ -7,33 +9,9 @@ export {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, l
 //declaring generic class Player
 //I wanted to use it for actions common to all classes (eg. fighting), but I use JSON.stringify. It doesn't save functions
 //Maybe I can use it for inventory
-class Player {
-    constructor(name){
-    this.name = '';
-    this.proff = '';
-    this.hp = 0;
-    this.ep = 0;
-    this.attack = 0;
-    this.defense = 0;
-    this.e_defense = 0;
-    this.dodge = 0;
-    }
-}
+
 
 //declaring all proffessions which player can choose
-class Assassin extends Player{
-    constructor(name) {
-        super();
-        this.name = name;
-        this.proff = 'Assassin';
-        this.hp = 50;
-        this.ep = 50;
-        this.attack = 60;
-        this.defense = 0;
-        this.e_defense = 0;
-        this.dodge = 70;
-    }
-}
 
 class Barbarian extends Player{
     constructor(name){
@@ -132,7 +110,6 @@ const loadplayers = () =>{
         console.log("Error during loading Player 1!");
     }
     if (sp2 != null && sp2 != undefined){
-        //I don't understand exactly why but when I declare "p2 = sp2" (previous code) instead of "window.p2 = sp2", accessing p2 from another file is throwing "ReferenceError: p2 is not defined"
         window.p2 = sp2;
         console.log(p2);
         document.getElementById("gameloaded").innerHTML += " " + p2.name + " loaded!";
