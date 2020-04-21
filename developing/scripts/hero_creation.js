@@ -3,6 +3,9 @@ export {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, l
 
 
 
+//declaring player objects
+let p1 = {};
+let p2 = {};
 
 //declaring generic class Player
 //I wanted to use it for actions common to all classes (eg. fighting), but I use JSON.stringify. It doesn't save functions
