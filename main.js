@@ -1,15 +1,12 @@
-
-/*
-
-*/
+import {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers} from "./scripts/hero_creation.js";
+import {fly} from "./scripts/enemy.js";
+import {fight} from "./scripts/game_controller.js";
 
 //testing if main.js is properly connected with index.html
 let myHeading = document.querySelector('h1');
 myHeading.textContent = 'MAIN.JS IS WORKING!';
 
-import {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers} from "./scripts/hero_creation.js";
-import {fly} from "./scripts/enemy.js";
-import {fight} from "./scripts/game_controller.js";
+
 
 
 
