@@ -115,5 +115,11 @@ Dawid recommendations:
     -Nowy folder models (barbarian.js, assassin.js etc...) wszystko osobno
     -zadeklaruj funkcje nawet bez pisania body, miec ogolny zarys designu
     -
-    -
+    -Zapisz na kartce
+
+    -klasy
+    -LOGIKA LOGIKA LOGIKA
+    -skup sie na logice
+    -czytelny kod
+    -deskryptywne nazwy
 */
