@@ -26,14 +26,21 @@ class Assassin extends Player{
         super();
         this.name = name;
         this.proff = 'Assassin';
-        this.hp = 50;
+        this.hp = 100;
         this.ep = 50;
-        this.attack = 60;
+        this.attack = 30;
         this.defense = 0;
         this.e_defense = 0;
         this.dodge = 70;
+        this.exp = 0;
+        this.gold = 0;
     }
 }
+
+export let p1 = new Assassin('Shimi');
+//console.log(p1);
+
+
 
 class Barbarian extends Player{
     constructor(name){
