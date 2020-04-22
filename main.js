@@ -93,24 +93,7 @@ console.log(`${Assassin.Name} attack: ${Assassin.attack}`);
     Things to do:
     -add Monsters which you can kill and gain exp and gold (fly, cockroach, wasp, frog, rat, bat, cat, dog, wolf, tiger, lion, elephant)
     -add lvlUp mechanic, which will give you opportunity to add your stats (hp, EP, Defense, E_Defense, attack)
-    -locations (street, forest, sewers, dungeon, cave, beach, river, lake, road, step, desert, frozen land, hell, heaven)
     -add shop, where you can buy potions, items (sword, staff, armor, helm, gloves, boots)
-    -equipment slots (weapon, armor, helm, gloves, boots)
+    -equipment slots (sword, staff, armor, helm, gloves, boots)
 
-
-    - prefixes: [dusty, crude, rusty, cracked, chipped, short, small, tiny, pocket, sharp, strong, solid, green, wooden, metallic, copper, blinking, shiny, silver, gold, powerful, mighty, critical, thirsty, vampiric, quick, speedy, super, wonderful, rich, saint, holy, stone, long, big, huge, enormous, defending, spiky, thorny, wild, rocky, mad, crazy, insane, runic, titanic, heroic, cowardly, smart, dumb, genius, unlucky, lucky, elegant, obedient, humble, patient, wise, transparent, obedient, ephemeric, eternal, immortal, undead, double, trollish, tanky, sandy, nifty, witty, resonating, distorting]
-
-
-    - suffixes: of [Paladin, God, Evilness, Destruction, Goodness, Justice, Defense, Strenght, Agility, Speed, Healing, Sanity, Insanity, Destruction, Terror, Madness,  Ogre, Orc, Devil, Witch, Dust, Sand, Grass, Water, Ice, Fire, Earth, Lightning, Thunder, Sound, Perseverance, Hiding, Dodging, Shadow, Disappearance, Thief, Leech, Vampire, Bashing, Crushing, Fairy, Sea, River, Cave, Goat, Shepherd, Destroyer, Knight, Mage, Power, Poison, Dread, Fear, Sleep, Thorns, Desolace, Wilderness, Miracles, Punching, Highlander, Mountain, Rock, Dwarf, Goblin, Troll, Phoenix, Elf, Runes, Titan, Hero, Coward, Genius, Lucker, Wisdom, Patience, Humility, Obedience, Immortality, Undead, Transparence, Eternity, Twins, Instinct, Tank, Desert, Pity, Greed, Resonance, Distortion, ]
-
-
-    -types of equipment (knife, sword, axe, javelin, bow, crossbow, slingshot, staff, wand, stick, armor, robe, breastplate, cuirass, band, helm, hat, cap, scarf, wrap)
-
-
-
-Dawid recommendations:
-    -Nowy folder models (barbarian.js, assassin.js etc...) wszystko osobno
-    -zadeklaruj funkcje nawet bez pisania body, miec ogolny zarys designu
-    -
-    -
 */
