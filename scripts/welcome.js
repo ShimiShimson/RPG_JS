@@ -1,5 +1,3 @@
-const $ = id => document.getElementById( id );
-
 export const welcome = () =>{
     
     const header = document.getElementById('header');

@@ -4,7 +4,7 @@
 export class Player {
     constructor(name){
     this.name = '';
-    this.proff = '';
+    this.prof = '';
     this.hp = 0;
     this.ep = 0;
     this.attack = 0;

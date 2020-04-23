@@ -11,7 +11,7 @@ const startGame = () =>{
 }
 
 //console.log(player1);
-//fight(p1, fly);
+//fight(hero1, fly);
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));

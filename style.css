@@ -1,11 +1,29 @@
 body {
     font-family: monospace;
     font-size: 20px;
-    background-color: #333333;
-    color: #f1f1f1;
+    background-color: #1e1c2e;
+    color: #b9b3f3;
     text-align: center;
 }
 
 #header {
     margin: auto 10px;
+}
+
+button {
+    margin: 0 20px;
+}
+
+input, select, button {
+    font-size: 20px;
+    background-color: #1d1b2c;
+    color: #b9b3f3;
+    font-family: monospace;
+    border-color: #bab6dd;
+    
+}
+
+select, button {
+    border-color: #343761;
+    box-shadow: 0px 0px 5px 5px #080616
 }

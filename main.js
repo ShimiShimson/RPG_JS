@@ -24,7 +24,7 @@ document.querySelector('#loadplayers').addEventListener('click', loadplayers);
 /*
 console.log(p1);
 myHeading.innerText = `Name: ${p1.name}
-Proffession: ${p1.proff}
+profession: ${p1.prof}
 hp: ${p1.hp}
 EP: ${p1.ep}
 attack: ${p1.attack}
@@ -38,21 +38,21 @@ Dodge: ${p1.dodge}
 // attack and Dodge mechanic
 
 function attacking (att, def){
-    console.log(att.proff + " attack is " + att.attack);
-    console.log(def.proff + " has " + def.hp + " hp");
+    console.log(att.prof + " attack is " + att.attack);
+    console.log(def.prof + " has " + def.hp + " hp");
     let dodging = Math.floor(Math.random() * 100 + def.dodge);
     console.log(dodging);
     if (dodging >= 100){
-        console.log(def.proff + " has " + def.hp + " hp");
-        return def.proff + " dodged attack of " + att.proff;
+        console.log(def.prof + " has " + def.hp + " hp");
+        return def.prof + " dodged attack of " + att.prof;
     } else {
         def.hp = def.hp - att.attack;
         if (def.hp < 0){
-            console.log(def.proff + " got hit by " + att.proff + " and lost " + att.attack + " hp");
-            return def.proff + " has 0 hp and is dead";
+            console.log(def.prof + " got hit by " + att.prof + " and lost " + att.attack + " hp");
+            return def.prof + " has 0 hp and is dead";
         }
-        console.log(def.proff + " has " + def.hp + " hp");
-        return def.proff + " got hit by " + att.proff + " and lost " + att.attack + " hp \nNow he has " + def.hp + " hp";
+        console.log(def.prof + " has " + def.hp + " hp");
+        return def.prof + " got hit by " + att.prof + " and lost " + att.attack + " hp \nNow he has " + def.hp + " hp";
     }
 }
 
@@ -65,7 +65,7 @@ function attacking (att, def){
 //Game intro for player
 
 /*
-console.log(`Hello ${p1.name}, young ${[p1.proff]}!
+console.log(`Hello ${p1.name}, young ${[p1.prof]}!
 Are you ready to start your adventure?`);
 
 console.log(`(Type yes or no)`)

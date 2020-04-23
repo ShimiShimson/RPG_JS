@@ -4,7 +4,7 @@ export class Assassin extends Player{
     constructor(name) {
         super();
         this.name = name;
-        this.proff = 'Assassin';
+        this.prof = 'Assassin';
         this.hp = 100;
         this.ep = 50;
         this.attack = 30;

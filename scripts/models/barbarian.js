@@ -4,7 +4,7 @@ export class Barbarian extends Player{
     constructor(name){
         super();
         this.name = name;
-        this.proff = 'Barbarian';
+        this.prof = 'Barbarian';
         this.hp = 400;
         this.ep = 20;
         this.attack = 20;

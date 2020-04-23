@@ -1,4 +1,4 @@
-import { p1 } from "./hero_creation.js";
+import { hero1 } from "./hero_creation.js";
 import { fly } from "./models/enemy.js";
 import { sleep } from "./game_controller";
 
@@ -26,5 +26,5 @@ async function fight(player, enemy) {
         console.log(player);
         return;
     }
-    fight(p1, fly);
+    //fight(hero1, fly);
 }

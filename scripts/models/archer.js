@@ -4,7 +4,7 @@ export class Archer extends Player{
     constructor(name){
         super();
         this.name = name;
-        this.proff = 'Archer';
+        this.prof = 'Archer';
         this.hp = 100;
         this.ep = 50;
         this.attack = 30;
