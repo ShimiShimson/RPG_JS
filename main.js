@@ -1,23 +1,25 @@
-import {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers} from "./scripts/hero_creation.js";
-import {fly} from "./scripts/enemy.js";
-import {fight} from "./scripts/game_controller.js";
+
+
+import {startGame} from "./scripts/game_controller.js";
 
 //testing if main.js is properly connected with index.html
-let myHeading = document.querySelector('h1');
-myHeading.textContent = 'MAIN.JS IS WORKING!';
+//let myHeading = document.querySelector('h1');
+//myHeading.textContent = 'MAIN.JS IS WORKING!';
+
+document.querySelector('#start-game').addEventListener('click', startGame);
 
 
 
-
-
-window.attacking = attacking;
 
 
 //This solutiom is better as it does not pollute global scope
+/*
 document.querySelector('#cp1').addEventListener('click', cp1);
 document.querySelector('#cp2').addEventListener('click', cp2);
 document.querySelector('#saveplayers').addEventListener('click', saveplayers);
 document.querySelector('#loadplayers').addEventListener('click', loadplayers);
+*/
+
 
 /*
 console.log(p1);

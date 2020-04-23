@@ -1,5 +1,7 @@
 export {fly}
 
+
+
 class Enemy {
     constructor(id, name, hp, ep, attack, defense, e_defense, dodge, exp, gold){
     this.id = id;
