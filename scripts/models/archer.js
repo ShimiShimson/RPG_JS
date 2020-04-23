@@ -5,6 +5,7 @@ export class Archer extends Player{
         super();
         this.name = name;
         this.prof = 'Archer';
+        this.profType = Archer
         this.hp = 100;
         this.ep = 50;
         this.attack = 30;

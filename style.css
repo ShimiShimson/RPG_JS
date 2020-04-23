@@ -10,6 +10,10 @@ body {
     margin: auto 10px;
 }
 
+#start-game {
+    margin-top: 20px;
+}
+
 button {
     margin: 0 20px;
 }

@@ -3,24 +3,34 @@ import {Assassin} from "./models/assassin.js";
 import {Barbarian} from "./models/barbarian.js";
 import {Sorceress} from "./models/sorceress.js";
 import {$} from "./$.js";
+import { saveHero1, loadHero1 } from "./save_load.js";
 
 
 //declaring as a window variable for purposes of easier manipulation of object hero1
 window.hero1 = {};
 window.h1 = {}
 
+const interface1 = document.getElementById('interface');
+
+
 export const heroCreation = () =>{
-    let interface1 = document.getElementById('interface');
+    createHtmlStructure();
+    
+}
+
+
+const createHtmlStructure = () =>{
     let chooseNameParagraph = document.createElement('p');
     let chooseNameText = document.createTextNode('Choose a name for yourself, Adventurer:');
     let heroNameInput = document.createElement('input');
-    heroNameInput.id = 'hero-name';
-
+    
     chooseNameParagraph.appendChild(chooseNameText);
     interface1.appendChild(chooseNameParagraph);
     interface1.appendChild(heroNameInput);
+    heroNameInput.id = 'hero-name';
+    $('hero-name').value = 'Your name';
 
-   $('hero-name').value = 'Your name';
+   
    
 
 
@@ -57,77 +67,62 @@ export const heroCreation = () =>{
     createHero1Button.id = 'create-hero';
     createHero1Button.onclick = ()=> createHero1();
     interface1.appendChild(createHero1Button);
-
-    
-    const createHero1 = () => {
-        const name = document.getElementById('hero-name').value;
-        const profession = document.getElementById('hero-profession').value;
-        function whatprofession(){
-            if (profession === "1") return new Archer(name);
-            if (profession === "2") return new Assassin(name);
-            if (profession === "3") return new Barbarian(name);
-            if (profession === "4") return new Sorceress(name);
-        }
-        hero1 = whatProfession(name);
-        //Displaying name of freshly created hero (checking if hero was created)
-        console.log(hero1.name);
-        if ($('displayHeroParagraph')) {
-            let toRemove = $('displayHeroParagraph')
-            console.log($('displayHeroParagraph').childNodes);
-            $('displayHeroParagraph').parentNode.removeChild(toRemove);
-        };
-        let displayHeroParagraph = document.createElement('p');
-        displayHeroParagraph.id = "displayHeroParagraph"
-        displayHeroParagraph.textContent = `${hero1.name}, the ${hero1.prof} has been created!`;
-        interface1.appendChild(displayHeroParagraph);
-        console.log(hero1.name);
-        h1 = hero1;
-    }
 }
 
-
-
-
-
-
-
-
-
-
-
-//Function creating hero2
-/*
-const cp2 = () => {
-    const name = document.getElementById('name2').value;
-    const prof = document.getElementById('prof2').value;
+const createHero1 = () => {
+    const name = document.getElementById('hero-name').value;
+    const profession = document.getElementById('hero-profession').value;
     function whatProfession(){
-        if (prof === "1") return new Assassin(name);
-        if (prof === "2") return new Barbarian(name);
-        if (prof === "3") return new Sorceress(name);
-        if (prof === "4") return new Archer(name);
+        if (profession === "1") return new Archer(name);
+        if (profession === "2") return new Assassin(name);
+        if (profession === "3") return new Barbarian(name);
+        if (profession === "4") return new Sorceress(name);
     }
-    window.p2 = whatProfession(name);
+    hero1 = whatProfession(name);
     //Displaying name of freshly created hero (checking if hero was created)
-    document.getElementById("hero2").innerHTML = p2.name + " created";
+    if ($('displayHeroParagraph')) {
+        let toRemove = $('displayHeroParagraph')
+        $('displayHeroParagraph').parentNode.removeChild(toRemove);
+    };
+    let displayHeroParagraph = document.createElement('p');
+    displayHeroParagraph.id = "displayHeroParagraph"
+    displayHeroParagraph.textContent = `${hero1.name}, the ${hero1.prof} has been created!`;
+    interface1.appendChild(displayHeroParagraph);
+    console.log(hero1.name);
+    h1 = hero1;
+    createSaveButton();
+    createGameSavedParagraph();
+    createButton('load-game', 'Load game', loadHero1);
 }
+
+const createSaveButton = () =>{
+    let saveHero1Button = document.createElement('button');
+    saveHero1Button.textContent = "Save game";
+    saveHero1Button.id = 'create-hero';
+    saveHero1Button.onclick = ()=> saveHero1();
+    interface1.appendChild(saveHero1Button);
+}
+
+const createGameSavedParagraph = () =>{
+    let paragraph = document.createElement('p');
+    paragraph.id = "game-saved";
+    $("interface").appendChild(paragraph);
+}
+
+
+/*
+const createButton = (id, textContent, onclick) =>{
+    let buttonElement = document.createElement('button');
+    buttonElement.textContent = textContent.toString();
+    buttonElement.id = id.toString;
+    buttonElement.onclick = onclick;
+    interface1.appendChild(buttonElement);
+}
+
+const createParagraph
 */
 
-//Saving hero1 to local storage
-const savehero1 = () => {
-    console.log(hero1);
-    localStorage.setItem("sh1", JSON.stringify(hero1));
-    document.getElementById("gamesaved").innerHTML = "Hero1 saved";
-    
-}
 
-//Loading hero1 and hero2 from local storage
-const loadhero1 = () =>{
-    const sh1 = JSON.parse(localStorage.getItem("sh1"));
-    if (sh1 != null && sh1 != undefined){
-        //hero1 = new sh1.prof(name, hp, ep, att, def ,etc);
-        console.log(hero1);
-        document.getElementById("gameloaded").innerHTML = p1.name + " loaded!";
-    } else {
-        console.log("Error during loading hero 1!");
-    }
-}
+
+
+

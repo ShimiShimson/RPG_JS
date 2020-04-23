@@ -8,6 +8,7 @@ import {welcome} from "./welcome.js"
 const startGame = () =>{
    welcome();
    heroCreation();
+   
 }
 
 //console.log(player1);
