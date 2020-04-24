@@ -20,5 +20,3 @@ class Enemy {
 }
 
 let fly = new Enemy(1, 'Fly', 100, 0, 10, 1, 1, 20, 5, 5, 1);
-
-//console.log(fly);

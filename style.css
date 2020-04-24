@@ -3,15 +3,16 @@ body {
     font-size: 20px;
     background-color: #1e1c2e;
     color: #b9b3f3;
-    text-align: center;
+    margin: 10px 20px;
+
 }
 
-#header {
-    margin: auto 10px;
-}
+
 
 #start-game {
-    margin-top: 20px;
+   margin-left: 45%;
+   margin-right: 45%;
+   padding: 10px 20px;
 }
 
 button {

@@ -29,5 +29,4 @@ export async function fight(player, enemy) {
         console.log(player);
         return;
     }
-    //fight(hero, fly);
 }

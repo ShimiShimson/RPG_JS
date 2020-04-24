@@ -4,15 +4,14 @@ import { CLASSES } from "./classType.js";
 
 //Saving hero to local storage
 export const saveHero = () => {
-    
-    console.log(hero);
+
     localStorage.setItem("savedHero", JSON.stringify(hero));
     $('game-saved').textContent = "Game saved";
     removeSaveDisplayAfter2s();
     
 }
 
-//Loading hero and hero2 from local storage
+//Loading hero and from local storage
 export const loadHero = () =>{
 
     $("game-loaded").textContent = "Trying to load game.....";
@@ -24,13 +23,18 @@ export const loadHero = () =>{
         if (load.prof === CLASSES.paladin.name  )    hero = new Paladin  (...loadTemplate);
         if (load.prof === CLASSES.sorceress.name)   hero = new Sorceress(...loadTemplate);
 
-        $("game-loaded").textContent = `Game loaded! ${hero.name}, the ${hero.prof}, HP: ${hero.hp}.`;
+        $("game-loaded").innerText = `Game loaded!
+                                        Name: ${hero.name}
+                                        Profession: ${hero.prof}
+                                        HP: ${hero.hp}
+                                        EP: ${hero.ep}
+                                        Dmg Physical: ${hero.dmg_physical}
+                                        Dodge: ${hero.dodge}
+                                        `;
+
         removeLoadDisplayAfter2s();
-        hero.sayHello();
-        hero.sayName();
-        
-        
-        
+        console.log(`${hero.name}, the ${hero.prof}.`)
+
     } else {
         console.log("Error during loading hero 1!");
     }

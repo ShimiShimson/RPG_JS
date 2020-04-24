@@ -1,10 +1,5 @@
-
-
 import {startGame} from "./scripts/game_controller.js";
 
-//testing if main.js is properly connected with index.html
-//let myHeading = document.querySelector('h1');
-//myHeading.textContent = 'MAIN.JS IS WORKING!';
 
 document.querySelector('#start-game').addEventListener('click', startGame);
 
@@ -12,25 +7,10 @@ document.querySelector('#start-game').addEventListener('click', startGame);
 
 
 
-//This solutiom is better as it does not pollute global scope
-/*
-document.querySelector('#cp1').addEventListener('click', cp1);
-document.querySelector('#cp2').addEventListener('click', cp2);
-document.querySelector('#saveplayers').addEventListener('click', saveplayers);
-document.querySelector('#loadplayers').addEventListener('click', loadplayers);
-*/
 
 
-/*
-console.log(p1);
-myHeading.innerText = `Name: ${p1.name}
-profession: ${p1.prof}
-hp: ${p1.hp}
-EP: ${p1.ep}
-dmg_physical: ${p1.dmg_physical}
-Dodge: ${p1.dodge}
-`;
-*/
+
+
 
 
 
@@ -55,42 +35,3 @@ function attacking (att, def){
         return def.prof + " got hit by " + att.prof + " and lost " + att.dmg_physical + " hp \nNow he has " + def.hp + " hp";
     }
 }
-
-
-
-
-
-
-
-//Game intro for player
-
-/*
-console.log(`Hello ${p1.name}, young ${[p1.prof]}!
-Are you ready to start your adventure?`);
-
-console.log(`(Type yes or no)`)
-
-console.log(`What would you like to do?`)
-*/
-
-
-
-// Testing setters
-/*
-console.log(`${Assassin.Name} hp: ${Assassin.hp}`);
-
-Assassin.sethp(100);
-
-console.log(`${Assassin.Name} hp: ${Assassin.hp}`);
-
-console.log(`${Assassin.Name} dmg_physical: ${Assassin.dmg_physical}`);
-
-Assassin.set_dmg_physical(80);
-
-console.log(`${Assassin.Name} dmg_physical: ${Assassin.dmg_physical}`);
-*/
-
-
-/*
-    
-*/

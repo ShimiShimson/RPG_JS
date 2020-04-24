@@ -28,7 +28,7 @@ export const createHero = () => {
     hero = whatProfession(name);
 
     hero.hp = 500;
-    //Displaying name of freshly created hero (checking if hero was created)
+    //Displaying name of freshly created hero (checking if paragraph displaying hero was created)
     if ($('displayHeroParagraph')) {
         let toRemove = $('displayHeroParagraph')
         $('displayHeroParagraph').parentNode.removeChild(toRemove);
