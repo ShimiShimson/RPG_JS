@@ -1,10 +1,10 @@
 import {Player} from "./player.js";
 
-export class Barbarian extends Player{
+export class Paladin extends Player{
     constructor(name, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
         super();
         this.name = name;
-        this.prof = "Barbarian";
+        this.prof = "Paladin";
         this.hp = hp;
         this.ep = ep;
         this.dmg_physical = dmg_physical;

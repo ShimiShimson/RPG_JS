@@ -1,15 +1,19 @@
 import {Player} from "./player.js";
 
 export class Sorceress extends Player{
-    constructor(name){
-       super();
-       this.name = name;
-       this.prof = 'Sorceress';
-       this.hp = 70;
-       this.ep = 150;
-       this.attack = 40;
-       this.defense = 5;
-       this.e_defense = 20;
-       this.dodge = 10;
+    constructor(name, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
+        super();
+        this.name = name;
+        this.prof = "Sorceress";
+        this.hp = hp;
+        this.ep = ep;
+        this.dmg_physical = dmg_physical;
+        this.dmg_energy = dmg_energy;
+        this.defense_p = defense_p;
+        this.defense_e = defense_e;
+        this.dodge = dodge;
+        this.gold = gold;
+        this.exp = exp;
+        this.lvl = lvl;
     }
 }

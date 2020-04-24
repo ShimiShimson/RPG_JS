@@ -27,7 +27,7 @@ myHeading.innerText = `Name: ${p1.name}
 profession: ${p1.prof}
 hp: ${p1.hp}
 EP: ${p1.ep}
-attack: ${p1.attack}
+dmg_physical: ${p1.dmg_physical}
 Dodge: ${p1.dodge}
 `;
 */
@@ -38,7 +38,7 @@ Dodge: ${p1.dodge}
 // attack and Dodge mechanic
 
 function attacking (att, def){
-    console.log(att.prof + " attack is " + att.attack);
+    console.log(att.prof + " dmg_physical is " + att.attack);
     console.log(def.prof + " has " + def.hp + " hp");
     let dodging = Math.floor(Math.random() * 100 + def.dodge);
     console.log(dodging);
@@ -46,13 +46,13 @@ function attacking (att, def){
         console.log(def.prof + " has " + def.hp + " hp");
         return def.prof + " dodged attack of " + att.prof;
     } else {
-        def.hp = def.hp - att.attack;
+        def.hp = def.hp - att.dmg_physical;
         if (def.hp < 0){
-            console.log(def.prof + " got hit by " + att.prof + " and lost " + att.attack + " hp");
+            console.log(def.prof + " got hit by " + att.prof + " and lost " + att.dmg_physical + " hp");
             return def.prof + " has 0 hp and is dead";
         }
         console.log(def.prof + " has " + def.hp + " hp");
-        return def.prof + " got hit by " + att.prof + " and lost " + att.attack + " hp \nNow he has " + def.hp + " hp";
+        return def.prof + " got hit by " + att.prof + " and lost " + att.dmg_physical + " hp \nNow he has " + def.hp + " hp";
     }
 }
 
@@ -83,11 +83,11 @@ Assassin.sethp(100);
 
 console.log(`${Assassin.Name} hp: ${Assassin.hp}`);
 
-console.log(`${Assassin.Name} attack: ${Assassin.attack}`);
+console.log(`${Assassin.Name} dmg_physical: ${Assassin.dmg_physical}`);
 
-Assassin.set_attack(80);
+Assassin.set_dmg_physical(80);
 
-console.log(`${Assassin.Name} attack: ${Assassin.attack}`);
+console.log(`${Assassin.Name} dmg_physical: ${Assassin.dmg_physical}`);
 */
 
 
