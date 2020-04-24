@@ -1,11 +1,11 @@
-import { hero1 } from "./hero_creation.js";
+import { hero } from "./hero_creation.js";
 import { fly } from "./models/enemy.js";
 import { sleep } from "./game_controller.js";
 
 
 
 export async function fight(player, enemy) {
-    player = hero1;
+    player = hero;
     enemy = fly;
     console.log(`Player HP: ${player.hp}`);
     console.log(`Enemy HP: ${enemy.hp}`);
@@ -29,5 +29,5 @@ export async function fight(player, enemy) {
         console.log(player);
         return;
     }
-    //fight(hero1, fly);
+    //fight(hero, fly);
 }

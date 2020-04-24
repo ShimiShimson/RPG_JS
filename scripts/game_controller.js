@@ -2,7 +2,7 @@ import {heroCreation} from "./hero_creation.js";
 import {welcome} from "./welcome.js";
 import {fight} from "./fight.js";
 import {fly} from "./models/enemy.js";
-import {hero1} from "./hero_creation.js";
+import {hero} from "./hero_creation.js";
 import { $ } from "./$.js";
 
 export{startGame, sleep};

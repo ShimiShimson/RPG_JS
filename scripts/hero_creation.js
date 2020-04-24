@@ -3,15 +3,15 @@ import {Assassin} from "./models/assassin.js";
 import {Barbarian} from "./models/barbarian.js";
 import {Sorceress} from "./models/sorceress.js";
 import {$} from "./$.js";
-import { saveHero1, loadHero1 } from "./save_load.js";
+import { saveHero, loadHero } from "./save_load.js";
 import { CLASSES } from "./classType.js";
 
-export {hero1};
+export {hero};
 
 
 
-//declaring as a window variable for purposes of easier manipulation of object hero1
-let hero1 = {};
+//declaring as a window variable for purposes of easier manipulation of object hero
+let hero = {};
 window.h1 = {}
 
 const interface1 = document.getElementById('interface');
@@ -19,7 +19,7 @@ const interface1 = document.getElementById('interface');
 
 export const heroCreation = () =>{
     createHtmlStructure();
-    
+
 }
 
 
@@ -66,14 +66,14 @@ const createHtmlStructure = () =>{
     interface1.appendChild(heroProfessionSelect);
 
 
-    let createHero1Button = document.createElement('button');
-    createHero1Button.textContent = "Create your Hero";
-    createHero1Button.id = 'create-hero';
-    createHero1Button.onclick = ()=> createHero1();
-    interface1.appendChild(createHero1Button);
+    let createHeroButton = document.createElement('button');
+    createHeroButton.textContent = "Create your Hero";
+    createHeroButton.id = 'create-hero';
+    createHeroButton.onclick = ()=> createHero();
+    interface1.appendChild(createHeroButton);
 }
 
-const createHero1 = () => {
+const createHero = () => {
 
     const name = document.getElementById('hero-name').value;
     const profession = document.getElementById('hero-profession').value;
@@ -83,8 +83,8 @@ const createHero1 = () => {
         if (profession == CLASSES.paladin.value) return new Paladin  (name, 150, 100, 0,  30, 50, 50, 10, 0, 0, 1);
         if (profession == CLASSES.sorceress.value) return new Sorceress(name, 70,  150, 0,  60, 5,  20, 30, 0, 0, 1);
     }
-    hero1 = whatProfession(name);
-    console.log(hero1);
+    hero = whatProfession(name);
+    console.log(hero);
     //Displaying name of freshly created hero (checking if hero was created)
     if ($('displayHeroParagraph')) {
         let toRemove = $('displayHeroParagraph')
@@ -102,19 +102,19 @@ const createHero1 = () => {
 
     let displayHeroParagraph = document.createElement('p');
     displayHeroParagraph.id = "displayHeroParagraph";
-    displayHeroParagraph.textContent = `${hero1.name}, the ${hero1.prof} has been created!`;
+    displayHeroParagraph.textContent = `${hero.name}, the ${hero.prof} has been created!`;
     interface1.appendChild(displayHeroParagraph);
-    h1 = hero1;
+    h1 = hero;
 
     
-    createButton('save-game', 'Save game', saveHero1)
+    createButton('save-game', 'Save game', saveHero)
     createParagraph('game-saved');
 
     
 
-    //hero1 = new (name, 200, 20,  20, 0,  10, 5,  0,  0, 0, 1);
-    //console.log(hero1);
-    //createButton('load-game', 'Load game', loadHero1);
+    //hero = new (name, 200, 20,  20, 0,  10, 5,  0,  0, 0, 1);
+    //console.log(hero);
+    //createButton('load-game', 'Load game', loadHero);
     //createParagraph('game-loaded');
 }
 

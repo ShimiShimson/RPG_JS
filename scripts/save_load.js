@@ -1,11 +1,11 @@
 import {$} from "./$.js";
-import {hero1} from "./hero_creation.js";
+import {hero} from "./hero_creation.js";
 import { CLASSES } from "./classType.js";
-//Saving hero1 to local storage
-export const saveHero1 = () => {
+//Saving hero to local storage
+export const saveHero = () => {
     
-    console.log(hero1);
-    localStorage.setItem("savedHero1", JSON.stringify(hero1));
+    console.log(hero);
+    localStorage.setItem("savedHero", JSON.stringify(hero));
     $('game-saved').textContent = "Game saved";
 
     const removeGameSavedDisplay = ()=>{
@@ -14,13 +14,13 @@ export const saveHero1 = () => {
     setTimeout(removeGameSavedDisplay, 2000);
 }
 
-//Loading hero1 and hero2 from local storage
-export const loadHero1 = () =>{
+//Loading hero and hero2 from local storage
+export const loadHero = () =>{
 
     $("game-loaded").textContent = "Trying to load game.....";
-    const load = JSON.parse(localStorage.getItem("savedHero1"));
+    const load = JSON.parse(localStorage.getItem("savedHero"));
     if (load != null && load != undefined){
-        //hero1 = new JSON.parse(load.prof)(name, hp, ep, att, def ,etc);
+        //hero = new JSON.parse(load.prof)(name, hp, ep, att, def ,etc);
         
         if (load.prof === CLASSES.assassin.name) return new Assasssin(load.name, load.hp,)
 

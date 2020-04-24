@@ -5,6 +5,6 @@ export class Player {
         console.log('Hello!');
     }
     sayName(){
-        console.log(`My name is ${hero1.name}`);
+        console.log(`My name is ${hero.name}`);
     }
 }
