@@ -20,8 +20,6 @@ export const loadHero = () =>{
     $("game-loaded").textContent = "Trying to load game.....";
     const load = JSON.parse(localStorage.getItem("savedHero"));
     if (load != null && load != undefined){
-        //hero = new JSON.parse(load.prof)(name, hp, ep, att, def ,etc);
-        
         if (load.prof === CLASSES.assassin.name) return new Assasssin(load.name, load.hp,)
 
         $("game-loaded").textContent = "Game loaded!";
