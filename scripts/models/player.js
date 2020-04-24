@@ -1,3 +1,5 @@
+import {hero} from "../hero_creation.js";
+
 //declaring generic class Player
 //Maybe I want to use it for actions common to all classes (eg. fighting, visit shop, inventory)
 export class Player {

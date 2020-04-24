@@ -61,11 +61,13 @@ export const displayHeroCreated = () =>{
 }
 
 export const createSaveLoadButtons = () =>{
+    
     createButton('save-game', 'Save game', saveHero);
     createParagraph('game-saved');
-
-    //createButton('load-game', 'Load game', loadHero);
-    //createParagraph('game-loaded');
+    
+    createButton('load-game', 'Load game', loadHero);
+    createParagraph('game-loaded');
+    
 }
 
 export const createButton = (id, textContent, onclick) =>{
