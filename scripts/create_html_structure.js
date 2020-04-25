@@ -80,7 +80,7 @@ export const displayHeroCreated = () =>{
 }
 
 
-export const createSaveLoadButtons = () =>{
+export const createSaveLoadActionMenuButtons = () =>{
     
     createButton('save-game', 'Save game', saveHero);
     createParagraph('game-saved');

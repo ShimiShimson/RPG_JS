@@ -5,7 +5,7 @@ import {Sorceress} from "./models/sorceress.js";
 import {$} from "./$.js";
 
 import { CLASSES } from "./class_type.js";
-import { displayHeroCreated, createSaveLoadButtons } from "./create_html_structure.js";
+import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_html_structure.js";
 
 
 
@@ -27,22 +27,19 @@ export const createHero = () => {
     }
     hero = whatProfession(name);
 
-    
-    //Displaying name of freshly created hero (checking if paragraph displaying hero was created)
-    if ($('displayHeroParagraph')) {
-        let toRemove = $('displayHeroParagraph')
-        $('displayHeroParagraph').parentNode.removeChild(toRemove);
-    };
-    if ($('save-game')) {
-        let toRemove = $('save-game')
-        $('save-game').parentNode.removeChild(toRemove);
-    };
-    if ($('load-game')) {
-        let toRemove = $('load-game')
-        $('load-game').parentNode.removeChild(toRemove);
-    };
+
+    //Displaying name of freshly created hero (if paragraph displaying hero was created already, remove it)
+   
+    if ($('displayHeroParagraph')) $('displayHeroParagraph').remove();
+
+    if ($('save-game')) $('save-game').remove();
+
+    if ($('load-game')) $('load-game').remove();
+
+    if ($('action-menu-btn')) $('action-menu-btn').remove();
+
 
     displayHeroCreated();
-    createSaveLoadButtons();
+    createSaveLoadActionMenuButtons();
     
 }
