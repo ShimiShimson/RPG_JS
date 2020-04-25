@@ -2,7 +2,7 @@ import {welcome} from "./welcome.js";
 import {fight} from "./fight.js";
 import {fly} from "./models/enemy.js";
 import { $ } from "./$.js";
-import { createHtmlStructure } from "./createHtmlStructure.js"
+import { createHtmlStructure } from "./create_html_structure.js"
 
 
 

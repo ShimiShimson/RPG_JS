@@ -1,6 +1,6 @@
 import {$} from "./$.js";
 import {hero} from "./hero_creation.js";
-import { CLASSES } from "./classType.js";
+import { CLASSES } from "./class_type.js";
 
 //Saving hero to local storage
 export const saveHero = () => {
@@ -31,9 +31,9 @@ export const loadHero = () =>{
                                         Dmg Physical: ${hero.dmg_physical}
                                         Dodge: ${hero.dodge}
                                         `;
-
         removeLoadDisplayAfter2s();
         console.log(`${hero.name}, the ${hero.prof}.`)
+        //createContinueButtton();
 
     } else {
         console.log("Error during loading hero 1!");

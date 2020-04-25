@@ -4,8 +4,8 @@ import {Barbarian} from "./models/barbarian.js";
 import {Sorceress} from "./models/sorceress.js";
 import {$} from "./$.js";
 
-import { CLASSES } from "./classType.js";
-import { displayHeroCreated, createSaveLoadButtons } from "./createHtmlStructure.js";
+import { CLASSES } from "./class_type.js";
+import { displayHeroCreated, createSaveLoadButtons } from "./create_html_structure.js";
 
 
 
@@ -27,7 +27,7 @@ export const createHero = () => {
     }
     hero = whatProfession(name);
 
-    hero.hp = 500;
+    
     //Displaying name of freshly created hero (checking if paragraph displaying hero was created)
     if ($('displayHeroParagraph')) {
         let toRemove = $('displayHeroParagraph')
@@ -44,4 +44,5 @@ export const createHero = () => {
 
     displayHeroCreated();
     createSaveLoadButtons();
+    
 }
