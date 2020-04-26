@@ -102,6 +102,7 @@ export const createButton = (id, textContent, onclick) =>{
 export const createParagraph = (id, textContent) =>{
     let paragraph = document.createElement('p');
     paragraph.id = id;
+    paragraph.textContent = textContent;
     $("interface").appendChild(paragraph);
 }
 
