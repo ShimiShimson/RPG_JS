@@ -26,6 +26,8 @@ export const createHero = () => {
         if (profession == CLASSES.sorceress.value)  return new Sorceress    (name, 70,  150, 0,  60, 5,  20, 30, 0, 0, 1);
     }
     hero = whatProfession(name);
+    //h1 is for manipulating and testing hero object in console
+    h1 = hero; 
 
 
     //Displaying name of freshly created hero (if paragraph displaying hero was created already, remove it)
@@ -34,7 +36,12 @@ export const createHero = () => {
 
     if ($('save-game')) $('save-game').remove();
 
+    if ($('game-saved')) $('game-saved').remove();
+
+
     if ($('load-game')) $('load-game').remove();
+    
+    if ($('game-loaded')) $('game-loaded').remove();
 
     if ($('action-menu-btn')) $('action-menu-btn').remove();
 

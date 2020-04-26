@@ -1,7 +1,7 @@
 import { $ } from "./$.js";
 import { createHero, hero } from "./hero_creation.js";
 import { saveHero, loadHero } from "./save_load.js";
-import { actionMenu } from "./action_menu.js";
+
 import { CLASSES } from "./class_type.js";
 
 
@@ -75,8 +75,7 @@ export const displayHeroCreated = () =>{
     displayHeroParagraph.id = "displayHeroParagraph";
     displayHeroParagraph.textContent = `${hero.name}, the ${hero.prof} has been created!`;
     $('interface').appendChild(displayHeroParagraph);
-    //h1 is for manipulating and testing hero object in console
-    h1 = hero;    
+       
 }
 
 
@@ -88,7 +87,7 @@ export const createSaveLoadActionMenuButtons = () =>{
     createButton('load-game', 'Load game', loadHero);
     createParagraph('game-loaded');
     
-    createButton('action-menu-btn', 'Action Menu', actionMenu);
+    
 }
 
 

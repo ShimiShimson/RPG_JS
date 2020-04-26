@@ -1,19 +1,22 @@
 import {$} from "./$.js";
 import {hero} from "./hero_creation.js";
 import { CLASSES } from "./class_type.js";
+import { createButton } from "./create_html_structure.js";
+import { actionMenu } from "./action_menu.js";
 
 //Saving hero to local storage
 export const saveHero = () => {
-
+    
+    if ($('save-game')) $('save-game').remove();
     localStorage.setItem("savedHero", JSON.stringify(hero));
     $('game-saved').textContent = "Game saved";
-    removeSaveDisplayAfter2s();
-    
 }
 
 //Loading hero and from local storage
 export const loadHero = () =>{
-
+    
+    if ($('load-game')) $('load-game').remove();
+    if ($('action-menu-btn')) $('load-game').remove();
     $("game-loaded").textContent = "Trying to load game.....";
     const load = JSON.parse(localStorage.getItem("savedHero"));
     if (load != null && load != undefined){
@@ -23,21 +26,19 @@ export const loadHero = () =>{
         if (load.prof === CLASSES.paladin.name  )    hero = new Paladin  (...loadTemplate);
         if (load.prof === CLASSES.sorceress.name)   hero = new Sorceress(...loadTemplate);
 
-        $("game-loaded").innerText = `Game loaded!
-                                        Name: ${hero.name}
-                                        Profession: ${hero.prof}
-                                        HP: ${hero.hp}
-                                        EP: ${hero.ep}
-                                        Dmg Physical: ${hero.dmg_physical}
-                                        Dodge: ${hero.dodge}
-                                        `;
-        removeLoadDisplayAfter2s();
+        $("game-loaded").textContent = `Game loaded!`;
         console.log(`${hero.name}, the ${hero.prof}.`)
-        //createContinueButtton();
+
+        createButton('action-menu-btn', 'Action Menu', actionMenu);
+        
 
     } else {
-        console.log("Error during loading hero 1!");
+        $("game-loaded").textContent = `Error during loading the game.`;
     }
+
+    
+
+
 
     const [...loadTemplate] = [
         load.name,
@@ -54,13 +55,3 @@ export const loadHero = () =>{
     ];
     
 }
-
-
-const removeLoadDisplayAfter2s = () =>{
-    setTimeout(()=> $('game-loaded').textContent = null, 2000);
-}
-
-const removeSaveDisplayAfter2s = () =>{
-    setTimeout(()=> $('game-saved').textContent = null, 2000);
-}
-
