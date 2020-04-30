@@ -45,6 +45,7 @@ export function findEnemy(){
             console.log(player);
             return;
         }
+        return;
     }
 
 

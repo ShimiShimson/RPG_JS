@@ -79,10 +79,7 @@ export const createLoadedHero = () =>{
     ];
     
     if (load != null && load != undefined){
-        if (load.prof === CLASSES.assassin.prof )  {
-            hero.name = load.name + 'edited';
-        }
-        console.log(hero);
+        if (load.prof === CLASSES.assassin.prof )   hero = new Assassin (...loadTemplate);
         if (load.prof === CLASSES.barbarian.prof)   hero = new Barbarian(...loadTemplate);
         if (load.prof === CLASSES.paladin.prof  )   hero = new Paladin  (...loadTemplate);
         if (load.prof === CLASSES.sorceress.prof)   hero = new Sorceress(...loadTemplate);
