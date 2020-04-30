@@ -1,7 +1,9 @@
 import {startGame} from "./scripts/game_controller.js";
+import { createLoadedHero } from "./scripts/hero_creation.js";
 
 
 document.querySelector('#start-game').addEventListener('click', startGame);
+document.querySelector('#load-game').addEventListener('click', createLoadedHero);
 
 
 

@@ -7,6 +7,13 @@ body {
 
 }
 
+#hero-stats, #interface {
+    white-space: pre;
+}
+
+#actions {
+    margin: 20px auto;
+}
 
 
 #start-game {
@@ -32,3 +39,4 @@ select, button {
     border-color: #343761;
     box-shadow: 0px 0px 5px 5px #080616
 }
+

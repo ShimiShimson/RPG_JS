@@ -1,23 +1,27 @@
 import {$} from "./$.js";
-import {hero} from "./hero_creation.js";
-import { CLASSES } from "./class_type.js";
-import { createButton } from "./create_html_structure.js";
-import { actionMenu } from "./action_menu.js";
+import {getHero} from "./hero_creation.js";
+
 
 //Saving hero to local storage
 export const saveHero = () => {
     
     if ($('save-game')) $('save-game').remove();
-    localStorage.setItem("savedHero", JSON.stringify(hero));
+    localStorage.setItem("savedHero", JSON.stringify(getHero()));
     $('game-saved').textContent = "Game saved";
 }
 
 //Loading hero and from local storage
 export const loadHero = () =>{
+    const load = JSON.parse(localStorage.getItem("savedHero"));
+        if ($('load-game')) $('load-game').remove();
+        if ($('action-menu-btn')) $('action-menu-btn').remove();
+        //$("game-loaded").textContent = "Trying to load game.....";
+        return load;
     
-    if ($('load-game')) $('load-game').remove();
-    if ($('action-menu-btn')) $('load-game').remove();
-    $("game-loaded").textContent = "Trying to load game.....";
+}
+
+/*
+export const getHero = () =>{
     const load = JSON.parse(localStorage.getItem("savedHero"));
     if (load != null && load != undefined){
 
@@ -26,20 +30,12 @@ export const loadHero = () =>{
         if (load.prof === CLASSES.paladin.name  )    hero = new Paladin  (...loadTemplate);
         if (load.prof === CLASSES.sorceress.name)   hero = new Sorceress(...loadTemplate);
 
-        $("game-loaded").textContent = `Game loaded!`;
-        console.log(`${hero.name}, the ${hero.prof}.`)
-
-        createButton('action-menu-btn', 'Action Menu', actionMenu);
-        
-
+        h1 = hero;
+        return hero;
     } else {
-        $("game-loaded").textContent = `Error during loading the game.`;
+        console.log(`Error during loading the game.`);
     }
-
     
-
-
-
     const [...loadTemplate] = [
         load.name,
         load.hp,
@@ -53,5 +49,5 @@ export const loadHero = () =>{
         load.gold, 
         load.lvl
     ];
-    
 }
+*/

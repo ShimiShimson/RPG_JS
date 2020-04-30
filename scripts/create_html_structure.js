@@ -1,5 +1,5 @@
 import { $ } from "./$.js";
-import { createHero, hero } from "./hero_creation.js";
+import { createHero, getHero, createLoadedHero } from "./hero_creation.js";
 import { saveHero, loadHero } from "./save_load.js";
 
 import { CLASSES } from "./class_type.js";
@@ -73,7 +73,7 @@ export const displayHeroCreated = () =>{
 
     let displayHeroParagraph = document.createElement('p');
     displayHeroParagraph.id = "displayHeroParagraph";
-    displayHeroParagraph.textContent = `${hero.name}, the ${hero.prof} has been created!`;
+    displayHeroParagraph.textContent = `${getHero().name}, the ${getHero().prof} has been created!`;
     $('interface').appendChild(displayHeroParagraph);
        
 }
@@ -84,7 +84,7 @@ export const createSaveLoadActionMenuButtons = () =>{
     createButton('save-game', 'Save game', saveHero);
     createParagraph('game-saved');
     
-    createButton('load-game', 'Load game', loadHero);
+    createButton('load-game', 'Load game', createLoadedHero);
     createParagraph('game-loaded');
     
     
@@ -108,4 +108,20 @@ export const createParagraph = (id, textContent) =>{
 
 export const createActionMenuButton = () =>{
     createButton('action-menu-btn', 'Action Menu', actionMenu);
+}
+
+export const createParagraphInsideDivId = (paragraphId, textContent, divId) =>{
+    let paragraph = document.createElement('p');
+    paragraph.id = paragraphId;
+    paragraph.textContent = textContent;
+    $(divId).appendChild(paragraph);
+}
+
+
+export const createButtonInsideDivId = (buttonId, textContent, onclick, divId) =>{
+    let button= document.createElement('button');
+    button.id = buttonId;
+    button.textContent = textContent;
+    button.onclick = onclick;
+    $(divId).appendChild(button);
 }

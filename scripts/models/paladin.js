@@ -5,6 +5,8 @@ export class Paladin extends Player{
         super();
         this.name = name;
         this.prof = "Paladin";
+        this.max_hp = hp;
+        this.max_ep = ep;
         this.hp = hp;
         this.ep = ep;
         this.dmg_physical = dmg_physical;
