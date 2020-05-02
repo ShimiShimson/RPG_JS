@@ -61,23 +61,44 @@ export async function fight() {
     if (anyoneDeadOnStart()) return;
     $('fight-btn').disabled = true;
     displayHeroStats();
-    console.log(`Player HP: ${player.hp}`);
-    console.log(`Enemy HP: ${enemy.hp}`);
+
+    console.log(`${player.name} HP: ${player.hp}`);
+    console.log(`${enemy.name} HP: ${enemy.hp}`);
     await sleep(1000);
-    enemy.hp -= player.dmg_physical;
-    console.log(`${enemy.name} got hit by ${player.name} and lost ${player.dmg_physical} HP.`);
-    await sleep(1000);
+    hasDodged(enemy, player);
     if (anyoneDeadDuringFight()) return;
-    player.hp -= enemy.dmg_physical;
-    console.log(`${player.name} got hit by ${enemy.name} and lost ${enemy.dmg_physical} HP.`);
-    
+    await sleep(1000);
+    hasDodged(player, enemy);
     displayHeroStats();
-    await sleep(1000);
     if (anyoneDeadDuringFight()) return;
+    await sleep(1000);
+    displayHeroStats();
+    
     return;
 }
 
-    
+
+function hasDodged(defender, attacker){
+    const randomChance = Math.floor(Math.random() * 100);
+    console.log(randomChance);
+    const dodgeChance = defender.dodge;
+    if (randomChance < dodgeChance) return console.log(`${defender.name} dodged the attack!`);
+    else return calculateDamage(defender, attacker);
+}
+
+
+function calculateDamage(defender, attacker){
+    let attackerDamage = Math.floor(attacker.dmg_physical * (0.9 + Math.random() / 5));
+    let damage =  attackerDamage - defender.defense_p;
+    console.log(damage);
+    if(damage<=0) return console.log(`${defender.name} defended the attack!`);
+    else {
+        defender.hp -= damage;
+        return console.log(`${defender.name} got hit by ${attacker.name} and lost ${damage} HP.`);
+    }
+}
+
+
 function anyoneDeadOnStart(){
     let stop = false;
     if (!enemy) {

@@ -23,14 +23,18 @@ export const createHero = () => {
     const name = document.getElementById('hero-name').value;
     const profession = document.getElementById('hero-profession').value;
     function whatProfession(){
-        if (profession == CLASSES.assassin.value)   return new Assassin
-        (name, 70, 30,  70,  30,  50, 0,  0,  0,  60, 0, 0, 1);
-        if (profession == CLASSES.barbarian.value)  return new Barbarian
-        (name, 200, 10, 200, 10,  20, 0,  10, 5,  0,  0, 0, 1);
-        if (profession == CLASSES.paladin.value)    return new Paladin
-        (name, 150, 100, 150, 100, 0,  30, 50, 50, 10, 0, 0, 1);
-        if (profession == CLASSES.sorceress.value)  return new Sorceress
-        (name, 70,  150, 70,  150, 0,  60, 5,  20, 30, 0, 0, 1);
+        
+        //properties           mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
+        let [...assassin] =  [name, 70,  30,  70,  30,  50,  0,   0,   0,   40,  0,   0,  1];
+        let [...barbarian] = [name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
+        let [...paladin] =   [name, 150, 100, 150, 100, 0,   30,  50,  50,  10,  0,   0,  1];
+        let [...sorceress] = [name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
+
+        if (profession == CLASSES.assassin.value)   return new Assassin     (...assassin);
+        if (profession == CLASSES.barbarian.value)  return new Barbarian    (...barbarian);
+        if (profession == CLASSES.paladin.value)    return new Paladin      (...paladin);
+        if (profession == CLASSES.sorceress.value)  return new Sorceress    (...sorceress);
+
     }
     
     hero = whatProfession(name);
