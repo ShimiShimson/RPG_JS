@@ -1,6 +1,7 @@
 import { $ } from "./$.js";
 import { createHero, getHero, createLoadedHero } from "./hero_creation.js";
 import { saveHero, loadHero } from "./save_load.js";
+import { actionMenu } from "./action_menu.js";
 
 import { CLASSES } from "./class_type.js";
 
@@ -81,12 +82,11 @@ export const displayHeroCreated = () =>{
 
 export const createSaveLoadActionMenuButtons = () =>{
     
-    createButton('save-game', 'Save game', saveHero);
-    createParagraph('game-saved');
+    createButtonInsideDivId('save-game', 'Save game', saveHero, 'actions');
     
-    createButton('load-game', 'Load game', createLoadedHero);
-    createParagraph('game-loaded');
+    createButtonInsideDivId('load-game', 'Load game', createLoadedHero, 'actions');
     
+    createButtonInsideDivId('action-menu-btn', 'Action Menu', actionMenu, 'actions');
     
 }
 

@@ -2,9 +2,9 @@
 import { getHero } from "./hero_creation.js";
 import { $ } from "./$.js";
 import { removeAllContent } from "./remove_all_content.js";
-import { createButton, createParagraphInsideDivId, createButtonInsideDivId } from "./create_html_structure.js";
+import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "./create_html_structure.js";
 import { getEnemy } from "./models/enemy.js";
-import { findEnemy, fight } from "./fight.js";
+import { startFight, findEnemy } from "./fight.js";
 
 
 
@@ -14,11 +14,14 @@ import { findEnemy, fight } from "./fight.js";
 export const actionMenu = () =>{
     removeAllContent('header');
     removeAllContent('interface');
+    removeAllContent('actions');
 
-    displayHeroStats();
+    createSaveLoadActionMenuButtons();
+    
     createButtonInsideDivId('find-enemy-btn', 'Find enemy!', findEnemy, 'actions');
-    createButtonInsideDivId('fight-btn', 'Fight!', fight, 'actions');
+    createButtonInsideDivId('fight-btn', 'Fight!', startFight, 'actions');
     createButtonInsideDivId('restore-max-hp-btn', 'Restore Max HP', restoreMaxHP, 'actions');
+    displayHeroStats();
 }
 
 

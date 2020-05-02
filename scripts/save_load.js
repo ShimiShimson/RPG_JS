@@ -4,19 +4,17 @@ import {getHero} from "./hero_creation.js";
 
 //Saving hero to local storage
 export const saveHero = () => {
-    
-    if ($('save-game')) $('save-game').remove();
+    $('save-game').disabled = true;
     localStorage.setItem("savedHero", JSON.stringify(getHero()));
-    $('game-saved').textContent = "Game saved";
+    $('save-game').textContent = "Game saved";
 }
 
 //Loading hero and from local storage
 export const loadHero = () =>{
     const load = JSON.parse(localStorage.getItem("savedHero"));
-        if ($('load-game')) $('load-game').remove();
-        if ($('action-menu-btn')) $('action-menu-btn').remove();
-        //$("game-loaded").textContent = "Trying to load game.....";
-        return load;
+    $('load-game').textContent = "Game loaded!";
+    if ($('action-menu-btn')) $('action-menu-btn').remove();
+    return load;
     
 }
 

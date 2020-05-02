@@ -23,10 +23,14 @@ export const createHero = () => {
     const name = document.getElementById('hero-name').value;
     const profession = document.getElementById('hero-profession').value;
     function whatProfession(){
-        if (profession == CLASSES.assassin.value)   return new Assassin     (name, 70,  30,  50, 0,  0,  0,  60, 0, 0, 1);
-        if (profession == CLASSES.barbarian.value)  return new Barbarian    (name, 200, 10,  20, 0,  10, 5,  0,  0, 0, 1);
-        if (profession == CLASSES.paladin.value)    return new Paladin      (name, 150, 100, 0,  30, 50, 50, 10, 0, 0, 1);
-        if (profession == CLASSES.sorceress.value)  return new Sorceress    (name, 70,  150, 0,  60, 5,  20, 30, 0, 0, 1);
+        if (profession == CLASSES.assassin.value)   return new Assassin
+        (name, 70, 30,  70,  30,  50, 0,  0,  0,  60, 0, 0, 1);
+        if (profession == CLASSES.barbarian.value)  return new Barbarian
+        (name, 200, 10, 200, 10,  20, 0,  10, 5,  0,  0, 0, 1);
+        if (profession == CLASSES.paladin.value)    return new Paladin
+        (name, 150, 100, 150, 100, 0,  30, 50, 50, 10, 0, 0, 1);
+        if (profession == CLASSES.sorceress.value)  return new Sorceress
+        (name, 70,  150, 70,  150, 0,  60, 5,  20, 30, 0, 0, 1);
     }
     
     hero = whatProfession(name);
@@ -57,7 +61,7 @@ export const createHero = () => {
 }
 
 export const createLoadedHero = () =>{
-    
+    $('load-game').disabled = true;
     const load = loadHero();
     
     if (load === null || load === undefined) {
@@ -66,6 +70,8 @@ export const createLoadedHero = () =>{
     
     const [...loadTemplate] = [
         load.name,
+        load.max_hp,
+        load.max_ep,
         load.hp,
         load.ep, 
         load.dmg_physical, 
@@ -88,7 +94,7 @@ export const createLoadedHero = () =>{
         //$("game-loaded").textContent = `Game loaded!`;
         console.log(`${hero.name}, the ${hero.prof}.`)
 
-        createButton('action-menu-btn', 'Action Menu', actionMenu);
+        actionMenu();
         
         
         

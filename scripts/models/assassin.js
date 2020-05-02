@@ -1,13 +1,13 @@
 import {Player} from "./player.js";
 
 export class Assassin extends Player{
-    constructor(name, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl) {
+    constructor(name, max_hp, max_ep, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl) {
 
         super();
         this.name = name;
         this.prof = "Assassin";
-        this.max_hp = hp;
-        this.max_ep = ep;
+        this.max_hp = max_hp;
+        this.max_ep = max_ep;
         this.hp = hp;
         this.ep = ep;
         this.dmg_physical = dmg_physical; 

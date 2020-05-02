@@ -5,6 +5,7 @@ import { createHtmlStructure } from "./create_html_structure.js"
 
 
 export const startGame = () =>{
+   if ($('load-game')) $('load-game').remove();
    welcome();
    createHtmlStructure();
    console.log('Here');
