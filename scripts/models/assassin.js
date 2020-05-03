@@ -20,7 +20,11 @@ export class Assassin extends Player{
         this.lvl = lvl;
         
     }
-    setName(name){
-        this.name = name;
+    onLevelUp(){
+        this.max_hp += 15;
+        this.max_ep += 10;
+        this.dmg_physical += 5;
+        this.defense_p += 2;
+        this.defense_e += 3;
     }
 }

@@ -18,4 +18,11 @@ export class Paladin extends Player{
         this.exp = exp;
         this.lvl = lvl;
     }
+    onLevelUp(){
+        this.max_hp += 10;
+        this.max_ep += 10;
+        this.dmg_energy += 3;
+        this.defense_p += 2;
+        this.defense_e += 5;
+    }
 }

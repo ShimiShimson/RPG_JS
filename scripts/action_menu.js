@@ -22,6 +22,8 @@ export const actionMenu = () =>{
     createButtonInsideDivId('fight-btn', 'Fight!', startFight, 'actions');
     createButtonInsideDivId('restore-max-hp-btn', 'Restore Max HP', restoreMaxHP, 'actions');
     displayHeroStats();
+    isLevelUp(getHero().exp, getHero().lvl);
+
 }
 
 
@@ -41,11 +43,20 @@ Dodge: ${getHero().dodge}
 Gold: ${getHero().gold}
 Exp: ${getHero().exp}
 Lvl: ${getHero().lvl}`, 'player-info');
-
 }
 
 
 const restoreMaxHP = () =>{
     getHero().hp = getHero().max_hp;
     displayHeroStats();
+}
+
+function isLevelUp(currentExp, lvl){
+    const expNeededToLevelUp = 20 * Math.pow(lvl, 2) - 15 * lvl;
+    console.log(expNeededToLevelUp);
+    if(currentExp >= expNeededToLevelUp){
+        $('player-info').textContent = `LEVEL UP!!!`;
+        getHero().lvl += 1;
+        getHero().onLevelUp();
+    }
 }

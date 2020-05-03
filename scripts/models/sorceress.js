@@ -18,4 +18,11 @@ export class Sorceress extends Player{
         this.exp = exp;
         this.lvl = lvl;
     }
+    onLevelUp(){
+        this.max_hp += 10;
+        this.max_ep += 30;
+        this.dmg_energy += 10;
+        this.defense_p += 1;
+        this.defense_e += 1;
+    }
 }

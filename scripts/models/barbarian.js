@@ -18,4 +18,9 @@ export class Barbarian extends Player{
         this.exp = exp;
         this.lvl = lvl;
     }
+    onLevelUp(){
+        this.max_hp += 25;
+        this.dmg_physical += 2;
+        this.defense_p += 5;
+    }
 }
