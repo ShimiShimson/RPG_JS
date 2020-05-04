@@ -66,7 +66,7 @@ function hasDodged(defender, attacker){
 
 function calculateDamage(defender, attacker){
     //value of Attacker Damage will always be between 80 - 119% of Attacker.dmg_physical property
-    const attackerDamage = attacker.damage * 0.8 + random(attacker.damage * 0.4);
+    const attackerDamage = Math.floor(attacker.damage * 0.8 + random(attacker.damage * 0.4));
     let damageDone =  attackerDamage - defender.defense;
     if(damageDone <= 0) return console.log(`${defender.name} defended the attack!`);
     else {

@@ -52,7 +52,7 @@ const restoreMaxHP = () =>{
 }
 
 function isLevelUp(currentExp, lvl){
-    const expNeededToLevelUp = 20 * Math.pow(lvl, 2) - 15 * lvl;
+    const expNeededToLevelUp = 20 * lvl * lvl - 15 * lvl;
     console.log(expNeededToLevelUp);
     if(currentExp >= expNeededToLevelUp){
         $('player-info').textContent = `LEVEL UP!!!`;
