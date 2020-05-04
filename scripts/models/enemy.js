@@ -1,7 +1,7 @@
 let enemies = [];
 
 class Enemy {
-    constructor( name, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
+    constructor(name, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
     this.id = enemies.length;
     this.name = name;
     this.hp = hp;

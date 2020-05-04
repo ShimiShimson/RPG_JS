@@ -1,8 +1,10 @@
 import {Player} from "./player.js";
 
 export class Sorceress extends Player{
-    constructor(name, max_hp, max_ep, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
+    constructor(cons, inv, name, max_hp, max_ep, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
         super();
+        this.consumables = cons;
+        this.inventory = inv;
         this.name = name;
         this.prof = "Sorceress";
         this.max_hp = max_hp;

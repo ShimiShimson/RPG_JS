@@ -20,9 +20,10 @@ export const actionMenu = () =>{
     
     createButtonInsideDivId('find-enemy-btn', 'Find enemy!', findEnemy, 'actions');
     createButtonInsideDivId('fight-btn', 'Fight!', startFight, 'actions');
-    createButtonInsideDivId('restore-max-hp-btn', 'Restore Max HP', restoreMaxHP, 'actions');
+    createButtonInsideDivId('use-hp-potion-btn', 'Use HP Potion', useHpPotion, 'actions');
     displayHeroStats();
     isLevelUp(getHero().exp, getHero().lvl);
+    //getHero().consumables[0].use();
 
 }
 
@@ -46,8 +47,8 @@ Lvl: ${getHero().lvl}`, 'player-info');
 }
 
 
-const restoreMaxHP = () =>{
-    getHero().hp = getHero().max_hp;
+const useHpPotion = () =>{
+    getHero().usePotion();
     displayHeroStats();
 }
 

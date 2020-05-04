@@ -8,7 +8,6 @@ export const startGame = () =>{
    if ($('load-game')) $('load-game').remove();
    welcome();
    createHtmlStructure();
-   console.log('Here');
    
 }
 
