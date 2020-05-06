@@ -1,7 +1,7 @@
 import { getHero } from "./hero_creation.js";
 import { getEnemy } from "./models/enemy.js";
 import { sleep } from "./game_controller.js";
-import { $ } from "./$.js";
+import { $, random } from "./helpers.js";
 import { displayHeroStats } from "./action_menu.js";
 import { actionMenu } from "./action_menu.js";
 
@@ -57,7 +57,7 @@ function checkDamageAndDefenseType (attacker, defender){
 }
 
 function hasDodged(defender, attacker){
-    const randomChance = random(100);
+    const randomChance = random;
     const dodgeChance = defender.dodge;
     if (randomChance < dodgeChance) return console.log(`${defender.name} dodged the attack!`);
     else return calculateDamage(defender, attacker);
@@ -110,8 +110,4 @@ function anyoneDeadDuringFight(){
         stop = true;
     }
     return stop;
-}
-
-function random(n){
-    return Math.floor(Math.random() * n);
 }

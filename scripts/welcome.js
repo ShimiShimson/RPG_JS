@@ -1,4 +1,4 @@
-import { $ } from "./$.js";
+import { $ } from "./helpers.js";
 
 export const welcome = () =>{
     

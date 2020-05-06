@@ -1,5 +1,5 @@
 import {welcome} from "./welcome.js";
-import { $ } from "./$.js";
+import { $ } from "./helpers.js";
 import { createHtmlStructure } from "./create_html_structure.js"
 
 

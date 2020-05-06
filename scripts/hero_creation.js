@@ -1,13 +1,14 @@
+
 import {Paladin} from "./models/paladin.js";
 import {Assassin} from "./models/assassin.js";
 import {Barbarian} from "./models/barbarian.js";
 import {Sorceress} from "./models/sorceress.js";
-import {$} from "./$.js";
+import {$} from "./helpers.js";
 
-import { CLASSES } from "./class_type.js";
-import { createButton, displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_html_structure.js";
+import { CLASSES } from "./enums.js";
+import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_html_structure.js";
 import { loadHero } from "./save_load.js";
-import { Item } from "./models/inventory.js";
+import { Item, Potion, Equipment } from "./models/item.js";
 import { actionMenu } from "./action_menu.js";
 
 
@@ -26,10 +27,10 @@ export const createHero = () => {
     function whatProfession(){
         
         //properties                   mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
-        let [...assassin] =  [ [], [], name, 70,  30,  70,  30,  50,  0,   0,   0,   40,  0,   0,  1];
-        let [...barbarian] = [ [], [], name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
-        let [...paladin] =   [ [], [], name, 150, 100, 150, 100, 0,   35,  20,  20,  10,  0,   0,  1];
-        let [...sorceress] = [ [], [], name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
+        let [...assassin] =  [ {}, [], name, 70,  30,  70,  30,  50,  0,   0,   0,   40,  0,   0,  1];
+        let [...barbarian] = [ {}, [], name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
+        let [...paladin] =   [ {}, [], name, 150, 100, 150, 100, 0,   35,  20,  20,  10,  0,   0,  1];
+        let [...sorceress] = [ {}, [], name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
 
         if (profession == CLASSES.assassin.value)   return new Assassin     (...assassin);
         if (profession == CLASSES.barbarian.value)  return new Barbarian    (...barbarian);
@@ -39,7 +40,17 @@ export const createHero = () => {
     }
     
     hero = whatProfession(name);
-    hero.consumables.push(new Item(1, "potion", 3));
+    hero.consumables.potion = new Potion("potion", 50, 10);
+
+    hero.consumables.water = new Item("water", 2);
+    hero.inventory.push(new Equipment());
+    hero.inventory.push(new Equipment());
+    hero.inventory.push(new Equipment());
+    hero.inventory.push(new Equipment());
+    hero.inventory.push(new Equipment());
+    console.log(hero.inventory[0]);
+    console.log(hero.inventory[1]);
+
     
     //h1 is for manipulating and testing hero object in console
     h1 = hero;
