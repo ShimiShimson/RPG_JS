@@ -1,9 +1,16 @@
 Things to do:
-    -add Monsters which you can kill and gain exp and gold (fly, cockroach, wasp, frog, rat, bat, cat, dog, wolf, tiger, lion, elephant)
-    -add lvlUp mechanic, which will give you opportunity to add your stats (hp, EP, Defense, E_Defense, dmg_physical)
-    -locations (street, forest, sewers, dungeon, cave, beach, river, lake, road, step, desert, frozen land, hell, heaven)
-    -add shop, where you can buy potions, items (sword, staff, armor, helm, gloves, boots)
-    -equipment slots (weapon, armor, helm, gloves, boots)
+
+    -connect winning fight with monster with getting random items
+    -add shop, where you can buy potions, items (sword, staff, armor, helm, gloves, boots) ...WORK IN PROGRESS...
+
+    -locations (street, forest, sewers, dungeon, cave, beach, river, lake, road, step, desert, frozen land, hell, heaven) ...WORK IN PROGRESS...
+    -Consumables / Item System  / Inventory System ...WORK IN PROGRESS...
+
+
+    -Equipment slots (weapon, shield, helm, armor, belt, boots, gloves, ring, necklace) DONE!!! 
+    -add Monsters which you can kill and gain exp and gold (fly, cockroach, wasp, frog, rat, bat, cat, dog, wolf, tiger, lion, elephant) DONE!!!
+    -add lvlUp mechanic, which will give you opportunity to add your stats (Max HP, Max EP, Defense P, Defense E, Dmg Physical, Dmg Energy) DONE!!!
+    
 
 
     - prefixes: [dusty, crude, rusty, cracked, chipped, short, small, tiny, pocket, sharp, strong, solid, green, wooden, metallic, copper, blinking, shiny, silver, gold, powerful, mighty, critical, thirsty, vampiric, quick, speedy, super, wonderful, rich, saint, holy, stone, long, big, huge, enormous, defending, spiky, thorny, wild, rocky, mad, crazy, insane, runic, titanic, heroic, cowardly, smart, dumb, genius, unlucky, lucky, elegant, obedient, brave, embracing, humble, patient, wise, transparent, obedient, ephemeric, eternal, immortal, undead, double, trollish, tanky, sandy, nifty, witty, resonating, distorting, manipulative, quality, barbaric]
@@ -17,9 +24,9 @@ Things to do:
 
 
 Dawid recommendations:
-    -Nowy folder models (barbarian.js, assassin.js etc...) wszystko osobno
-    -zadeklaruj funkcje nawet bez pisania body, miec ogolny zarys designu
-    -
+    -Nowy folder models (barbarian.js, assassin.js etc...) wszystko osobno DONE!!!
+    -zadeklaruj funkcje nawet bez pisania body, miec ogolny zarys designu 
+
     -Zapisz na kartce plan designu
 
     -klasy
@@ -27,3 +34,4 @@ Dawid recommendations:
     -skup sie na logice
     -czytelny kod
     -deskryptywne nazwy
+    -kiedy cos nie dziala - rob console.log; krok po kroku sprawdz co sie dzieje

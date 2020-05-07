@@ -1,8 +1,8 @@
 import { getHero } from "./hero_creation.js";
 import { $ } from "./helpers.js";
 import { removeAllContent } from "./remove_all_content.js";
-import { createParagraphInsideDivId, createButtonInsideDivId, createActionMenuButton } from "./create_html_structure.js";
-import { displayHeroStats } from "./action_menu.js";
+import { createParagraphInsideDivId, createButtonInsideDivId } from "./create_html_structure.js";
+import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
 export const inventoryMenu = () =>{
@@ -10,7 +10,7 @@ export const inventoryMenu = () =>{
     removeAllContent('interface');
     removeAllContent('actions');
     displayHeroStats();
-    createActionMenuButton();
+    createButtonInsideDivId('action-menu-btn', 'Action Menu', actionMenu, 'interface');
 
     const inventory = getHero().inventory;
     const getItem = i => inventory[i];

@@ -57,7 +57,7 @@ function checkDamageAndDefenseType (attacker, defender){
 }
 
 function hasDodged(defender, attacker){
-    const randomChance = random;
+    const randomChance = random(100);
     const dodgeChance = defender.dodge;
     if (randomChance < dodgeChance) return console.log(`${defender.name} dodged the attack!`);
     else return calculateDamage(defender, attacker);

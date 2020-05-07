@@ -20,10 +20,24 @@ export const actionMenu = () =>{
 
     createSaveLoadActionMenuButtons();
     
-    createButtonInsideDivId('find-enemy-btn', 'Find enemy!', findEnemy, 'actions');
-    createButtonInsideDivId('fight-btn', 'Fight!', startFight, 'actions');
-    createButtonInsideDivId('use-hp-potion-btn', 'Use HP Potion', useHpPotion, 'actions');
-    createButtonInsideDivId('inventory-menu-btn', 'Inventory Menu', inventoryMenu, 'actions');
+    createButtonInsideDivId('find-enemy-btn', 'Find enemy!', null, 'actions');
+    createButtonInsideDivId('fight-btn', 'Fight!', null, 'actions');
+    createButtonInsideDivId('use-hp-potion-btn', 'Use HP Potion', null, 'actions');
+    createButtonInsideDivId('inventory-menu-btn', 'Inventory Menu', null, 'actions');
+
+    $('find-enemy-btn').addEventListener('click', function(){
+        findEnemy();
+    });
+    $('fight-btn').addEventListener('click', function(){
+        startFight();
+    });
+    $('use-hp-potion-btn').addEventListener('click', function(){
+        useHpPotion();
+    });
+    $('inventory-menu-btn').addEventListener('click', function(){
+        inventoryMenu();
+    });
+    
     displayHeroStats();
     isLevelUp(getHero().exp, getHero().lvl);
 

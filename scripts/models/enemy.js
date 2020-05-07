@@ -16,7 +16,9 @@ class Enemy {
     this.lvl = lvl;
     }
 }
-//Enemy properties:       (name,         hp,    ep,  dmp,  dme, dfp, dfe, dge, exp,   gold,  lvl)
+
+
+//Enemy properties:    (name,        hp,    ep,  dmp,  dme, dfp, dfe, dge, exp,   gold,  lvl)
 enemies.push(new Enemy('Fly',        50,    0,   10,   0,   0,   1,   50,  5,     1,     1));
 enemies.push(new Enemy('Ant',        70,    0,   10,   0,   3,   1,   10,  10,    2,     1));
 enemies.push(new Enemy('Wasp',       80,    0,   15,   0,   5,   5,   50,  10,    3,     2));
@@ -31,10 +33,12 @@ enemies.push(new Enemy('Wolf',       500,   0,   100,  0,   40,  10,  20,  80,  
 enemies.push(new Enemy('Super Wolf', 1000,  0,   140,  0,   60,  10,  20,  100,   70,    11));
 
 
+
 export const getEnemy = () =>{
     const randomIndex = Math.floor(Math.random() * enemies.length);
     const randomEnemy = enemies[randomIndex];
-    console.log(randomEnemy);
-    return randomEnemy;
+    const cloneOfRandomEnemy = JSON.parse(JSON.stringify(randomEnemy));
+    console.log(cloneOfRandomEnemy);
+    return cloneOfRandomEnemy;
 }
 
