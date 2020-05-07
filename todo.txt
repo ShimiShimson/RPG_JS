@@ -1,13 +1,17 @@
 Things to do:
 
-    -connect winning fight with monster with getting random items
-    -add shop, where you can buy potions, items (sword, staff, armor, helm, gloves, boots) ...WORK IN PROGRESS...
 
+
+    -Create equipment slots (weapon, shield, helm, armor, belt, boots, gloves, ring, necklace) ...WORK IN PROGRESS...
+
+    -Possibility of selling items ...WORK IN PROGRESS...
+    -add shop, where you can buy potions, items (sword, staff, armor, helm, gloves, boots) ...WORK IN PROGRESS...
     -locations (street, forest, sewers, dungeon, cave, beach, river, lake, road, step, desert, frozen land, hell, heaven) ...WORK IN PROGRESS...
     -Consumables / Item System  / Inventory System ...WORK IN PROGRESS...
 
 
-    -Equipment slots (weapon, shield, helm, armor, belt, boots, gloves, ring, necklace) DONE!!! 
+    -Defeated enemy have a chance to drop a new item DONE!!! (07.05)
+    
     -add Monsters which you can kill and gain exp and gold (fly, cockroach, wasp, frog, rat, bat, cat, dog, wolf, tiger, lion, elephant) DONE!!!
     -add lvlUp mechanic, which will give you opportunity to add your stats (Max HP, Max EP, Defense P, Defense E, Dmg Physical, Dmg Energy) DONE!!!
     

@@ -1,6 +1,6 @@
 body {
     font-family: monospace;
-    font-size: 20px;
+    font-size: 14px;
     background-color: #1e1c2e;
     color: #b9b3f3;
     margin: 10px 20px;
@@ -27,7 +27,7 @@ button {
 }
 
 input, select, button {
-    font-size: 20px;
+    font-size: 18px;
     background-color: #1d1b2c;
     color: #b9b3f3;
     font-family: monospace;

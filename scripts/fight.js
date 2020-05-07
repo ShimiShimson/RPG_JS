@@ -40,7 +40,7 @@ export async function fight() {
     await sleep(1000);
     hasDodged(player, enemy);
     displayHeroStats();
-    if (await anyoneDeadDuringFight()) return;
+    if (anyoneDeadDuringFight()) return;
     displayHeroStats();
     return;
 }
@@ -105,8 +105,7 @@ async function anyoneDeadDuringFight(){
         player.exp += enemy.exp;
         player.gold += enemy.gold;
         displayHeroStats();
-        lootRoll();
-        await sleep(3000);
+        await lootRoll();
         stop = true;
     }
     if (player.hp <= 0) {
@@ -118,12 +117,13 @@ async function anyoneDeadDuringFight(){
 
 
 
-function lootRoll() {
+async function lootRoll() {
     const randomRoll = random(100);
     const chanceForLoot = 50;
     if (randomRoll < chanceForLoot){
         getHero().inventory.push(new Equipment());
         $('player-info').textContent = `${enemy.name} dropped new item! Check your inventory`;
+        await sleep(3000);
     }
 
 }
