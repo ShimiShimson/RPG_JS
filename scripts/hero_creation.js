@@ -43,7 +43,9 @@ export const createHero = () => {
     hero.consumables.potion = new Potion("potion", 50, 10);
 
     hero.consumables.water = new Item("water", 2);
-    //hero.inventory.push(new Equipment());
+
+    hero.inventory.push(new Equipment());
+    console.log(getHero());
     
 
     
@@ -108,6 +110,7 @@ export const createLoadedHero = () =>{
     
         h1 = hero;
         console.log(`${hero.name}, the ${hero.prof}.`)
+        console.log(getHero());
 
         actionMenu();
         

@@ -1,6 +1,7 @@
 //import { Item } from "./inventory.js";
 
 import { getHero } from "../hero_creation.js";
+import { EQUIPMENT_TYPE } from "../enums.js";
 
 
 //declaring generic class Player
@@ -8,7 +9,7 @@ import { getHero } from "../hero_creation.js";
 //methods are for testing
 export class Player {
     constructor(){
-        this.equipment = {
+        this.equipmentSlots = {
                 weaponHand: {},
                 shieldHand: {},
                 head: {},
@@ -19,6 +20,8 @@ export class Player {
                 finger: {},
                 neck: {}
         }
+        //this.consumables = {};
+        //this.inventory = [];
     }
 
     sayName(){
@@ -38,7 +41,18 @@ export class Player {
         }
     }
     equipItem(item){
-        console.log(item);
+        const equipmentType = item.type;
+        const slotType = EQUIPMENT_TYPE[equipmentType].slotType;
+        //console.log(equipmentType);
+        //console.log(slotType);
+        this.equipmentSlots[slotType] = item;
+        
+        //console.log(this.equipmentSlots);
+        //console.log(this.equipmentSlots[slotType]);
+        //console.log(this.equipmentSlots[slotType].type);
+        //console.log(this.equipmentSlots.finger);
+        
+        
         const itemStats = item.stats;
         if (item.equipped) return alert('This item is already equipped!');
         else {
