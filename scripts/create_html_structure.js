@@ -1,7 +1,7 @@
 import { $ } from "./helpers.js";
 import { createHero, getHero, createLoadedHero } from "./hero_creation.js";
 import { saveHero, loadHero } from "./save_load.js";
-import { actionMenu } from "./action_menu.js";
+import { actionMenu } from "./menus/action_menu.js";
 
 import { CLASSES } from "./enums.js";
 

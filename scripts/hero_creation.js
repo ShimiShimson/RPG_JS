@@ -9,7 +9,7 @@ import { CLASSES } from "./enums.js";
 import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_html_structure.js";
 import { loadHero } from "./save_load.js";
 import { Item, Potion, Equipment } from "./models/item.js";
-import { actionMenu } from "./action_menu.js";
+import { actionMenu } from "./menus/action_menu.js";
 
 
 

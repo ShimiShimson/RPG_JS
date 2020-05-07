@@ -2,3 +2,7 @@
 export const $ = id => document.getElementById( id );
 
 export const random = n => Math.floor(Math.random() * n);
+
+export const removeAllContent = (id) =>{
+    $(id).textContent = '';
+}

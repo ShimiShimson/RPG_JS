@@ -2,14 +2,15 @@ import { getHero } from "./hero_creation.js";
 import { getEnemy } from "./models/enemy.js";
 import { sleep } from "./game_controller.js";
 import { $, random } from "./helpers.js";
-import { displayHeroStats } from "./action_menu.js";
-import { actionMenu } from "./action_menu.js";
+import { displayHeroStats } from "./menus/action_menu.js";
+import { fightMenu } from "./menus/fight_menu.js";
 
 
 let enemy;
 let player;
 
 export function findEnemy(){
+    displayHeroStats();
     enemy = getEnemy();
     $('actions-result').textContent = "Enemy found!";
 }
@@ -17,8 +18,8 @@ export function findEnemy(){
 export async function startFight() {
     $('actions-result').textContent = "";
     await fight();
-    $('fight-btn').disabled = false;
-    actionMenu();
+    enableFightMenButtons();
+    fightMenu();
 }
 
 export async function fight() {
@@ -26,7 +27,7 @@ export async function fight() {
     player = getHero();
     
     if (anyoneDeadOnStart()) return;
-    $('fight-btn').disabled = true;
+    disableFightMenuButtons();
     checkDamageAndDefenseType(player, enemy);
     checkDamageAndDefenseType(enemy, player);
 
@@ -65,13 +66,14 @@ function hasDodged(defender, attacker){
 
 
 function calculateDamage(defender, attacker){
-    //value of Attacker Damage will always be between 80 - 119% of Attacker.dmg_physical property
-    const attackerDamage = Math.floor(attacker.damage * 0.8 + random(attacker.damage * 0.4));
-    let damageDone =  attackerDamage - defender.defense;
-    if(damageDone <= 0) return console.log(`${defender.name} defended the attack!`);
+    
+    let damageMinusDefense =  attacker.damage - defender.defense;
+    //value of damageRoll will always be between 80 - 119% of damageMinusDefense variable
+    const damageRoll = Math.floor(damageMinusDefense * 0.8 + random(damageMinusDefense * 0.4));
+    if(damageRoll <= 0) return console.log(`${defender.name} defended the attack!`);
     else {
-        defender.hp -= damageDone;
-        return console.log(`${defender.name} got hit by ${attacker.name} and lost ${damageDone} HP.`);
+        defender.hp -= damageRoll;
+        return console.log(`${defender.name} got hit by ${attacker.name} and lost ${damageRoll} HP.`);
     }
 }
 
@@ -110,4 +112,19 @@ function anyoneDeadDuringFight(){
         stop = true;
     }
     return stop;
+}
+
+
+const disableFightMenuButtons = () =>{
+    $('find-enemy-btn').disabled = true;
+    $('fight-btn').disabled = true;
+    $('use-hp-potion-btn').disabled = true;
+    $('action-menu-btn').disabled = true;
+}
+
+const enableFightMenButtons =() =>{
+    $('find-enemy-btn').disabled = false;
+    $('fight-btn').disabled = false;
+    $('use-hp-potion-btn').disabled = false;
+    $('action-menu-btn').disabled = false;
 }

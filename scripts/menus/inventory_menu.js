@@ -1,7 +1,6 @@
-import { getHero } from "./hero_creation.js";
-import { $ } from "./helpers.js";
-import { removeAllContent } from "./remove_all_content.js";
-import { createParagraphInsideDivId, createButtonInsideDivId } from "./create_html_structure.js";
+import { getHero } from "../hero_creation.js";
+import { $, removeAllContent } from "../helpers.js";
+import { createParagraphInsideDivId, createButtonInsideDivId } from "../create_html_structure.js";
 import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
