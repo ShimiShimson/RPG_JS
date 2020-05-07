@@ -10,6 +10,7 @@ import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_ht
 import { loadHero } from "./save_load.js";
 import { Item, Potion, Equipment } from "./models/item.js";
 import { actionMenu } from "./menus/action_menu.js";
+import { Player } from "./models/player.js";
 
 
 
@@ -26,26 +27,39 @@ export const createHero = () => {
     const profession = document.getElementById('hero-profession').value;
     function whatProfession(){
         
-        //properties                         mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
-        let [...assassin] =  [ {}, [], name, 70,  30,  70,  30,  200,  0,   0,   0,   40,  0,   0,  1];
-        let [...barbarian] = [ {}, [], name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
-        let [...paladin] =   [ {}, [], name, 150, 100, 150, 100, 0,   35,  20,  20,  10,  0,   0,  1];
-        let [...sorceress] = [ {}, [], name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
+        //properties                 mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
+        let [...assassin] =  [ name, 70,  30,  70,  30,  200,  0,   0,   0,   40,  0,   0,  1];
+        let [...barbarian] = [ name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
+        let [...paladin] =   [ name, 150, 100, 150, 100, 0,   35,  20,  20,  10,  0,   0,  1];
+        let [...sorceress] = [ name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
 
         if (profession == CLASSES.assassin.value)   return new Assassin     (...assassin);
         if (profession == CLASSES.barbarian.value)  return new Barbarian    (...barbarian);
         if (profession == CLASSES.paladin.value)    return new Paladin      (...paladin);
         if (profession == CLASSES.sorceress.value)  return new Sorceress    (...sorceress);
-
     }
-    
     hero = whatProfession(name);
+
+    hero.equipmentSlots = {
+        weaponHand: {},
+        shieldHand: {},
+        head: {},
+        body: {},
+        waist: {},
+        legs: {},
+        arms: {},
+        finger: {},
+        neck: {}
+    };
+    hero.consumables = {};
+    hero.inventory = [];
+    console.log(hero);
     hero.consumables.potion = new Potion("potion", 50, 10);
 
     hero.consumables.water = new Item("water", 2);
 
     hero.inventory.push(new Equipment());
-    console.log(getHero());
+    //console.log(getHero());
     
 
     
@@ -83,10 +97,10 @@ export const createLoadedHero = () =>{
     if (load === null || load === undefined) {
         return alert('No save found! First start New Game and save game.');
     }
+
+    
     
     const [...loadTemplate] = [
-        load.consumables,
-        load.inventory,
         load.name,
         load.max_hp,
         load.max_ep,
@@ -107,10 +121,14 @@ export const createLoadedHero = () =>{
         if (load.prof === CLASSES.barbarian.prof)   hero = new Barbarian(...loadTemplate);
         if (load.prof === CLASSES.paladin.prof  )   hero = new Paladin  (...loadTemplate);
         if (load.prof === CLASSES.sorceress.prof)   hero = new Sorceress(...loadTemplate);
+
+        hero.equipmentSlots = load.equipmentSlots;
+        hero.consumables = load.consumables;
+        hero.inventory = load.inventory;
     
         h1 = hero;
         console.log(`${hero.name}, the ${hero.prof}.`)
-        console.log(getHero());
+        //console.log(getHero());
 
         actionMenu();
         

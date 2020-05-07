@@ -8,20 +8,10 @@ import { EQUIPMENT_TYPE } from "../enums.js";
 //Maybe I want to use it for actions common to all classes (eg. fighting, visit shop, inventory)
 //methods are for testing
 export class Player {
-    constructor(){
-        this.equipmentSlots = {
-                weaponHand: {},
-                shieldHand: {},
-                head: {},
-                body: {},
-                waist: {},
-                legs: {},
-                arms: {},
-                finger: {},
-                neck: {}
-        }
-        //this.consumables = {};
-        //this.inventory = [];
+    constructor(equipmentSlots, consumables, inventory){
+        this.equipmentSlots = equipmentSlots;
+        this.consumables = consumables;
+        this.inventory = inventory;
     }
 
     sayName(){

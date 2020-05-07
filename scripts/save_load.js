@@ -14,6 +14,7 @@ export const saveHero = () => {
 //Loading hero and from local storage
 export const loadHero = () =>{
     const load = JSON.parse(localStorage.getItem("savedHero"));
+    //console.log(localStorage.getItem("savedHero"));
     $('load-game').textContent = "Game loaded!";
     if ($('action-menu-btn')) $('action-menu-btn').remove();
     return load;

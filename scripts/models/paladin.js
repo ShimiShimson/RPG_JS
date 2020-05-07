@@ -1,10 +1,9 @@
 import {Player} from "./player.js";
 
 export class Paladin extends Player{
-    constructor(cons, inv, name, max_hp, max_ep, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
+    constructor( name, max_hp, max_ep, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
         super();
-        this.consumables = cons;
-        this.inventory = inv;
+         
         this.name = name;
         this.prof = "Paladin";
         this.max_hp = max_hp;
