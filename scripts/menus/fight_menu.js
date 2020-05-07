@@ -6,7 +6,7 @@ import { startFight, findEnemy } from "../fight.js";
 import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
-export const fightMenu =()=> {
+export const fightMenu = () => {
     removeAllContent('header');
     removeAllContent('interface');
     removeAllContent('actions');
@@ -30,9 +30,7 @@ export const fightMenu =()=> {
         actionMenu();
     });
 
-
-    displayHeroStats();
-    isLevelUp(getHero().exp, getHero().lvl);
+    checkIfLevelUp(getHero().exp, getHero().lvl);
 }
 
 const useHpPotion = () =>{
@@ -41,12 +39,12 @@ const useHpPotion = () =>{
 }
 
 
-function isLevelUp(currentExp, lvl){
+function checkIfLevelUp(currentExp, lvl){
     const expNeededToLevelUp = 20 * lvl * lvl - 15 * lvl;
     console.log(expNeededToLevelUp);
     if(currentExp >= expNeededToLevelUp){
         $('player-info').textContent = `LEVEL UP!!!`;
-        getHero().lvl += 1;
+        getHero().lvl++;
         getHero().onLevelUp();
     }
 }

@@ -4,6 +4,7 @@ import { sleep } from "./game_controller.js";
 import { $, random } from "./helpers.js";
 import { displayHeroStats } from "./menus/action_menu.js";
 import { fightMenu } from "./menus/fight_menu.js";
+import { Equipment } from "./models/item.js";
 
 
 let enemy;
@@ -18,7 +19,7 @@ export function findEnemy(){
 export async function startFight() {
     $('actions-result').textContent = "";
     await fight();
-    enableFightMenButtons();
+    enableFightMenuButtons();
     fightMenu();
 }
 
@@ -35,12 +36,11 @@ export async function fight() {
     console.log(`${enemy.name} HP: ${enemy.hp}`);
     await sleep(1000);
     hasDodged(enemy, player);
-    if (anyoneDeadDuringFight()) return;
+    if (await anyoneDeadDuringFight()) return;
     await sleep(1000);
     hasDodged(player, enemy);
     displayHeroStats();
-    if (anyoneDeadDuringFight()) return;
-    await sleep(1000);
+    if (await anyoneDeadDuringFight()) return;
     displayHeroStats();
     return;
 }
@@ -98,13 +98,15 @@ function anyoneDeadOnStart(){
 }
 
 
-function anyoneDeadDuringFight(){
+async function anyoneDeadDuringFight(){
     let stop = false;
     if (enemy.hp <= 0) {
         console.log(`${enemy.name} is dead. ${player.name} won this fight and received ${enemy.exp} exp and ${enemy.gold} gold.`);
         player.exp += enemy.exp;
         player.gold += enemy.gold;
         displayHeroStats();
+        lootRoll();
+        await sleep(3000);
         stop = true;
     }
     if (player.hp <= 0) {
@@ -115,6 +117,18 @@ function anyoneDeadDuringFight(){
 }
 
 
+
+function lootRoll() {
+    const randomRoll = random(100);
+    const chanceForLoot = 50;
+    if (randomRoll < chanceForLoot){
+        getHero().inventory.push(new Equipment());
+        $('player-info').textContent = `${enemy.name} dropped new item! Check your inventory`;
+    }
+
+}
+
+
 const disableFightMenuButtons = () =>{
     $('find-enemy-btn').disabled = true;
     $('fight-btn').disabled = true;
@@ -122,7 +136,7 @@ const disableFightMenuButtons = () =>{
     $('action-menu-btn').disabled = true;
 }
 
-const enableFightMenButtons =() =>{
+const enableFightMenuButtons =() =>{
     $('find-enemy-btn').disabled = false;
     $('fight-btn').disabled = false;
     $('use-hp-potion-btn').disabled = false;

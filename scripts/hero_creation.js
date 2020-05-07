@@ -26,8 +26,8 @@ export const createHero = () => {
     const profession = document.getElementById('hero-profession').value;
     function whatProfession(){
         
-        //properties                   mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
-        let [...assassin] =  [ {}, [], name, 70,  30,  70,  30,  50,  0,   0,   0,   40,  0,   0,  1];
+        //properties                         mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
+        let [...assassin] =  [ {}, [], name, 70,  30,  70,  30,  200,  0,   0,   0,   40,  0,   0,  1];
         let [...barbarian] = [ {}, [], name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
         let [...paladin] =   [ {}, [], name, 150, 100, 150, 100, 0,   35,  20,  20,  10,  0,   0,  1];
         let [...sorceress] = [ {}, [], name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
@@ -43,13 +43,8 @@ export const createHero = () => {
     hero.consumables.potion = new Potion("potion", 50, 10);
 
     hero.consumables.water = new Item("water", 2);
-    hero.inventory.push(new Equipment());
-    hero.inventory.push(new Equipment());
-    hero.inventory.push(new Equipment());
-    hero.inventory.push(new Equipment());
-    hero.inventory.push(new Equipment());
-    console.log(hero.inventory[0]);
-    console.log(hero.inventory[1]);
+    //hero.inventory.push(new Equipment());
+    
 
     
     //h1 is for manipulating and testing hero object in console
