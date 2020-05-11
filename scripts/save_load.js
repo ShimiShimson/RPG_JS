@@ -6,7 +6,7 @@ import {getHero} from "./hero_creation.js";
 export const saveHero = () => {
     $('save-game').disabled = true;
     localStorage.setItem("savedHero", JSON.stringify(getHero()));
-    console.log(JSON.stringify(getHero()));
+    //console.log(JSON.stringify(getHero()));
 
     $('save-game').textContent = "Game saved";
 }

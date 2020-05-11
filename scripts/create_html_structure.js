@@ -11,6 +11,7 @@ export const createHtmlStructure = () =>{
     createChooseHeroName();
     createSelectProfession();
     createCreateHeroButton();
+    createButtonInsideDivId('load-game', 'Continue last game', createLoadedHero, 'actions');
 
 }
 

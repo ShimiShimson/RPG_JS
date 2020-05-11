@@ -28,7 +28,7 @@ export const createHero = () => {
     function whatProfession(){
         
         //properties                 mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
-        let [...assassin] =  [ name, 70,  30,  70,  30,  200,  0,   0,   0,   40,  0,   0,  1];
+        let [...assassin] =  [ name, 70,  30,  70,  30,  60,  0,   0,   0,   40,  0,   0,  1];
         let [...barbarian] = [ name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
         let [...paladin] =   [ name, 150, 100, 150, 100, 0,   35,  20,  20,  10,  0,   0,  1];
         let [...sorceress] = [ name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
@@ -41,15 +41,15 @@ export const createHero = () => {
     hero = whatProfession(name);
 
     hero.equipmentSlots = {
-        weaponHand: {},
-        shieldHand: {},
-        head: {},
-        body: {},
-        waist: {},
-        legs: {},
-        arms: {},
-        finger: {},
-        neck: {}
+        weaponHand: null,
+        shieldHand: null,
+        head: null,
+        body: null,
+        waist: null,
+        legs: null,
+        arms: null,
+        finger: null,
+        neck: null
     };
     hero.consumables = {};
     hero.inventory = [];

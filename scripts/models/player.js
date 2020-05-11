@@ -2,6 +2,7 @@
 
 import { getHero } from "../hero_creation.js";
 import { EQUIPMENT_TYPE } from "../enums.js";
+import { isEmptyObject, isNotEmptyObject } from "../helpers.js";
 
 
 //declaring generic class Player
@@ -31,24 +32,18 @@ export class Player {
         }
     }
     equipItem(item){
-        const equipmentType = item.type;
-        const slotType = EQUIPMENT_TYPE[equipmentType].slotType;
-        //console.log(equipmentType);
-        //console.log(slotType);
-        this.equipmentSlots[slotType] = item;
-        
-        //console.log(this.equipmentSlots);
-        //console.log(this.equipmentSlots[slotType]);
-        //console.log(this.equipmentSlots[slotType].type);
-        //console.log(this.equipmentSlots.finger);
-        
+        //console.log(this.inventory);
         
         const itemStats = item.stats;
-        if (item.equipped) return alert('This item is already equipped!');
-        else {
-            item.equipped = true;
-            addStats();
-        }
+        console.log(this.equipmentSlots[item.slotType]);
+
+        this.equipmentSlots[item.slotType] = item;
+        //delete this.inventory[item.id];
+        
+
+        item.equipped = true;
+        addStats();
+        
         function addStats (){
             if (itemStats.max_hp) getHero().max_hp += itemStats.max_hp;
             if (itemStats.max_ep) getHero().max_ep += itemStats.max_ep;
@@ -57,14 +52,22 @@ export class Player {
             if (itemStats.defense_p) getHero().defense_p += itemStats.defense_p;
             if (itemStats.defense_e) getHero().defense_e += itemStats.defense_e;
         }
+        console.log(getHero().equipmentSlots);
+        return this.equipmentSlots[item.slotType];
     }
+
     unequipItem(item){
+        //console.log(this.inventory);
+        //console.log(item);
         const itemStats = item.stats;
-        if (!item.equipped) return alert('This item is already unequipped!');
-        else {
-            item.equipped = false;
-            removeStats();
-        }
+
+        item.equipped = false;
+        removeStats();
+        
+        //empty the slot
+        this.equipmentSlots[item.slotType] = {};
+        
+
         function removeStats (){
             if (itemStats.max_hp) getHero().max_hp -= itemStats.max_hp;
             if (itemStats.max_ep) getHero().max_ep -= itemStats.max_ep;
@@ -73,6 +76,6 @@ export class Player {
             if (itemStats.defense_p) getHero().defense_p -= itemStats.defense_p;
             if (itemStats.defense_e) getHero().defense_e -= itemStats.defense_e;
         }
-    }
-
-}
+        //console.log(this.inventory);
+    } // unequipItem()
+} // Player

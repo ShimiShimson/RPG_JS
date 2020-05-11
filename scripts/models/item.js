@@ -26,7 +26,9 @@ export class Equipment extends Item{
     constructor()
     {
         super();
+        this.id = getHero().inventory.length;
         this.type = getRandomType();
+        this.slotType = EQUIPMENT_TYPE[this.type].slotType;
         this.stats = getRandomStats(this.type);
         this.equipped = false;
     }

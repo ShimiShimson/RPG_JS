@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=VT323&display=swap');
+
 body {
-    font-family: monospace;
+    font-family: 'Roboto Mono', monospace; 
     font-size: 14px;
     background-color: #1e1c2e;
     color: #b9b3f3;
