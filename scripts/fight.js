@@ -61,8 +61,12 @@ function checkDamageAndDefenseType (attacker, defender){
 function hasDodged(defender, attacker){
     const randomChance = random(100);
     const dodgeChance = defender.dodge;
-    if (randomChance < dodgeChance) return console.log(`${defender.name} dodged the attack!`);
-    else return calculateDamage(defender, attacker);
+    if (randomChance < dodgeChance) {
+        return console.log(`${defender.name} dodged the attack!`)
+    }
+    else {
+        return calculateDamage(defender, attacker)
+    }
 }
 
 
@@ -71,7 +75,9 @@ function calculateDamage(defender, attacker){
     let damageMinusDefense =  attacker.damage - defender.defense;
     //value of damageRoll will always be between 80 - 119% of damageMinusDefense variable
     const damageRoll = Math.floor(damageMinusDefense * 0.8 + random(damageMinusDefense * 0.4));
-    if(damageRoll <= 0) return console.log(`${defender.name} defended the attack!`);
+    if (damageRoll <= 0) {
+        return console.log(`${defender.name} defended the attack!`)
+    }
     else {
         defender.hp -= damageRoll;
         return console.log(`${defender.name} got hit by ${attacker.name} and lost ${damageRoll} HP.`);

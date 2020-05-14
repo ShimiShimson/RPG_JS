@@ -31,17 +31,14 @@ export function displayConsumables() {
 
         createButtonInsideDivId(`${potion.type}-btn`, `Buy Potion`, null, `${potion.type}`);
         $(`${potion.type}-btn`).addEventListener('click', function () {
-            console.log(getHero().gold);
-            console.log(potion.price);
             if (getHero().gold < potion.price) return alert(`You don't have enough money!`);
             getHero().gold -= potion.price;
-            console.log(potion.type);
-            console.log(getHero().consumables[potion.type]);
             if (getHero().consumables[potion.type]) {
                 getHero().consumables[potion.type].amount += 1;
             } else {
                 getHero().consumables[potion.type] = potion;
             }
+            console.log(getHero().consumables[potion.type]);
             displayConsumables();
         });
     }

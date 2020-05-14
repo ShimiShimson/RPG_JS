@@ -1,13 +1,13 @@
 import { getHero } from "../hero_creation.js";
 import { $, removeAllContent, removeContent } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
-import { inventoryMenu} from "./inventory_menu.js";
+import { inventoryMenu } from "./inventory_menu.js";
 import { fightMenu } from "./fight_menu.js";
 import { shopMenu } from "./shop_menu.js";
 
 
 
-export const actionMenu = () =>{
+export const actionMenu = () => {
     removeAllContent();
 
     createSaveLoadActionMenuButtons();
@@ -15,28 +15,28 @@ export const actionMenu = () =>{
     createButtonInsideDivId('fight-menu-btn', 'Fight Menu', null, 'actions');
     createButtonInsideDivId('shop-menu-btn', 'Shop', null, 'actions');
 
-    
-    $('inventory-menu-btn').addEventListener('click', function(){
+
+    $('inventory-menu-btn').addEventListener('click', function () {
         inventoryMenu();
     });
-    $('fight-menu-btn').addEventListener('click', function(){
+    $('fight-menu-btn').addEventListener('click', function () {
         fightMenu();
     });
-    $('shop-menu-btn').addEventListener('click', function(){
+    $('shop-menu-btn').addEventListener('click', function () {
         shopMenu();
     });
-    
+
     displayHeroStats();
-    
+
 
 }
 
 
 
-export const displayHeroStats = () =>{
+export const displayHeroStats = () => {
     removeContent('player-info');
-    createParagraphInsideDivId('hero-stats', 
-`
+    createParagraphInsideDivId('hero-stats',
+        `
 Name:            ${getHero().name}
 Profession:      ${getHero().prof}
 HP/Max HP:       ${getHero().hp}/${getHero().max_hp}
@@ -48,6 +48,6 @@ Defense Ene:     ${getHero().defense_e}
 Dodge:           ${getHero().dodge}
 Gold:            ${getHero().gold}
 Exp:             ${getHero().exp}
-Lvl:             ${getHero().lvl}`, 
-'player-info');
+Lvl:             ${getHero().lvl}`,
+        'player-info');
 }
