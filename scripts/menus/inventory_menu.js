@@ -5,9 +5,7 @@ import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
 export const inventoryMenu = () => {
-    removeAllContent('header');
-    removeAllContent('interface');
-    removeAllContent('actions');
+    removeAllContent();
     displayHeroStats();
     createButtonInsideDivId('action-menu-btn', 'Action Menu', actionMenu, 'interface');
     //createButtonInsideDivId('see-equipment-btn', 'See your equipment', seeEquipment, 'interface');
@@ -42,7 +40,6 @@ export const inventoryMenu = () => {
             createButtonInsideDivId(`equip-item${i}-btn`, 'Equip Item', null, 'item' + i);
             createButtonInsideDivId(`unequip-item${i}-btn`, 'Unequip Item', null, 'item' + i);
             createButtonInsideDivId(`sell-item${i}-btn`, 'Sell Item', null, 'item' + i);
-            //$(`unequip-item${i}-btn`).disabled = true;
             checkIfEquipped(i);
 
 

@@ -18,7 +18,6 @@ export const loadHero = () =>{
     $('load-game').textContent = "Game loaded!";
     if ($('action-menu-btn')) $('action-menu-btn').remove();
     return load;
-    
 }
 
 /*

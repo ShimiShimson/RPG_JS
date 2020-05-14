@@ -10,7 +10,7 @@ import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_ht
 import { loadHero } from "./save_load.js";
 import { Item, Potion, Equipment } from "./models/item.js";
 import { actionMenu } from "./menus/action_menu.js";
-import { Player } from "./models/player.js";
+
 
 import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
 
@@ -57,12 +57,14 @@ export async function createHero() {
     };
     hero.consumables = {};
     hero.inventory = [];
-    console.log(hero);
-    hero.consumables.potion = new Potion("potion", 50, 10);
-
+    //console.log(hero);
+    //let tinyPotion = new Potion("Tiny Health Potion", 50, 1, 10);
+    //console.log(tinyPotion);
+    //hero.consumables[tinyPotion.type] = tinyPotion;
+    //hero.consumables[tinyPotion.type] ? hero.consumables[tinyPotion.type].amount += 1 : hero.consumables[tinyPotion.type] = tinyPotion;
+    hero.gold = 500;
     hero.consumables.water = new Item("water", 2);
-
-    //zadeklarowanie zmiennych tutaj nie dziala
+    console.log(hero);
 
 
     //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?
@@ -73,7 +75,7 @@ export async function createHero() {
     hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
     hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
     hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
-    //console.log(getHero());
+
     
 
     

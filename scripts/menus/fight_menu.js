@@ -7,9 +7,7 @@ import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
 export const fightMenu = () => {
-    removeAllContent('header');
-    removeAllContent('interface');
-    removeAllContent('actions');
+    removeAllContent();
     displayHeroStats();
     
     createButtonInsideDivId('find-enemy-btn', 'Find enemy!', null, 'actions');

@@ -19,16 +19,18 @@ export class Player {
         console.log(`My name is ${this.name}`);
     }
     usePotion(){
-        let potionAmount = this.consumables.potion.amount;
+        let potionAmount = this.consumables["Tiny Potion"].amount;
+        let potion = this.consumables["Tiny Potion"]
+        console.log(potionAmount);
         if (potionAmount <= 0){
             alert('You have no more potions to use!');
         } else {
             console.log('POTION USED!');
-            this.hp = this.hp + this.consumables.potion.hp_restored;
+            this.hp = this.hp + this.consumables["Tiny Potion"].hp_restored;
             const hpOverflow = this.hp > this.max_hp;
             const hpEqualsMax = () => this.hp = this.max_hp;
             if (hpOverflow) hpEqualsMax();
-            this.consumables.potion.amount -= 1;
+            this.consumables["Tiny Potion"].amount -= 1;
         }
     }
     equipItem(item){

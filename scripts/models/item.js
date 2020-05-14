@@ -12,11 +12,14 @@ export class Item {
 }
 
 export class Potion extends Item{
-    constructor(name, hp_restored, amount)
+    constructor(type, name, hp_restored, price, amount)
     {
         super();
+        this.id = globalCounter++;
+        this.type = type;
         this.name = name;
         this.hp_restored = hp_restored;
+        this.price = price;
         this.amount = amount;
     }
 }
