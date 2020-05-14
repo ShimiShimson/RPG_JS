@@ -12,6 +12,8 @@ import { Item, Potion, Equipment } from "./models/item.js";
 import { actionMenu } from "./menus/action_menu.js";
 import { Player } from "./models/player.js";
 
+import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
+
 
 
 
@@ -21,7 +23,9 @@ let hero = {};
 window.h1 = {};
 
 
-export const createHero = () => {
+
+
+export async function createHero() {
 
     const name = document.getElementById('hero-name').value;
     const profession = document.getElementById('hero-profession').value;
@@ -58,7 +62,17 @@ export const createHero = () => {
 
     hero.consumables.water = new Item("water", 2);
 
-    hero.inventory.push(new Equipment());
+    //zadeklarowanie zmiennych tutaj nie dziala
+
+
+    //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?
+    //takze musze je tu zaimportowac, tak samo musze je zaimportowac i wywolac w funkcji fight()
+    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
     //console.log(getHero());
     
 

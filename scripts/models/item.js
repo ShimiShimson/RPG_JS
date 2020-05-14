@@ -1,18 +1,17 @@
 import { random } from "../helpers.js";
 import { EQUIPMENT_TYPE } from "../enums.js";
 import { getHero } from "../hero_creation.js";
+//import { getRandomPrefix, getRandomSuffix } from "../database/firebase.js";
+
+let globalCounter = 0;
 
 
 export class Item {
-    constructor(name, amount){
-        this.name = name;
-        this.amount = amount;
+    constructor(){
     }
 }
 
 export class Potion extends Item{
-    
-    
     constructor(name, hp_restored, amount)
     {
         super();
@@ -23,16 +22,17 @@ export class Potion extends Item{
 }
 
 export class Equipment extends Item{
-    constructor()
+    constructor(prefix, suffix)
     {
         super();
-        this.id = getHero().inventory.length;
+        this.id = globalCounter++
         this.type = getRandomType();
         this.slotType = EQUIPMENT_TYPE[this.type].slotType;
         this.stats = getRandomStats(this.type);
         this.equipped = false;
+        this.value = 100;
+        this.name = `${prefix} ${this.type} of ${suffix}`
     }
-
 }
 
 

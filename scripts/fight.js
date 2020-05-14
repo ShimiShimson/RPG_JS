@@ -5,6 +5,7 @@ import { $, random } from "./helpers.js";
 import { displayHeroStats } from "./menus/action_menu.js";
 import { fightMenu } from "./menus/fight_menu.js";
 import { Equipment } from "./models/item.js";
+import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
 
 
 let enemy;
@@ -121,7 +122,9 @@ async function lootRoll() {
     const randomRoll = random(100);
     const chanceForLoot = 50;
     if (randomRoll < chanceForLoot){
-        getHero().inventory.push(new Equipment());
+        //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?
+        //takze musze je tu zaimportowac, tak samo musze je zaimportowac i wywolac w funkcji createHero()
+        getHero().inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
         $('player-info').textContent = `${enemy.name} dropped new item! Check your inventory`;
         await sleep(3000);
     }

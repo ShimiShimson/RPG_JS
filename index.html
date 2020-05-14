@@ -31,5 +31,27 @@
 <div id="enemy">
 </div>
 
+
+<!--
+    FIREBASE IMPLEMENTATION
+-->
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-database.js"></script>
+<script>
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyD2Oj5uo4l89Q19SVzm2fZeODZoZGJaH1o",
+    authDomain: "shimi-s-rpg.firebaseapp.com",
+    databaseURL: "https://shimi-s-rpg.firebaseio.com",
+    projectId: "shimi-s-rpg",
+    storageBucket: "shimi-s-rpg.appspot.com",
+    messagingSenderId: "977241727999",
+    appId: "1:977241727999:web:e5abe2fc6942f07f743dca",
+    measurementId: "G-NFTYEVJBQJ"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+</script>
+<script src="./scripts/database/firebase.js" type="module"></script>
 </body>
 </html>

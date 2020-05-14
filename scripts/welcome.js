@@ -1,4 +1,5 @@
 import { $ } from "./helpers.js";
+//import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
 
 export const welcome = () =>{
     
@@ -12,5 +13,4 @@ export const welcome = () =>{
     
     $('header').appendChild(createParagraph1);
     $('header').appendChild(createParagraph2);
-
 }
