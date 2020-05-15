@@ -1,5 +1,3 @@
-//import { Item } from "./inventory.js";
-
 import { getHero } from "../hero_creation.js";
 import { EQUIPMENT_TYPE } from "../enums.js";
 import { isEmptyObject, isNotEmptyObject } from "../helpers.js";

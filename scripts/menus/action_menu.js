@@ -2,8 +2,7 @@ import { getHero } from "../hero_creation.js";
 import { $, removeAllContent, removeContent } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
 import { inventoryMenu } from "./inventory_menu.js";
-import { fightMenu } from "./fight_menu.js";
-//, expToLevelUp
+import { fightMenu, expToLevelUp } from "./fight_menu.js";
 import { shopMenu } from "./shop_menu.js";
 
 
@@ -48,7 +47,7 @@ Defense Phys:    ${getHero().defense_p}
 Defense Ene:     ${getHero().defense_e}
 Dodge:           ${getHero().dodge}
 Gold:            ${getHero().gold}
-Exp:             ${getHero().exp}
+Exp/Next Lvl:    ${getHero().exp}/${expToLevelUp()}
 Lvl:             ${getHero().lvl}`,
         'player-info');
 }

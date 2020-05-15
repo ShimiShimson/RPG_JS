@@ -10,7 +10,6 @@ import { sleep } from "../game_controller.js";
 
 export const fightMenu = () => {
     removeAllContent();
-    checkIfLevelUp(getHero().exp, getHero().lvl);
     displayHeroStats();
 
     createButtonInsideDivId('find-enemy-btn', 'Find enemy!', null, 'actions');
@@ -32,17 +31,18 @@ export const fightMenu = () => {
         actionMenu();
     });
 
-
+    checkIfLevelUp(getHero().exp, getHero().lvl);
 }
 
 
-
-//export let expToLevelUp;
-async function checkIfLevelUp(currentExp, lvl) {
+export const expToLevelUp = () => {
+    let lvl = getHero().lvl;
     const expNeededToLevelUp = 20 * lvl * lvl - 15 * lvl;
-    console.log(`NextLvlExp: ${expNeededToLevelUp}`);
-    //expToLevelUp = expNeededToLevelUp;
-    if (currentExp >= expNeededToLevelUp) {
+    return expNeededToLevelUp;
+}
+
+async function checkIfLevelUp(currentExp, lvl) {
+    if (currentExp >= expToLevelUp()) {
         $('player-info').textContent = `LEVEL UP!!!`;
         await sleep(1500);
         getHero().lvl++;
