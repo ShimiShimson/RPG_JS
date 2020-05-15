@@ -3,6 +3,7 @@ import { $, removeAllContent, removeContent } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
 import { inventoryMenu } from "./inventory_menu.js";
 import { fightMenu } from "./fight_menu.js";
+//, expToLevelUp
 import { shopMenu } from "./shop_menu.js";
 
 

@@ -4,7 +4,7 @@ import { $ } from "./helpers.js";
 export const welcome = () =>{
     
     
-    $('header').removeChild(document.getElementById('start-game'));
+    $('header').removeChild($('start-game'));
     let createParagraph1 = document.createElement('p');
     let createParagraph2 = document.createElement('p');
 

@@ -10,9 +10,7 @@ import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_ht
 import { loadHero } from "./save_load.js";
 import { Item, Potion, Equipment } from "./models/item.js";
 import { actionMenu } from "./menus/action_menu.js";
-
-
-import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
+import { potionTypes } from "./menus/shop_consumables.js";
 
 
 
@@ -27,8 +25,8 @@ window.h1 = {};
 
 export async function createHero() {
 
-    const name = document.getElementById('hero-name').value;
-    const profession = document.getElementById('hero-profession').value;
+    const name = $('hero-name').value;
+    const profession = $('hero-profession').value;
     function whatProfession(){
         
         //properties                 mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
@@ -64,17 +62,26 @@ export async function createHero() {
     //hero.consumables[tinyPotion.type] ? hero.consumables[tinyPotion.type].amount += 1 : hero.consumables[tinyPotion.type] = tinyPotion;
     hero.gold = 500;
     hero.consumables.water = new Item("water", 2);
-    console.log(hero);
+    for (let i = 0; i < potionTypes.length; i++) {
+        let potion = potionTypes[i];
+        hero.consumables[potion.type] = potion;
+    }
+    hero.consumables.tinyHealthPotion.amount = 5;
+    hero.consumables.smallHealthPotion.amount = 10;
+    hero.consumables.mediumHealthPotion.amount = 0;
+    hero.consumables.bigHealthPotion.amount = 20;
+    hero.consumables.hugeHealthPotion.amount = 1;
+    console.log(hero.consumables);
 
 
     //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?
     //takze musze je tu zaimportowac, tak samo musze je zaimportowac i wywolac w funkcji fight()
-    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
-    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
-    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
-    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
-    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
-    hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
 
     
 

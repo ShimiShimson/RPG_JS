@@ -18,9 +18,8 @@ export class Player {
     sayName(){
         console.log(`My name is ${this.name}`);
     }
-    usePotion(){
-        let potionType = `tinyHealthPotion`;
-        let potion = this.consumables[potionType];
+    usePotion(potionType){
+        const potion = this.consumables[potionType];
         console.log(potion);
         console.log(potion.amount);
         if (potion.amount <= 0){

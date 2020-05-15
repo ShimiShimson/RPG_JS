@@ -6,13 +6,14 @@ import { Potion } from "../models/item.js";
 import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
-let potionTypes = [];
-potionTypes.push(new Potion(`tinyHealthPotion`, `Tiny Health Potion`, 50, 1, 1));
-potionTypes.push(new Potion(`smallHealthPotion`, `Small Health Potion`, 100, 10, 1));
-potionTypes.push(new Potion(`mediumHealthPotion`, `Medium Health Potion`, 150, 30, 1));
-potionTypes.push(new Potion(`bigHealthPotion`, `Big Health Potion`, 250, 100, 1));
-potionTypes.push(new Potion(`hugeHealthPotion`, `Huge Health Potion`, 500, 300, 1));
 
+
+export let potionTypes = [];
+potionTypes.push(new Potion(`tinyHealthPotion`  , `Tiny   Health Potion`, 50, 1, 1));
+potionTypes.push(new Potion(`smallHealthPotion` , `Small  Health Potion`, 100, 10, 1));
+potionTypes.push(new Potion(`mediumHealthPotion`, `Medium Health Potion`, 150, 30, 1));
+potionTypes.push(new Potion(`bigHealthPotion`   , `Big    Health Potion`, 250, 100, 1));
+potionTypes.push(new Potion(`hugeHealthPotion`  , `Huge   Health Potion`, 500, 300, 1));
 
 export function displayConsumables() {
     removeAllContent();
