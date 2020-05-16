@@ -70,8 +70,8 @@ export async function createHero() {
     hero.consumables.smallHealthPotion.amount = 10;
     hero.consumables.mediumHealthPotion.amount = 0;
     hero.consumables.bigHealthPotion.amount = 20;
-    hero.consumables.hugeHealthPotion.amount = 1;
-    console.log(hero.consumables);
+    hero.consumables.hugeHealthPotion.amount = 5;
+    //console.log(hero.consumables);
 
 
     //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?

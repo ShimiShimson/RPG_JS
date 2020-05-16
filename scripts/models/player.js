@@ -18,8 +18,8 @@ export class Player {
     }
     usePotion(potionType){
         const potion = this.consumables[potionType];
-        console.log(potion);
-        console.log(potion.amount);
+        // console.log(potion);
+        // console.log(potion.amount);
         if (potion.amount <= 0){
             alert('You have no more potions to use!');
         } else {

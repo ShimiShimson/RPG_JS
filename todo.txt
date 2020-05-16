@@ -3,16 +3,18 @@ Things to do:
     -talk to Dawid about    (creating a random item name by calling methods which are getting data from database)
                             (using Hp potion, re render, display amount of potion, remember selected option for re-render)
 
-    -using health potions (user can select, choice is remembered for re-render) ...WORK IN PROGRESS...
+    
 
-    -add shop, where you can buy potions, items (sword, staff, armor, helm, gloves, boots) ...WORK IN PROGRESS...
-        -you can buy potions in shop DONE!!! (15.05)
+    -add shop, where you can buy stuff  ...WORK IN PROGRESS...
+        -you can buy  equipment (sword, staff, armor, helm, gloves, boots) ...WORK IN PROGRESS...
+        -you can buy potions in shop DONE!!! (15.05) 
         
 
     
     -locations (street, forest, sewers, dungeon, cave, beach, river, lake, road, step, desert, frozen land, hell, heaven) ...WORK IN PROGRESS...
     -Consumables / Item System  / Inventory System ...WORK IN PROGRESS...
 
+    -using health potions (user can select, choice is remembered for re-render) DONE!!! (it took me 4 hours -.-) (16/05)
     -FIREBASE implemented DONE!!! (14.05)
     -I can get prefixes and suffixes for items from FIREBASE DONE!!! (14.05)
 

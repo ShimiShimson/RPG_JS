@@ -8,7 +8,10 @@ import { potionTypes } from "./shop_consumables.js";
 import { sleep } from "../game_controller.js";
 
 
+let selectedIndex;
+// console.log(selectedIndex);
 export const fightMenu = () => {
+    // console.log(selectedIndex);
     removeAllContent();
     displayHeroStats();
 
@@ -26,6 +29,7 @@ export const fightMenu = () => {
     });
     $('use-hp-potion-btn').addEventListener('click', function () {
         useHpPotion();
+        
     });
     $('action-menu-btn').addEventListener('click', function () {
         actionMenu();
@@ -50,9 +54,7 @@ async function checkIfLevelUp(currentExp, lvl) {
     }
 }
 
-let setSelect = selectedOption => {
 
-}
 const createSelectPotionType = () => {
     // if ($(`select-potion-type`))   $(`select-potion-type`).remove();
     // if ($(`select-potion-type-p`)) $(`select-potion-type-p`).remove();
@@ -70,25 +72,34 @@ const createSelectPotionType = () => {
         if (getHero().consumables[potion.type].amount > 0) potionTypeSelect.add(option);
     }
 
+    
+    console.log(potionTypeSelect.options.selectedIndex)
+    potionTypeSelect.options.selectedIndex = selectedIndex;
+    console.log(potionTypeSelect.options.selectedIndex);
     choosePotionTypeParagraph.appendChild(choosePotionTypeText);
     $('actions').appendChild(choosePotionTypeParagraph);
     $('actions').appendChild(potionTypeSelect);
 }
 
 const useHpPotion = () => {
-    console.log($(`select-potion-type`).value);
-    const potionType = $(`select-potion-type`).value;
-    getHero().usePotion(potionType);
-    displayHeroStats();
+    console.log($(`select-potion-type`).options.selectedIndex);
+
     let currentSelect = $(`select-potion-type`);
-    let currentSelectOptions = (currentSelect.options[ currentSelect.selectedIndex ]);
-    console.log(currentSelect.options);
-    console.log(currentSelectOptions.selected)
-    currentSelectOptions.selected = true;
-    fightMenu();
+    console.log(currentSelect.options.selectedIndex);
+    selectedIndex = currentSelect.options.selectedIndex;
+    const potionType = currentSelect.value;
+    getHero().usePotion(potionType);
     
-    //$(`select-potion-type`).selected = "selected";
+
+
+    displayHeroStats();
+
+    fightMenu();
+
 }
+
+
+
 
 //To jest inny sposob na zrobienie createSelectPotionType() ale ten u gory chyba lepszy?
     // let tinyPotionOption = document.createElement('option');
