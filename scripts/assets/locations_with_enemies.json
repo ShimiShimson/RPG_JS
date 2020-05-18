@@ -1,0 +1,66 @@
+{
+    "locations": [
+        {
+            "name": "Beginner Dungeon",
+            "minLvl": "1",
+            "maxLvl": "5",
+            "enemiesList": [
+                {
+                    "name": "Fly",
+                    "hp": 50,
+                    "dmg_physical": 10,
+                    "dmg_energy": 0,
+                    "defense_p": 0,
+                    "defense_e": 0,
+                    "dodge": 30,
+                    "exp": 5,
+                    "gold": 1,
+                    "lvl": 1
+                },
+                {
+                    "name": "Ant",
+                    "hp": 70,
+                    "dmg_physical": 10,
+                    "dmg_energy": 0,
+                    "defense_p": 3,
+                    "defense_e": 1,
+                    "dodge": 10,
+                    "exp": 10,
+                    "gold": 2,
+                    "lvl": 1
+                }
+            ]
+        },
+        {
+            "name": "Medium Dungeon",
+            "minLvl": "3",
+            "maxLvl": "10",
+            "enemiesList": [
+                {
+                    "name": "Wasp",
+                    "hp": 80,
+                    "dmg_physical": 15,
+                    "dmg_energy": 0,
+                    "defense_p": 5,
+                    "defense_e": 5,
+                    "dodge": 30,
+                    "exp": 15,
+                    "gold": 3,
+                    "lvl": 2
+                },
+                {
+                    "name": "Cockroach",
+                    "hp": 80,
+                    "dmg_physical": 10,
+                    "dmg_energy": 0,
+                    "defense_p": 10,
+                    "defense_e": 0,
+                    "dodge": 10,
+                    "exp": 15,
+                    "gold": 5,
+                    "lvl": 3
+                }
+            ]
+        }
+    ]
+}

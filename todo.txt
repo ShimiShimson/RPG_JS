@@ -3,14 +3,17 @@ Things to do:
     -talk to Dawid about    (creating a random item name by calling methods which are getting data from database)
                             (using Hp potion, re render, display amount of potion, remember selected option for re-render)
 
-    
+
+
+    -Rework fight -> during fight you have to make choice: Attack OR Use Potion ...WORK IN PROGRESS...
+        -if player dead stop fight and return actionMenu()
+
+
 
     -add shop, where you can buy stuff  ...WORK IN PROGRESS...
         -you can buy  equipment (sword, staff, armor, helm, gloves, boots) ...WORK IN PROGRESS...
         -you can buy potions in shop DONE!!! (15.05) 
         
-
-    
     -locations (street, forest, sewers, dungeon, cave, beach, river, lake, road, step, desert, frozen land, hell, heaven) ...WORK IN PROGRESS...
     -Consumables / Item System  / Inventory System ...WORK IN PROGRESS...
 

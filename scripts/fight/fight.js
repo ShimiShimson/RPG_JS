@@ -1,53 +1,37 @@
-import { getHero } from "./hero_creation.js";
-import { getEnemy } from "./models/enemy.js";
-import { sleep } from "./game_controller.js";
-import { $, random } from "./helpers.js";
-import { displayHeroStats } from "./menus/action_menu.js";
-import { fightMenu } from "./menus/fight_menu.js";
-import { Equipment } from "./models/item.js";
-import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
+import { getHero } from "../hero_creation.js";
+import { getEnemy } from "../models/enemy.js";
+import { sleep } from "../game_controller.js";
+import { $, random } from "../helpers.js";
+import { displayHeroStats, actionMenu } from "../menus/action_menu.js";
+import { fightMenu, checkIfLevelUp } from "../menus/fight_menu.js";
+import { Equipment } from "../models/item.js";
+import { getRandomPrefix, getRandomSuffix } from "../database/firebase.js";
 
 
-let enemy;
-let player;
+// let enemy;
 
-export function findEnemy(){
+export function isPlayerDead () {
+    if (getHero().hp <= 0) {
+        alert(`You're dead.`);
+        return true;
+    }
+}
+
+export function findEnemy() {
     displayHeroStats();
-    enemy = getEnemy();
+    let enemy = getEnemy();
     $('actions-result').textContent = "Enemy found!";
+    return enemy;
 }
 
 export async function startFight() {
     $('actions-result').textContent = "";
-    await fight();
+    await playerAttacks();
     enableFightMenuButtons();
     fightMenu();
 }
 
-export async function fight() {
-    if (enemyMissing()) return;
-    player = getHero();
-    
-    if (anyoneDeadOnStart()) return;
-    disableFightMenuButtons();
-    checkDamageAndDefenseType(player, enemy);
-    checkDamageAndDefenseType(enemy, player);
-
-    console.log(`${player.name} HP: ${player.hp}`);
-    console.log(`${enemy.name} HP: ${enemy.hp}`);
-    await sleep(1000);
-    hasDodged(enemy, player);
-    if (await anyoneDeadDuringFight()) return;
-    await sleep(1000);
-    hasDodged(player, enemy);
-    displayHeroStats();
-    if (anyoneDeadDuringFight()) return;
-    displayHeroStats();
-    return;
-}
-
-
-function checkDamageAndDefenseType (attacker, defender){
+export function checkDamageAndDefenseType(attacker, defender) {
     if (attacker.dmg_physical >= attacker.dmg_energy) {
         attacker.damage = attacker.dmg_physical;
         defender.defense = defender.defense_p;
@@ -58,7 +42,7 @@ function checkDamageAndDefenseType (attacker, defender){
     }
 }
 
-function hasDodged(defender, attacker){
+export function hasDodged(defender, attacker) {
     const randomChance = random(100);
     const dodgeChance = defender.dodge;
     if (randomChance < dodgeChance) {
@@ -70,11 +54,12 @@ function hasDodged(defender, attacker){
 }
 
 
-function calculateDamage(defender, attacker){
-    
-    let damageMinusDefense =  attacker.damage - defender.defense;
+function calculateDamage(defender, attacker) {
+
+    let damageMinusDefense = attacker.damage - defender.defense;
     //value of damageRoll will always be between 80 - 119% of damageMinusDefense variable
     const damageRoll = Math.floor(damageMinusDefense * 0.8 + random(damageMinusDefense * 0.4));
+    // console.log(damageRoll);
     if (damageRoll <= 0) {
         return console.log(`${defender.name} defended the attack!`)
     }
@@ -84,20 +69,21 @@ function calculateDamage(defender, attacker){
     }
 }
 
-function enemyMissing (){
-    if (!enemy) {
-        alert(`No enemy - no fight!`);
+export function enemyMissing(enemy) {
+    if (enemy === undefined) {
+        alert(`You can't do it if there is no enemy.`);
         return true;
     }
 }
 
-function anyoneDeadOnStart(){
+export function anyoneDeadOnStart(player, enemy) {
     let stop = false;
-    if (player.hp <= 0){
+    if (player.hp <= 0) {
         console.log(`${player.name} is dead.`);
+        return `player dead`;
         stop = true;
     }
-    if (enemy.hp <= 0){
+    if (enemy.hp <= 0) {
         console.log(` ${enemy.name} is dead.`);
         stop = true;
     }
@@ -105,18 +91,21 @@ function anyoneDeadOnStart(){
 }
 
 
-async function anyoneDeadDuringFight(){
+export async function anyoneDeadDuringFight(player, enemy) {
     let stop = false;
     if (enemy.hp <= 0) {
         console.log(`${enemy.name} is dead. ${player.name} won this fight and received ${enemy.exp} exp and ${enemy.gold} gold.`);
         player.exp += enemy.exp;
         player.gold += enemy.gold;
         displayHeroStats();
-        await lootRoll();
+        await lootRoll(enemy);
+        await checkIfLevelUp(getHero().exp, getHero().lvl);
         stop = true;
     }
     if (player.hp <= 0) {
         console.log(`${player.name} is dead. ${enemy.name} won this fight.`);
+        // enemy = undefined;
+        return `player dead`
         stop = true;
     }
     return stop;
@@ -124,10 +113,10 @@ async function anyoneDeadDuringFight(){
 
 
 
-async function lootRoll() {
+async function lootRoll(enemy) {
     const randomRoll = random(100);
     const chanceForLoot = 50;
-    if (randomRoll < chanceForLoot){
+    if (randomRoll < chanceForLoot) {
         //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?
         //takze musze je tu zaimportowac, tak samo musze je zaimportowac i wywolac w funkcji createHero()
         getHero().inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
@@ -138,14 +127,14 @@ async function lootRoll() {
 }
 
 
-const disableFightMenuButtons = () =>{
+export const disableFightMenuButtons = () => {
     $('find-enemy-btn').disabled = true;
     $('fight-btn').disabled = true;
     $('use-hp-potion-btn').disabled = true;
     $('action-menu-btn').disabled = true;
 }
 
-const enableFightMenuButtons =() =>{
+export const enableFightMenuButtons = () => {
     $('find-enemy-btn').disabled = false;
     $('fight-btn').disabled = false;
     $('use-hp-potion-btn').disabled = false;

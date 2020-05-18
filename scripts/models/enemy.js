@@ -33,12 +33,11 @@ enemies.push(new Enemy('Wolf',       500,   0,   100,  0,   40,  10,  20,  80,  
 enemies.push(new Enemy('Super Wolf', 1000,  0,   140,  0,   60,  10,  20,  100,   70,    11));
 
 
-
 export const getEnemy = () =>{
     const randomIndex = Math.floor(Math.random() * enemies.length);
     const randomEnemy = enemies[randomIndex];
     const cloneOfRandomEnemy = JSON.parse(JSON.stringify(randomEnemy));
-    console.log(cloneOfRandomEnemy);
+    // console.log(cloneOfRandomEnemy);
     return cloneOfRandomEnemy;
 }
 

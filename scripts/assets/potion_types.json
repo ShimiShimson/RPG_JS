@@ -1,0 +1,39 @@
+{
+    "potionTypes": [
+        {
+            "type": "tinyHealthPotion",
+            "name": "Tiny Health Potion",
+            "hp_restored": 50,
+            "price": 1,
+            "amount": 1
+        },
+        {
+            "type": "smallHealthPotion",
+            "name": "Small  Health Potion",
+            "hp_restored": 100,
+            "price": 10,
+            "amount": 1
+        },
+        {
+            "type": "mediumHealthPotion",
+            "name": "Medium Health Potion",
+            "hp_restored": 150,
+            "price": 30,
+            "amount": 1
+        },
+        {
+            "type": "bigHealthPotion",
+            "name": "Big    Health Potion",
+            "hp_restored": 250,
+            "price": 100,
+            "amount": 1
+        },
+        {
+            "type": "hugeHealthPotion",
+            "name": "Huge   Health Potion",
+            "hp_restored": 500,
+            "price": 300,
+            "amount": 1
+        }
+    ]
+}

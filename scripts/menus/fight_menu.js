@@ -2,16 +2,18 @@ import { getHero } from "../hero_creation.js";
 import { $, removeAllContent, removeContent } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
 import { getEnemy } from "../models/enemy.js";
-import { startFight, findEnemy } from "../fight.js";
+import { startFight, findEnemy, enemyMissing, enableFightMenuButtons } from "../fight/fight.js";
 import { displayHeroStats, actionMenu } from "./action_menu.js";
-import { potionTypes } from "./shop_consumables.js";
+// import { potionTypes } from "./shop_consumables.js";
 import { sleep } from "../game_controller.js";
+import { playerAttacks, useHpPotion } from "../fight/playerAction.js";
+import { enemyAction } from "../fight/enemyAction.js";
+import { playerActionThenEnemyAction } from "../fight/fight_controller.js";
 
 
 let selectedIndex;
-// console.log(selectedIndex);
+let enemy;
 export const fightMenu = () => {
-    // console.log(selectedIndex);
     removeAllContent();
     displayHeroStats();
 
@@ -21,23 +23,24 @@ export const fightMenu = () => {
     createButtonInsideDivId('use-hp-potion-btn', 'Use HP Potion', null, 'actions');
     createButtonInsideDivId('action-menu-btn', 'Action Menu', null, 'actions');
 
+    
     $('find-enemy-btn').addEventListener('click', function () {
-        findEnemy();
+        enemy = findEnemy();
+        console.log(enemy);
     });
     $('fight-btn').addEventListener('click', function () {
-        startFight();
+        if (enemyMissing(enemy)) return
+        playerActionThenEnemyAction(`attack`, enemy);
     });
     $('use-hp-potion-btn').addEventListener('click', function () {
-        useHpPotion();
-        
+        if (enemyMissing(enemy)) return;
+        playerActionThenEnemyAction(`usePotion`, enemy);
     });
     $('action-menu-btn').addEventListener('click', function () {
         actionMenu();
     });
-
-    checkIfLevelUp(getHero().exp, getHero().lvl);
+//checkiflvlup() was here
 }
-
 
 export const expToLevelUp = () => {
     let lvl = getHero().lvl;
@@ -45,7 +48,8 @@ export const expToLevelUp = () => {
     return expNeededToLevelUp;
 }
 
-async function checkIfLevelUp(currentExp, lvl) {
+
+export async function checkIfLevelUp(currentExp, lvl) {
     if (currentExp >= expToLevelUp()) {
         $('player-info').textContent = `LEVEL UP!!!`;
         await sleep(1500);
@@ -56,8 +60,6 @@ async function checkIfLevelUp(currentExp, lvl) {
 
 
 const createSelectPotionType = () => {
-    // if ($(`select-potion-type`))   $(`select-potion-type`).remove();
-    // if ($(`select-potion-type-p`)) $(`select-potion-type-p`).remove();
     let choosePotionTypeParagraph = document.createElement('p');
     choosePotionTypeParagraph.id = `select-potion-type-p`;
     let choosePotionTypeText = document.createTextNode('Select Potion Type:');
@@ -71,32 +73,13 @@ const createSelectPotionType = () => {
         option.text = `${potion.name}: ${potion.amount}`;
         if (getHero().consumables[potion.type].amount > 0) potionTypeSelect.add(option);
     }
-
-    
-    console.log(potionTypeSelect.options.selectedIndex)
     potionTypeSelect.options.selectedIndex = selectedIndex;
-    console.log(potionTypeSelect.options.selectedIndex);
     choosePotionTypeParagraph.appendChild(choosePotionTypeText);
     $('actions').appendChild(choosePotionTypeParagraph);
     $('actions').appendChild(potionTypeSelect);
 }
 
-const useHpPotion = () => {
-    console.log($(`select-potion-type`).options.selectedIndex);
 
-    let currentSelect = $(`select-potion-type`);
-    console.log(currentSelect.options.selectedIndex);
-    selectedIndex = currentSelect.options.selectedIndex;
-    const potionType = currentSelect.value;
-    getHero().usePotion(potionType);
-    
-
-
-    displayHeroStats();
-
-    fightMenu();
-
-}
 
 
 

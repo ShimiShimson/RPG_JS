@@ -7,18 +7,38 @@ import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
 
-
-export let potionTypes = [];
-potionTypes.push(new Potion(`tinyHealthPotion`  , `Tiny   Health Potion`, 50, 1, 1));
-potionTypes.push(new Potion(`smallHealthPotion` , `Small  Health Potion`, 100, 10, 1));
-potionTypes.push(new Potion(`mediumHealthPotion`, `Medium Health Potion`, 150, 30, 1));
-potionTypes.push(new Potion(`bigHealthPotion`   , `Big    Health Potion`, 250, 100, 1));
-potionTypes.push(new Potion(`hugeHealthPotion`  , `Huge   Health Potion`, 500, 300, 1));
-
 export function displayConsumables() {
+
     removeAllContent();
     createButtonInsideDivId('action-menu-btn', 'Action Menu', actionMenu, 'interface');
     displayHeroStats();
+    requestPotionTypes(myHandler);
+}
+
+function myHandler (result) {
+    const parsedData = JSON.parse(result);
+    const potionTypes = [];
+    for (let i = 0; i < parsedData.potionTypes.length; i++) {
+        potionTypes.push(new Potion(parsedData.potionTypes[i].type, parsedData.potionTypes[i].name, parsedData.potionTypes[i].hp_restored, parsedData.potionTypes[i].price, parsedData.potionTypes[i].amount));
+    }
+    createHTMLPotionTypes(potionTypes);
+}
+
+
+function requestPotionTypes(callback) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            callback(xmlhttp.responseText);
+        }
+    };
+    xmlhttp.open("GET", "scripts/assets/potion_types.json");
+    xmlhttp.send();
+}
+
+
+
+function createHTMLPotionTypes(potionTypes) {
     for (let i = 0; i < potionTypes.length; i++) {
         let potion = potionTypes[i];
         createParagraphInsideDivId(`${potion.type}`,
