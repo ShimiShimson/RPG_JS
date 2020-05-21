@@ -109,6 +109,7 @@ export const createParagraph = (id, textContent) =>{
 
 export const createActionMenuButton = () =>{
     createButtonInsideDivId('action-menu-btn', 'Action Menu', actionMenu, 'actions');
+    document.createElement('br');
 }
 
 export const createParagraphInsideDivId = (paragraphId, textContent, divId) =>{

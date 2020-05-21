@@ -1,37 +1,38 @@
 import { getHero } from "../hero_creation.js";
-import { $, removeAllContent, removeContent } from "../helpers.js";
+import { $, removeAllContent, removeContent, isNotEmptyObject } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
 import { getEnemy } from "../models/enemy.js";
 import { startFight, findEnemy, enemyMissing, enableFightMenuButtons } from "../fight/fight.js";
 import { displayHeroStats, actionMenu } from "./action_menu.js";
-// import { potionTypes } from "./shop_consumables.js";
 import { sleep } from "../game_controller.js";
 import { playerAttacks, useHpPotion } from "../fight/playerAction.js";
 import { enemyAction } from "../fight/enemyAction.js";
 import { playerActionThenEnemyAction } from "../fight/fight_controller.js";
 
 
+
 let selectedIndex;
 let enemy;
-export const fightMenu = () => {
+export const fightMenu = (enemy) => {
     removeAllContent();
     displayHeroStats();
-
-    createButtonInsideDivId('find-enemy-btn', 'Find enemy!', null, 'actions');
-    createButtonInsideDivId('fight-btn', 'Fight!', null, 'actions');
-    createSelectPotionType();
+    createButtonInsideDivId('attack-btn', 'Attack!', null, 'actions');
+    const consumables = getHero().consumables;
+    console.log(consumables)
+    if (isNotEmptyObject(consumables)) {
+        console.log('Truthy')
+        createSelectPotionType(consumables);
+    } else {
+        console.log('falsy')
+    }
     createButtonInsideDivId('use-hp-potion-btn', 'Use HP Potion', null, 'actions');
     createButtonInsideDivId('action-menu-btn', 'Action Menu', null, 'actions');
 
-    
-    $('find-enemy-btn').addEventListener('click', function () {
-        enemy = findEnemy();
-        console.log(enemy);
-    });
-    $('fight-btn').addEventListener('click', function () {
+    $('attack-btn').addEventListener('click', function () {
         if (enemyMissing(enemy)) return
         playerActionThenEnemyAction(`attack`, enemy);
     });
+    
     $('use-hp-potion-btn').addEventListener('click', function () {
         if (enemyMissing(enemy)) return;
         playerActionThenEnemyAction(`usePotion`, enemy);
@@ -39,7 +40,7 @@ export const fightMenu = () => {
     $('action-menu-btn').addEventListener('click', function () {
         actionMenu();
     });
-//checkiflvlup() was here
+    //checkiflvlup() was here
 }
 
 export const expToLevelUp = () => {
@@ -47,7 +48,6 @@ export const expToLevelUp = () => {
     const expNeededToLevelUp = 20 * lvl * lvl - 15 * lvl;
     return expNeededToLevelUp;
 }
-
 
 export async function checkIfLevelUp(currentExp, lvl) {
     if (currentExp >= expToLevelUp()) {
@@ -58,16 +58,16 @@ export async function checkIfLevelUp(currentExp, lvl) {
     }
 }
 
-
-const createSelectPotionType = () => {
+const createSelectPotionType = (consumables) => {
+    console.log('I am executing')
     let choosePotionTypeParagraph = document.createElement('p');
     choosePotionTypeParagraph.id = `select-potion-type-p`;
     let choosePotionTypeText = document.createTextNode('Select Potion Type:');
     let potionTypeSelect = document.createElement('select');
     potionTypeSelect.id = 'select-potion-type';
 
-    for (let i = 0; i < potionTypes.length; i++) {
-        let potion = potionTypes[i];
+    for (let i = 0; i < consumables.length; i++) {
+        let potion = consumables[i];
         let option = document.createElement('option');
         option.value = potion.type;
         option.text = `${potion.name}: ${potion.amount}`;
@@ -77,6 +77,7 @@ const createSelectPotionType = () => {
     choosePotionTypeParagraph.appendChild(choosePotionTypeText);
     $('actions').appendChild(choosePotionTypeParagraph);
     $('actions').appendChild(potionTypeSelect);
+    console.log('also execuring')
 }
 
 

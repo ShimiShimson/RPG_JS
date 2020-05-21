@@ -6,6 +6,7 @@ import { fightMenu, expToLevelUp } from "./fight_menu.js";
 import { shopMenu } from "./shop_menu.js";
 import { useHpPotion } from "../fight/playerAction.js";
 import { isPlayerDead } from "../fight/fight.js";
+import { locationsMenu } from "./locations_menu.js";
 
 
 
@@ -14,7 +15,7 @@ export const actionMenu = () => {
 
     createSaveLoadActionMenuButtons();
     createButtonInsideDivId('inventory-menu-btn', 'Inventory Menu', null, 'actions');
-    createButtonInsideDivId('fight-menu-btn', 'Fight Menu', null, 'actions');
+    createButtonInsideDivId('locations-menu-btn', 'Locations', null, 'actions');
     createButtonInsideDivId('shop-menu-btn', 'Shop', null, 'actions');
     createButtonInsideDivId('restore-hp-btn', 'Restore HP', null, 'actions');
 
@@ -22,9 +23,8 @@ export const actionMenu = () => {
     $('inventory-menu-btn').addEventListener('click', function () {
         inventoryMenu();
     });
-    $('fight-menu-btn').addEventListener('click', function () {
-        if (isPlayerDead()) return actionMenu();
-        fightMenu();
+    $('locations-menu-btn').addEventListener('click', function () {
+        locationsMenu();
     });
     $('shop-menu-btn').addEventListener('click', function () {
         shopMenu();

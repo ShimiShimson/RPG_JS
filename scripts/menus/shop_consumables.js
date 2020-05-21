@@ -7,26 +7,27 @@ import { displayHeroStats, actionMenu } from "./action_menu.js";
 
 
 
+
 export function displayConsumables() {
 
     removeAllContent();
     createButtonInsideDivId('action-menu-btn', 'Action Menu', actionMenu, 'interface');
     displayHeroStats();
-    requestPotionTypes(myHandler);
+    requestPotionTypes(myHandler)
 }
 
+export const potionTypes = [];
 function myHandler (result) {
-    const parsedData = JSON.parse(result);
-    const potionTypes = [];
+    potionTypes.length = 0;
+    const parsedData = JSON.parse(result)
     for (let i = 0; i < parsedData.potionTypes.length; i++) {
         potionTypes.push(new Potion(parsedData.potionTypes[i].type, parsedData.potionTypes[i].name, parsedData.potionTypes[i].hp_restored, parsedData.potionTypes[i].price, parsedData.potionTypes[i].amount));
     }
     createHTMLPotionTypes(potionTypes);
 }
 
-
-function requestPotionTypes(callback) {
-    var xmlhttp = new XMLHttpRequest();
+export function requestPotionTypes(callback) {
+    const xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function () {
         if (this.readyState == 4 && this.status == 200) {
             callback(xmlhttp.responseText);
@@ -35,8 +36,6 @@ function requestPotionTypes(callback) {
     xmlhttp.open("GET", "scripts/assets/potion_types.json");
     xmlhttp.send();
 }
-
-
 
 function createHTMLPotionTypes(potionTypes) {
     for (let i = 0; i < potionTypes.length; i++) {

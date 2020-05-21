@@ -1,27 +1,18 @@
-
 import {Paladin} from "./models/paladin.js";
 import {Assassin} from "./models/assassin.js";
 import {Barbarian} from "./models/barbarian.js";
 import {Sorceress} from "./models/sorceress.js";
 import {$} from "./helpers.js";
-
 import { CLASSES } from "./enums.js";
 import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_html_structure.js";
 import { loadHero } from "./save_load.js";
 import { Item, Potion, Equipment } from "./models/item.js";
 import { actionMenu } from "./menus/action_menu.js";
-// import { potionTypes } from "./menus/shop_consumables.js";
-
-
-
-
+import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
 
 //declaring as a window variable for purposes of easier manipulation of object hero
 let hero = {};
 window.h1 = {};
-
-
-
 
 export async function createHero() {
 
@@ -60,8 +51,8 @@ export async function createHero() {
     //console.log(tinyPotion);
     //hero.consumables[tinyPotion.type] = tinyPotion;
     //hero.consumables[tinyPotion.type] ? hero.consumables[tinyPotion.type].amount += 1 : hero.consumables[tinyPotion.type] = tinyPotion;
-    hero.gold = 500;
-    hero.consumables.water = new Item("water", 2);
+    hero.gold = 100;
+    // hero.consumables.water = new Item("water", 2);
     // for (let i = 0; i < potionTypes.length; i++) {
     //     let potion = potionTypes[i];
     //     hero.consumables[potion.type] = potion;
@@ -73,7 +64,6 @@ export async function createHero() {
     // hero.consumables.hugeHealthPotion.amount = 5;
     //console.log(hero.consumables);
 
-
     //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?
     //takze musze je tu zaimportowac, tak samo musze je zaimportowac i wywolac w funkcji playerAttacks()
     // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
@@ -83,34 +73,22 @@ export async function createHero() {
     // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
     // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
 
-    
-
-    
     //h1 is for manipulating and testing hero object in console
     h1 = hero;
     //console.log(JSON.stringify(hero));
     
-
-
     //Displaying name of freshly created hero (if paragraph displaying hero was created already, remove it)
    
     if ($('displayHeroParagraph')) $('displayHeroParagraph').remove();
-
     if ($('save-game')) $('save-game').remove();
-
     if ($('game-saved')) $('game-saved').remove();
 
-
     if ($('load-game')) $('load-game').remove();
-    
     if ($('game-loaded')) $('game-loaded').remove();
-
     if ($('action-menu-btn')) $('action-menu-btn').remove();
-
 
     displayHeroCreated();
     createSaveLoadActionMenuButtons();
-    
 }
 
 export const createLoadedHero = () =>{
@@ -121,8 +99,6 @@ export const createLoadedHero = () =>{
         return alert('No save found! First start New Game and save game.');
     }
 
-    
-    
     const [...loadTemplate] = [
         load.name,
         load.max_hp,
@@ -154,10 +130,6 @@ export const createLoadedHero = () =>{
         //console.log(getHero());
 
         actionMenu();
-        
-        
-        
-
     } else {
         $("game-loaded").textContent = `Error during loading the game.`;
     }

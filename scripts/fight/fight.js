@@ -70,7 +70,7 @@ function calculateDamage(defender, attacker) {
 }
 
 export function enemyMissing(enemy) {
-    if (enemy === undefined) {
+    if (enemy === undefined || enemy === null) {
         alert(`You can't do it if there is no enemy.`);
         return true;
     }

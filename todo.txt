@@ -7,6 +7,8 @@ Things to do:
 
     -Rework fight -> during fight you have to make choice: Attack OR Use Potion ...WORK IN PROGRESS...
         -if player dead stop fight and return actionMenu()
+        -Particular enemies you can meet inside particular locations
+        -Fight is happening inside locations
 
 
 
