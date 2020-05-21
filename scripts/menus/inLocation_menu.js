@@ -1,9 +1,9 @@
 import { $, removeAllContent, random } from "../helpers.js";
 import { createActionMenuButton, createButtonInsideDivId } from "../create_html_structure.js";
-import { locationsMenu } from "../menus/locations_menu.js";
+import { locationsMenu } from "./locations_menu.js";
 import { getHero } from "../hero_creation.js";
-import { fightMenu } from "../menus/fight_menu.js";
-import { displayHeroStats } from "../menus/action_menu.js";
+import { fightMenu } from "./fight_menu.js";
+import { displayHeroStats } from "./action_menu.js";
 import { isPlayerDead } from "../fight/fight.js";
 
 export function enterLocation(userLocation) {
@@ -19,8 +19,9 @@ export function enterLocation(userLocation) {
     createButtonInsideDivId('fight-menu-btn', `Look for enemy to fight`, null, 'actions');
     createButtonInsideDivId('locations-menu-btn', `I'm scared - take me back!`, null, 'actions');
     $('fight-menu-btn').addEventListener('click', function () {
+        const newEnemy = location.getRandomEnemyFrom();
         if (isPlayerDead()) return actionMenu();
-        fightMenu();
+        fightMenu(newEnemy);
     });
     $('locations-menu-btn').addEventListener('click', function () {
         locationsMenu();
@@ -45,24 +46,6 @@ function lvlRequirementNotMet(location) {
     }
 }
 
-function displayLocationMenu(location) {
-    removeAllContent();
-    $(`interface`).textContent =
-        `You entered ${location.name}.
-    \r\nYour heart starts to beat faster.
-    \r\nWhat do you want to do?`
-
-    createButtonInsideDivId('go-further-btn', 'Look for enemy to fight with', null, 'actions');
-    createButtonInsideDivId('go-back-btn', `I'm scared, take me back!`, null, 'actions');
-    $('go-further-btn').addEventListener('click', function () {
-        const enemy = getRandomEnemyFrom(location);
-        console.log(enemy);
-        fightMenu(enemy);
-    });
-    $('go-back-btn').addEventListener('click', function () {
-        locationsMenu();
-    });
-}
 
 
 

@@ -1,4 +1,4 @@
-import { disableFightMenuButtons, anyoneDeadOnStart, checkDamageAndDefenseType, enemyMissing, hasDodged, anyoneDeadDuringFight } from "./fight.js";
+import { disableFightMenuButtons, checkDamageAndDefenseType, enemyMissing, hasDodged, anyoneDeadDuringFight } from "./fight.js";
 import { displayHeroStats, actionMenu } from "../menus/action_menu.js";
 import { getHero } from "../hero_creation.js";
 import { sleep } from "../game_controller.js";
@@ -10,12 +10,9 @@ import { fightMenu } from "../menus/fight_menu.js";
 export async function playerAttacks(enemy) {
     if (enemyMissing(enemy)) return;
     let player = getHero();
-
-    if (anyoneDeadOnStart(player, enemy) === `player dead`) return `player dead`;
     disableFightMenuButtons();
     checkDamageAndDefenseType(player, enemy);
 
-    // console.log(`${player.name} HP: ${player.hp}`);
     console.log(`${enemy.name} HP: ${enemy.hp}`);
     await sleep(500);
     hasDodged(enemy, player);

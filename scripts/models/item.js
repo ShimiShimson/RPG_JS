@@ -3,7 +3,7 @@ import { EQUIPMENT_TYPE } from "../enums.js";
 import { getHero } from "../hero_creation.js";
 //import { getRandomPrefix, getRandomSuffix } from "../database/firebase.js";
 
-let globalCounter = 0;
+window.globalCounter = 0;
 
 
 export class Item {

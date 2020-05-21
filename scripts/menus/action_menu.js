@@ -2,7 +2,7 @@ import { getHero } from "../hero_creation.js";
 import { $, removeAllContent, removeContent } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
 import { inventoryMenu } from "./inventory_menu.js";
-import { fightMenu, expToLevelUp } from "./fight_menu.js";
+import { fightMenu } from "./fight_menu.js";
 import { shopMenu } from "./shop_menu.js";
 import { useHpPotion } from "../fight/playerAction.js";
 import { isPlayerDead } from "../fight/fight.js";
@@ -21,12 +21,15 @@ export const actionMenu = () => {
 
 
     $('inventory-menu-btn').addEventListener('click', function () {
+        if ((isPlayerDead())) return;
         inventoryMenu();
     });
     $('locations-menu-btn').addEventListener('click', function () {
+        if ((isPlayerDead())) return;
         locationsMenu();
     });
     $('shop-menu-btn').addEventListener('click', function () {
+        if ((isPlayerDead())) return;
         shopMenu();
     });
     $('restore-hp-btn').addEventListener('click', function () {
@@ -52,7 +55,7 @@ Defense Phys:    ${getHero().defense_p}
 Defense Ene:     ${getHero().defense_e}
 Dodge:           ${getHero().dodge}
 Gold:            ${getHero().gold}
-Exp/Next Lvl:    ${getHero().exp}/${expToLevelUp()}
+Exp/Next Lvl:    ${getHero().exp}/${getHero().expToLevelUp()}
 Lvl:             ${getHero().lvl}`,
         'player-info');
 }

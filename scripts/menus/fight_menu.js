@@ -1,8 +1,7 @@
 import { getHero } from "../hero_creation.js";
 import { $, removeAllContent, removeContent, isNotEmptyObject } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
-import { getEnemy } from "../models/enemy.js";
-import { startFight, findEnemy, enemyMissing, enableFightMenuButtons } from "../fight/fight.js";
+import { startFight, enemyMissing, enableFightMenuButtons, isEnemyDead } from "../fight/fight.js";
 import { displayHeroStats, actionMenu } from "./action_menu.js";
 import { sleep } from "../game_controller.js";
 import { playerAttacks, useHpPotion } from "../fight/playerAction.js";
@@ -12,7 +11,7 @@ import { playerActionThenEnemyAction } from "../fight/fight_controller.js";
 
 
 let selectedIndex;
-let enemy;
+// let enemy;
 export const fightMenu = (enemy) => {
     removeAllContent();
     displayHeroStats();
@@ -30,6 +29,7 @@ export const fightMenu = (enemy) => {
 
     $('attack-btn').addEventListener('click', function () {
         if (enemyMissing(enemy)) return
+        if (isEnemyDead(enemy)) return;
         playerActionThenEnemyAction(`attack`, enemy);
     });
     
@@ -41,21 +41,6 @@ export const fightMenu = (enemy) => {
         actionMenu();
     });
     //checkiflvlup() was here
-}
-
-export const expToLevelUp = () => {
-    let lvl = getHero().lvl;
-    const expNeededToLevelUp = 20 * lvl * lvl - 15 * lvl;
-    return expNeededToLevelUp;
-}
-
-export async function checkIfLevelUp(currentExp, lvl) {
-    if (currentExp >= expToLevelUp()) {
-        $('player-info').textContent = `LEVEL UP!!!`;
-        await sleep(1500);
-        getHero().lvl++;
-        getHero().onLevelUp();
-    }
 }
 
 const createSelectPotionType = (consumables) => {
@@ -73,6 +58,10 @@ const createSelectPotionType = (consumables) => {
         option.text = `${potion.name}: ${potion.amount}`;
         if (getHero().consumables[potion.type].amount > 0) potionTypeSelect.add(option);
     }
+    let option2 = document.createElement('option');
+    option2.value = consumables[0].type;
+    option2.text = consumables[0].name;
+    potionTypeSelect.add(option2);
     potionTypeSelect.options.selectedIndex = selectedIndex;
     choosePotionTypeParagraph.appendChild(choosePotionTypeText);
     $('actions').appendChild(choosePotionTypeParagraph);

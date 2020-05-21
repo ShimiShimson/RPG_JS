@@ -9,11 +9,12 @@
                 {
                     "name": "Fly",
                     "hp": 50,
+                    "ep": 0,
                     "dmg_physical": 10,
                     "dmg_energy": 0,
                     "defense_p": 0,
                     "defense_e": 0,
-                    "dodge": 30,
+                    "dodge": 100,
                     "exp": 5,
                     "gold": 1,
                     "lvl": 1
@@ -21,6 +22,7 @@
                 {
                     "name": "Ant",
                     "hp": 70,
+                    "ep": 0,
                     "dmg_physical": 10,
                     "dmg_energy": 0,
                     "defense_p": 3,
@@ -41,6 +43,7 @@
                 {
                     "name": "Wasp",
                     "hp": 80,
+                    "ep": 0,
                     "dmg_physical": 15,
                     "dmg_energy": 0,
                     "defense_p": 5,
@@ -53,6 +56,7 @@
                 {
                     "name": "Cockroach",
                     "hp": 80,
+                    "ep": 0,
                     "dmg_physical": 10,
                     "dmg_energy": 0,
                     "defense_p": 10,

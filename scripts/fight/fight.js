@@ -1,9 +1,8 @@
 import { getHero } from "../hero_creation.js";
-import { getEnemy } from "../models/enemy.js";
 import { sleep } from "../game_controller.js";
 import { $, random } from "../helpers.js";
 import { displayHeroStats, actionMenu } from "../menus/action_menu.js";
-import { fightMenu, checkIfLevelUp } from "../menus/fight_menu.js";
+import { fightMenu } from "../menus/fight_menu.js";
 import { Equipment } from "../models/item.js";
 import { getRandomPrefix, getRandomSuffix } from "../database/firebase.js";
 
@@ -12,16 +11,16 @@ import { getRandomPrefix, getRandomSuffix } from "../database/firebase.js";
 
 export function isPlayerDead () {
     if (getHero().hp <= 0) {
-        alert(`You're dead.`);
+        console.log(`You're dead.`);
         return true;
     }
 }
 
-export function findEnemy() {
-    displayHeroStats();
-    let enemy = getEnemy();
-    $('actions-result').textContent = "Enemy found!";
-    return enemy;
+export function isEnemyDead (enemy) {
+    if (enemy.hp <= 0) {
+        console.log(` ${enemy.name} is dead.`);
+        return true;
+    }
 }
 
 export async function startFight() {
@@ -55,11 +54,9 @@ export function hasDodged(defender, attacker) {
 
 
 function calculateDamage(defender, attacker) {
-
     let damageMinusDefense = attacker.damage - defender.defense;
     //value of damageRoll will always be between 80 - 119% of damageMinusDefense variable
     const damageRoll = Math.floor(damageMinusDefense * 0.8 + random(damageMinusDefense * 0.4));
-    // console.log(damageRoll);
     if (damageRoll <= 0) {
         return console.log(`${defender.name} defended the attack!`)
     }
@@ -76,19 +73,6 @@ export function enemyMissing(enemy) {
     }
 }
 
-export function anyoneDeadOnStart(player, enemy) {
-    let stop = false;
-    if (player.hp <= 0) {
-        console.log(`${player.name} is dead.`);
-        return `player dead`;
-        stop = true;
-    }
-    if (enemy.hp <= 0) {
-        console.log(` ${enemy.name} is dead.`);
-        stop = true;
-    }
-    return stop;
-}
 
 
 export async function anyoneDeadDuringFight(player, enemy) {
@@ -123,20 +107,25 @@ async function lootRoll(enemy) {
         $('player-info').textContent = `${enemy.name} dropped new item! Check your inventory`;
         await sleep(3000);
     }
-
 }
 
+async function checkIfLevelUp(currentExp) {
+    if (currentExp >= getHero().expToLevelUp()) {
+        $('player-info').textContent = `LEVEL UP!!!`;
+        await sleep(1500);
+        getHero().lvl++;
+        getHero().onLevelUp();
+    }
+}
 
 export const disableFightMenuButtons = () => {
-    $('find-enemy-btn').disabled = true;
-    $('fight-btn').disabled = true;
+    $('attack-btn').disabled = true;
     $('use-hp-potion-btn').disabled = true;
     $('action-menu-btn').disabled = true;
 }
 
 export const enableFightMenuButtons = () => {
-    $('find-enemy-btn').disabled = false;
-    $('fight-btn').disabled = false;
+    $('attack-btn').disabled = false;
     $('use-hp-potion-btn').disabled = false;
     $('action-menu-btn').disabled = false;
 }

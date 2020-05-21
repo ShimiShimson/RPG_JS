@@ -2,7 +2,7 @@ let enemies = [];
 
 export class Enemy {
     constructor(name, hp, ep, dmg_physical, dmg_energy, defense_p, defense_e, dodge, exp, gold, lvl){
-    this.id = enemies.length;
+    this.id = globalCounter++;
     this.name = name;
     this.hp = hp;
     this.ep = ep;
@@ -35,11 +35,11 @@ enemies.push(new Enemy('Super Wolf', 1000,  0,   140,  0,   60,  10,  20,  100, 
 const jsonEnemies = JSON.stringify(enemies, null, 2)
 // console.log(jsonEnemies);
 
-export const getEnemy = () =>{
-    const randomIndex = Math.floor(Math.random() * enemies.length);
-    const randomEnemy = enemies[randomIndex];
-    const cloneOfRandomEnemy = JSON.parse(JSON.stringify(randomEnemy));
-    // console.log(cloneOfRandomEnemy);
-    return cloneOfRandomEnemy;
-}
+// export const getEnemy = () =>{
+//     const randomIndex = Math.floor(Math.random() * enemies.length);
+//     const randomEnemy = enemies[randomIndex];
+//     const cloneOfRandomEnemy = JSON.parse(JSON.stringify(randomEnemy));
+//     // console.log(cloneOfRandomEnemy);
+//     return cloneOfRandomEnemy;
+// }
 

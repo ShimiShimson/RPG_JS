@@ -78,4 +78,9 @@ export class Player {
         }
         //console.log(this.inventory);
     } // unequipItem()
+    expToLevelUp = () => {
+        const lvl = getHero().lvl;
+        const expNeededToLevelUp = 20 * lvl * lvl - 15 * lvl;
+        return expNeededToLevelUp;
+    }
 } // Player

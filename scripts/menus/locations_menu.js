@@ -2,12 +2,12 @@ import { getHero } from "../hero_creation.js";
 import { $, removeAllContent, removeContent } from "../helpers.js";
 import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons, createActionMenuButton } from "../create_html_structure.js";
 import { displayHeroStats, actionMenu } from "./action_menu.js";
-import { enterLocation } from "../assets/locations.js";
+import { enterLocation } from "./inLocation_menu.js";
 import { Location } from "../models/location.js";
 import { Enemy } from "../models/enemy.js";
 
 
-let locationsList = [];
+let locationList = [];
 export function locationsMenu() {
     removeAllContent();
     displayHeroStats();
@@ -32,31 +32,26 @@ export function requestLocations(callback, userLocationType) {
 }
 
 export function myHandler(result, userLocationType) {
-    locationsList = [];
+    locationList = [];
     const parsedData = JSON.parse(result);
     const locations = parsedData.locations;
     for (let i = 0; i < locations.length; i++) {
         const enemies = [];
         const enemiesList = locations[i].enemiesList;
         for (let j = 0; j < enemiesList.length; j++) {
-            enemies.push(new Enemy(enemiesList.name, enemiesList.hp, enemiesList.ep, enemiesList.dmg_physical, enemiesList.dmg_energy, enemiesList.defense_p, enemiesList.defense_p, enemiesList.dodge, enemiesList.exp, enemiesList.gold, enemiesList.lvl))
+            enemies.push(new Enemy(enemiesList[j].name, enemiesList[j].hp, enemiesList[j].ep, enemiesList[j].dmg_physical, enemiesList[j].dmg_energy, enemiesList[j].defense_p, enemiesList[j].defense_p, enemiesList[j].dodge, enemiesList[j].exp, enemiesList[j].gold, enemiesList[j].lvl))
         }
-        locationsList.push(new Location(locations[i].type, locations[i].name, locations[i].minLvl, locations[i].maxLvl, enemies))
+        locationList.push(new Location(locations[i].type, locations[i].name, locations[i].minLvl, locations[i].maxLvl, enemies))
+        console.log(locationList)
     }
-    createLocationButtons(locationsList);
+    createLocationButtons(locationList);
 }
 
-// if (locations[i].type === userLocationType) {
-//     if (lvlRequirementNotMet(location)) return locationsMenu();
-//     displayLocationMenu(location);
-// }
-
-
 function createLocationButtons (locationList) {
-    for (let i = 0; i < locationsList.length; i++){
-        createButtonInsideDivId(locationsList[i].type + `-btn`, `Enter ${locationsList[i].name} (LVL: ${locationsList[i].minLvl} - ${locationsList[i].maxLvl})`, null, 'actions');
-        $(locationsList[i].type + `-btn`).addEventListener(`click`, function () {
-            enterLocation(locationsList[i]);
+    for (let i = 0; i < locationList.length; i++){
+        createButtonInsideDivId(locationList[i].type + `-btn`, `Enter ${locationList[i].name} (LVL: ${locationList[i].minLvl} - ${locationList[i].maxLvl})`, null, 'actions');
+        $(locationList[i].type + `-btn`).addEventListener(`click`, function () {
+            enterLocation(locationList[i]);
         });
     }
 }

@@ -1,3 +1,6 @@
+import { random } from "../helpers.js";
+
+
 export class Location {
     constructor(type, name, minLvl, maxLvl, enemiesList){
         this.type = type;
