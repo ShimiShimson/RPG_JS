@@ -5,21 +5,25 @@ import { getHero } from "../hero_creation.js";
 import { fightMenu } from "./fight_menu.js";
 import { displayHeroStats } from "./action_menu.js";
 import { isPlayerDead } from "../fight/fight.js";
+import { shopMenu } from "./shop_menu.js";
 
+export let currentLocation;
+let currentLocationName;
 export function enterLocation(userLocation) {
     removeAllContent();
     displayHeroStats();
 
-    const location = userLocation;
-    const locationName = location.name
-    $(`interface`).textContent = 
-    `You entered ${locationName}.
+    currentLocation = userLocation
+    currentLocationName = currentLocation.name
+    $(`interface`).textContent =
+        `You entered ${currentLocationName}.
     \r\nWhat do you want to do?`
 
     createButtonInsideDivId('fight-menu-btn', `Look for enemy to fight`, null, 'actions');
     createButtonInsideDivId('locations-menu-btn', `I'm scared - take me back!`, null, 'actions');
     $('fight-menu-btn').addEventListener('click', function () {
-        const newEnemy = location.getRandomEnemyFrom();
+        const newEnemy = currentLocation.getRandomEnemyFrom();
+        console.log(newEnemy)
         if (isPlayerDead()) return actionMenu();
         fightMenu(newEnemy);
     });

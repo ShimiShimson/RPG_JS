@@ -51,7 +51,7 @@ export async function createHero() {
     //console.log(tinyPotion);
     //hero.consumables[tinyPotion.type] = tinyPotion;
     //hero.consumables[tinyPotion.type] ? hero.consumables[tinyPotion.type].amount += 1 : hero.consumables[tinyPotion.type] = tinyPotion;
-    hero.gold = 100;
+    hero.gold = 500;
     // hero.consumables.water = new Item("water", 2);
     // for (let i = 0; i < potionTypes.length; i++) {
     //     let potion = potionTypes[i];

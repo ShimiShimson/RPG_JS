@@ -32,7 +32,7 @@ enemies.push(new Enemy('Dog',        300,   0,   40,   0,   30,  5,   20,  45,  
 enemies.push(new Enemy('Wolf',       500,   0,   100,  0,   40,  10,  20,  80,    40,    5));
 enemies.push(new Enemy('Super Wolf', 1000,  0,   140,  0,   60,  10,  20,  100,   70,    8));
 // console.log(enemies);
-const jsonEnemies = JSON.stringify(enemies, null, 2)
+// const jsonEnemies = JSON.stringify(enemies, null, 2)
 // console.log(jsonEnemies);
 
 // export const getEnemy = () =>{

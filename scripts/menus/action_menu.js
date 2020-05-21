@@ -1,10 +1,8 @@
 import { getHero } from "../hero_creation.js";
 import { $, removeAllContent, removeContent } from "../helpers.js";
-import { createButton, createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
+import { createParagraphInsideDivId, createButtonInsideDivId, createSaveLoadActionMenuButtons } from "../create_html_structure.js";
 import { inventoryMenu } from "./inventory_menu.js";
-import { fightMenu } from "./fight_menu.js";
 import { shopMenu } from "./shop_menu.js";
-import { useHpPotion } from "../fight/playerAction.js";
 import { isPlayerDead } from "../fight/fight.js";
 import { locationsMenu } from "./locations_menu.js";
 

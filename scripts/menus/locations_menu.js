@@ -42,7 +42,6 @@ export function myHandler(result, userLocationType) {
             enemies.push(new Enemy(enemiesList[j].name, enemiesList[j].hp, enemiesList[j].ep, enemiesList[j].dmg_physical, enemiesList[j].dmg_energy, enemiesList[j].defense_p, enemiesList[j].defense_p, enemiesList[j].dodge, enemiesList[j].exp, enemiesList[j].gold, enemiesList[j].lvl))
         }
         locationList.push(new Location(locations[i].type, locations[i].name, locations[i].minLvl, locations[i].maxLvl, enemies))
-        console.log(locationList)
     }
     createLocationButtons(locationList);
 }

@@ -16,14 +16,14 @@ export function displayConsumables() {
     requestPotionTypes(myHandler)
 }
 
-export const potionTypes = [];
+export const potionTypesList = [];
 function myHandler (result) {
-    potionTypes.length = 0;
+    potionTypesList.length = 0;
     const parsedData = JSON.parse(result)
     for (let i = 0; i < parsedData.potionTypes.length; i++) {
-        potionTypes.push(new Potion(parsedData.potionTypes[i].type, parsedData.potionTypes[i].name, parsedData.potionTypes[i].hp_restored, parsedData.potionTypes[i].price, parsedData.potionTypes[i].amount));
+        potionTypesList.push(new Potion(parsedData.potionTypes[i].type, parsedData.potionTypes[i].name, parsedData.potionTypes[i].hp_restored, parsedData.potionTypes[i].price, parsedData.potionTypes[i].amount));
     }
-    createHTMLPotionTypes(potionTypes);
+    createHTMLPotionTypes(potionTypesList);
 }
 
 export function requestPotionTypes(callback) {
@@ -37,9 +37,9 @@ export function requestPotionTypes(callback) {
     xmlhttp.send();
 }
 
-function createHTMLPotionTypes(potionTypes) {
-    for (let i = 0; i < potionTypes.length; i++) {
-        let potion = potionTypes[i];
+function createHTMLPotionTypes(potionTypesList) {
+    for (let i = 0; i < potionTypesList.length; i++) {
+        let potion = potionTypesList[i];
         createParagraphInsideDivId(`${potion.type}`,
             `
     Type:       ${potion.name}

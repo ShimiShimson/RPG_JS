@@ -1,13 +1,13 @@
 import { getHero } from "../hero_creation.js";
 import { sleep } from "../game_controller.js";
-import { $, random } from "../helpers.js";
+import { $, random, removeContent } from "../helpers.js";
 import { displayHeroStats, actionMenu } from "../menus/action_menu.js";
 import { fightMenu } from "../menus/fight_menu.js";
 import { Equipment } from "../models/item.js";
 import { getRandomPrefix, getRandomSuffix } from "../database/firebase.js";
+import { createButtonInsideDivId } from "../create_html_structure.js";
+import { currentLocation } from "../menus/inLocation_menu.js";
 
-
-// let enemy;
 
 export function isPlayerDead () {
     if (getHero().hp <= 0) {
@@ -21,13 +21,6 @@ export function isEnemyDead (enemy) {
         console.log(` ${enemy.name} is dead.`);
         return true;
     }
-}
-
-export async function startFight() {
-    $('actions-result').textContent = "";
-    await playerAttacks();
-    enableFightMenuButtons();
-    fightMenu();
 }
 
 export function checkDamageAndDefenseType(attacker, defender) {
@@ -73,14 +66,16 @@ export function enemyMissing(enemy) {
     }
 }
 
-
-
 export async function anyoneDeadDuringFight(player, enemy) {
     let stop = false;
     if (enemy.hp <= 0) {
         console.log(`${enemy.name} is dead. ${player.name} won this fight and received ${enemy.exp} exp and ${enemy.gold} gold.`);
         player.exp += enemy.exp;
         player.gold += enemy.gold;
+        removeButtonById('attack-btn');
+        removeButtonById('use-hp-potion-btn');
+        enableFightMenuButtons();
+        createLookForAnotherEnemyButton();
         displayHeroStats();
         await lootRoll(enemy);
         await checkIfLevelUp(getHero().exp, getHero().lvl);
@@ -119,13 +114,28 @@ async function checkIfLevelUp(currentExp) {
 }
 
 export const disableFightMenuButtons = () => {
-    $('attack-btn').disabled = true;
-    $('use-hp-potion-btn').disabled = true;
-    $('action-menu-btn').disabled = true;
+    if ($('attack-btn'))        $('attack-btn').disabled        = true;
+    if ($('use-hp-potion-btn')) $('use-hp-potion-btn').disabled = true;
+    if ($('action-menu-btn'))   $('action-menu-btn').disabled   = true;
 }
 
 export const enableFightMenuButtons = () => {
-    $('attack-btn').disabled = false;
-    $('use-hp-potion-btn').disabled = false;
-    $('action-menu-btn').disabled = false;
+    if ($('attack-btn'))        $('attack-btn').disabled        = false;
+    if ($('use-hp-potion-btn')) $('use-hp-potion-btn').disabled = false;
+    if ($('action-menu-btn'))   $('action-menu-btn').disabled   = false;
+}
+
+function createLookForAnotherEnemyButton() {
+    createButtonInsideDivId('fight-menu-btn', `Look for another enemy to fight`, null, 'actions');
+    $('fight-menu-btn').addEventListener('click', function () {
+        console.log(currentLocation)
+        const newEnemy = currentLocation.getRandomEnemyFrom();
+        console.log(newEnemy)
+        if (isPlayerDead()) return actionMenu();
+        fightMenu(newEnemy);
+    });
+}
+
+function removeButtonById(id) {
+    if ($(id)) $(id).remove();
 }

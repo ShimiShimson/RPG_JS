@@ -10,7 +10,9 @@ export class Location {
         this.enemiesList = enemiesList;
     }
     getRandomEnemyFrom() {
-        const enemy = this.enemiesList[random(this.enemiesList.length)]
-        return enemy;
+        const randomEnemy = this.enemiesList[random(this.enemiesList.length)]
+        const cloneOfRandomEnemy = JSON.parse(JSON.stringify(randomEnemy));
+        console.log(cloneOfRandomEnemy)
+        return cloneOfRandomEnemy;
     }
 }
