@@ -9,6 +9,8 @@ import { shopMenu } from "./shop_menu.js";
 
 export let currentLocation;
 let currentLocationName;
+export let fightActive = false;
+
 export function enterLocation(userLocation) {
     removeAllContent();
     displayHeroStats();
@@ -24,6 +26,7 @@ export function enterLocation(userLocation) {
     $('fight-menu-btn').addEventListener('click', function () {
         const newEnemy = currentLocation.getRandomEnemyFrom();
         console.log(newEnemy)
+        fightActive = true
         if (isPlayerDead()) return actionMenu();
         fightMenu(newEnemy);
     });

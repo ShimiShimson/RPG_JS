@@ -15,12 +15,19 @@ let selectedIndex;
 export const fightMenu = (enemy) => {
     removeAllContent();
     displayHeroStats();
+    // if (isEnemyDead (enemy)) fightActive = false
+    // console.log(fightActive)
     enableFightMenuButtons();
+    const swordSlash = new sound("../../sword-slash.mp3");
     createButtonInsideDivId('attack-btn', 'Attack!', null, 'actions');
     $('attack-btn').addEventListener('click', function () {
         if (enemyMissing(enemy)) return
         if (isEnemyDead (enemy)) return
+        disableFightMenuButtons();
+        // fightActive = true;
+        swordSlash.play();
         playerActionThenEnemyAction(`attack`, enemy);
+        // console.log(fightActive)
     });
     const consumables = getHero().consumables;
     handleConsumables(consumables, enemy);
@@ -71,6 +78,20 @@ function handleConsumables(consumables, enemy) {
     }
 }
 
+function sound(src) {
+    this.sound = document.createElement("audio");
+    this.sound.src = src;
+    this.sound.setAttribute("preload", "auto");
+    this.sound.setAttribute("controls", "none");
+    this.sound.style.display = "none";
+    document.body.appendChild(this.sound);
+    this.play = function(){
+      this.sound.play();
+    }
+    this.stop = function(){
+      this.sound.pause();
+    }
+  }
 
 
 //To jest inny sposob na zrobienie createSelectPotionType() ale ten u gory chyba lepszy?
