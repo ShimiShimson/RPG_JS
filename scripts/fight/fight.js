@@ -2,7 +2,7 @@ import { getHero } from "../hero_creation.js";
 import { sleep } from "../game_controller.js";
 import { $, random, removeContent } from "../helpers.js";
 import { displayHeroStats, actionMenu } from "../menus/action_menu.js";
-import { fightMenu } from "../menus/fight_menu.js";
+import { fightMenu, sound } from "../menus/fight_menu.js";
 import { Equipment } from "../models/item.js";
 import { getRandomPrefix, getRandomSuffix } from "../database/firebase.js";
 import { createButtonInsideDivId } from "../create_html_structure.js";
@@ -68,10 +68,12 @@ export function enemyMissing(enemy) {
 
 export async function anyoneDeadDuringFight(player, enemy) {
     let stop = false;
+    const clickNiceSound = new sound("../../audio/click-nice.mp3")
     if (enemy.hp <= 0) {
         console.log(`${enemy.name} is dead. ${player.name} won this fight and received ${enemy.exp} exp and ${enemy.gold} gold.`);
         player.exp += enemy.exp;
         player.gold += enemy.gold;
+        clickNiceSound.play();
         removeButtonById('attack-btn');
         removeButtonById('use-hp-potion-btn');
         enableFightMenuButtons();
@@ -105,7 +107,9 @@ async function lootRoll(enemy) {
 }
 
 async function checkIfLevelUp(currentExp) {
+    const lvlUpSound = new sound("../../audio/fusrodah.mp3")
     if (currentExp >= getHero().expToLevelUp()) {
+        lvlUpSound.play();
         $('player-info').textContent = `LEVEL UP!!!`;
         await sleep(1500);
         getHero().lvl++;

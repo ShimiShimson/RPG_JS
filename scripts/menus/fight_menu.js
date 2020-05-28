@@ -18,7 +18,7 @@ export const fightMenu = (enemy) => {
     // if (isEnemyDead (enemy)) fightActive = false
     // console.log(fightActive)
     enableFightMenuButtons();
-    const swordSlash = new sound("../../sword-slash.mp3");
+    const swordSlash = new sound("../../audio/sword-slash.mp3");
     createButtonInsideDivId('attack-btn', 'Attack!', null, 'actions');
     $('attack-btn').addEventListener('click', function () {
         if (enemyMissing(enemy)) return
@@ -78,7 +78,7 @@ function handleConsumables(consumables, enemy) {
     }
 }
 
-function sound(src) {
+export function sound(src) {
     this.sound = document.createElement("audio");
     this.sound.src = src;
     this.sound.setAttribute("preload", "auto");
