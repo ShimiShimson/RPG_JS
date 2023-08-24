@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=VT323&display=swap');
+
+body {
+    font-family: 'Roboto Mono', monospace; 
+    font-size: 14px;
+    background-color: #1e1c2e;
+    color: #b9b3f3;
+    margin: 10px 20px;
+
+}
+
+#hero-stats, #interface {
+    white-space: pre;
+}
+
+#actions {
+    margin: 20px auto;
+}
+
+
+#start-game {
+   margin-left: 45%;
+   margin-right: 45%;
+   padding: 10px 20px;
+}
+
+button {
+    margin: 10px 20px;
+}
+
+input, select, button {
+    font-size: 18px;
+    background-color: #1d1b2c;
+    color: #b9b3f3;
+    font-family: monospace;
+    border-color: #bab6dd;
+    
+}
+
+select, button {
+    border-color: #343761;
+    box-shadow: 0px 0px 5px 5px #080616
+}
+

@@ -1,0 +1,198 @@
+{
+    "locations": [
+        {
+            "type": "beginnerDungeon",
+            "name": "Beginner Dungeon",
+            "minLvl": "1",
+            "maxLvl": "5",
+            "enemiesList": [
+                {
+                    "name": "Fly",
+                    "hp": 50,
+                    "ep": 0,
+                    "dmg_physical": 10,
+                    "dmg_energy": 0,
+                    "defense_p": 0,
+                    "defense_e": 0,
+                    "dodge": 30,
+                    "exp": 5,
+                    "gold": 1,
+                    "lvl": 1
+                },
+                {
+                    "name": "Ant",
+                    "hp": 70,
+                    "ep": 0,
+                    "dmg_physical": 10,
+                    "dmg_energy": 0,
+                    "defense_p": 3,
+                    "defense_e": 1,
+                    "dodge": 10,
+                    "exp": 10,
+                    "gold": 2,
+                    "lvl": 1
+                }
+            ]
+        },
+        {
+            "type": "mediumDungeon",
+            "name": "Medium Dungeon",
+            "minLvl": "1",
+            "maxLvl": "8",
+            "enemiesList": [
+                {
+                    "name": "Wasp",
+                    "hp": 80,
+                    "ep": 0,
+                    "dmg_physical": 15,
+                    "dmg_energy": 0,
+                    "defense_p": 5,
+                    "defense_e": 5,
+                    "dodge": 30,
+                    "exp": 15,
+                    "gold": 3,
+                    "lvl": 2
+                },
+                {
+                    "name": "Cockroach",
+                    "hp": 80,
+                    "ep": 0,
+                    "dmg_physical": 10,
+                    "dmg_energy": 0,
+                    "defense_p": 10,
+                    "defense_e": 0,
+                    "dodge": 10,
+                    "exp": 15,
+                    "gold": 5,
+                    "lvl": 3
+                }
+            ]
+        },
+        {
+            "type": "advancedDungeon",
+            "name": "Advanced Dungeon",
+            "minLvl": "1",
+            "maxLvl": "15",
+            "enemiesList": [
+                {
+                    "id": 4,
+                    "name": "Hornet",
+                    "hp": 100,
+                    "ep": 0,
+                    "dmg_physical": 30,
+                    "dmg_energy": 0,
+                    "defense_p": 5,
+                    "defense_e": 10,
+                    "dodge": 20,
+                    "exp": 20,
+                    "gold": 7,
+                    "lvl": 2
+                  },
+                  {
+                    "id": 5,
+                    "name": "Frog",
+                    "hp": 200,
+                    "ep": 0,
+                    "dmg_physical": 20,
+                    "dmg_energy": 0,
+                    "defense_p": 10,
+                    "defense_e": 0,
+                    "dodge": 20,
+                    "exp": 25,
+                    "gold": 9,
+                    "lvl": 2
+                  },
+                  {
+                    "id": 6,
+                    "name": "Rat",
+                    "hp": 150,
+                    "ep": 0,
+                    "dmg_physical": 40,
+                    "dmg_energy": 0,
+                    "defense_p": 15,
+                    "defense_e": 10,
+                    "dodge": 20,
+                    "exp": 30,
+                    "gold": 11,
+                    "lvl": 2
+                  },
+                  {
+                    "id": 7,
+                    "name": "Bat",
+                    "hp": 150,
+                    "ep": 0,
+                    "dmg_physical": 30,
+                    "dmg_energy": 0,
+                    "defense_p": 10,
+                    "defense_e": 20,
+                    "dodge": 50,
+                    "exp": 35,
+                    "gold": 13,
+                    "lvl": 3
+                  },
+                  {
+                    "id": 8,
+                    "name": "Cat",
+                    "hp": 250,
+                    "ep": 0,
+                    "dmg_physical": 30,
+                    "dmg_energy": 0,
+                    "defense_p": 10,
+                    "defense_e": 20,
+                    "dodge": 20,
+                    "exp": 40,
+                    "gold": 15,
+                    "lvl": 3
+                  },
+                  {
+                    "id": 9,
+                    "name": "Dog",
+                    "hp": 300,
+                    "ep": 0,
+                    "dmg_physical": 40,
+                    "dmg_energy": 0,
+                    "defense_p": 30,
+                    "defense_e": 5,
+                    "dodge": 20,
+                    "exp": 45,
+                    "gold": 17,
+                    "lvl": 3
+                  }
+            ]
+        },
+        {
+            "type": "hardcoreDungeon",
+            "name": "Hardcore Dungeon",
+            "minLvl": "1",
+            "maxLvl": "20",
+            "enemiesList": [
+                {
+                    "name": "Wolf",
+                    "hp": 500,
+                    "ep": 0,
+                    "dmg_physical": 100,
+                    "dmg_energy": 0,
+                    "defense_p": 40,
+                    "defense_e": 10,
+                    "dodge": 20,
+                    "exp": 80,
+                    "gold": 40,
+                    "lvl": 5
+                  },
+                  {
+                    "name": "Super Wolf",
+                    "hp": 1000,
+                    "ep": 0,
+                    "dmg_physical": 140,
+                    "dmg_energy": 0,
+                    "defense_p": 60,
+                    "defense_e": 10,
+                    "dodge": 20,
+                    "exp": 100,
+                    "gold": 70,
+                    "lvl": 8
+                  }
+            ]
+        }
+    ]
+}

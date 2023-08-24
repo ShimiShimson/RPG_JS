@@ -1,124 +1,140 @@
-//exporting all functions
-export {Player, Barbarian, Assassin, Sorceress, Archer, cp1, cp2, saveplayers, loadplayers};
+import {Paladin} from "./models/paladin.js";
+import {Assassin} from "./models/assassin.js";
+import {Barbarian} from "./models/barbarian.js";
+import {Sorceress} from "./models/sorceress.js";
+import {$} from "./helpers.js";
+import { CLASSES } from "./enums.js";
+import { displayHeroCreated, createSaveLoadActionMenuButtons } from "./create_html_structure.js";
+import { loadHero } from "./save_load.js";
+import { Item, Potion, Equipment } from "./models/item.js";
+import { actionMenu } from "./menus/action_menu.js";
+import { getRandomPrefix, getRandomSuffix } from "./database/firebase.js";
 
+//declaring as a window variable for purposes of easier manipulation of object hero
+let hero = {};
+window.h1 = {};
 
+export async function createHero() {
 
-//new code from game.html
-//declaring all proffessions which player can choose
-class Player {
-    constructor(){
-    this.name = '';
-    this.proff = '';
-    this.hp = 0;
-    this.ep = 0;
-    this.attack = 0;
-    this.defense = 0;
-    this.e_defense = 0;
-    this.dodge = 0;
+    const name = $('hero-name').value;
+    const profession = $('hero-profession').value;
+    function whatProfession(){
+        
+        //properties                 mhp, mep, hp,  ep,  dmp, dme, dfp, dfe, dod, exp, gd, lvl
+        let [...assassin] =  [ name, 70,  30,  70,  30,  60,  0,   0,   0,   20,  0,   0,  1];
+        let [...barbarian] = [ name, 200, 10,  200, 10,  20,  0,   10,  5,   0,   0,   0,  1];
+        let [...paladin] =   [ name, 150, 100, 150, 100, 0,   35,  20,  20,  10,  0,   0,  1];
+        let [...sorceress] = [ name, 70,  150, 70,  150, 0,   60,  5,   20,  30,  0,   0,  1];
+
+        if (profession == CLASSES.assassin.value)   return new Assassin     (...assassin);
+        if (profession == CLASSES.barbarian.value)  return new Barbarian    (...barbarian);
+        if (profession == CLASSES.paladin.value)    return new Paladin      (...paladin);
+        if (profession == CLASSES.sorceress.value)  return new Sorceress    (...sorceress);
     }
-}
+    hero = whatProfession(name);
 
+    hero.equipmentSlots = {
+        weaponHand: null,
+        shieldHand: null,
+        head: null,
+        body: null,
+        waist: null,
+        legs: null,
+        arms: null,
+        finger: null,
+        neck: null
+    };
+    hero.consumables = {};
+    hero.inventory = [];
+    //console.log(hero);
+    //let tinyPotion = new Potion("Tiny Health Potion", 50, 1, 10);
+    //console.log(tinyPotion);
+    //hero.consumables[tinyPotion.type] = tinyPotion;
+    //hero.consumables[tinyPotion.type] ? hero.consumables[tinyPotion.type].amount += 1 : hero.consumables[tinyPotion.type] = tinyPotion;
+    hero.gold = 500;
+    // hero.consumables.water = new Item("water", 2);
+    // for (let i = 0; i < potionTypes.length; i++) {
+    //     let potion = potionTypes[i];
+    //     hero.consumables[potion.type] = potion;
+    // }
+    // hero.consumables.tinyHealthPotion.amount = 5;
+    // hero.consumables.smallHealthPotion.amount = 10;
+    // hero.consumables.mediumHealthPotion.amount = 0;
+    // hero.consumables.bigHealthPotion.amount = 20;
+    // hero.consumables.hugeHealthPotion.amount = 5;
+    //console.log(hero.consumables);
 
-class Barbarian {
-    constructor(name){
-        this.name = name;
-        this.proff = 'Barbarian';
-        this.hp = 400;
-        this.ep = 20;
-        this.attack = 20;
-        this.defense = 20;
-        this.e_defense = 5;
-        this.dodge = 50;
-    }
-}
+    //za kazdym razem kiedy wywoluje new Equipemnt musze dac jako parametry te funkcje. Czy tak powinno byc?
+    //takze musze je tu zaimportowac, tak samo musze je zaimportowac i wywolac w funkcji playerAttacks()
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
+    // hero.inventory.push(new Equipment(await getRandomPrefix(), await getRandomSuffix()));
 
-class Assassin {
-    constructor(name) {
-        this.name = name;
-        this.proff = 'Assassin';
-        this.hp = 50;
-        this.ep = 50;
-        this.attack = 60;
-        this.defense = 0;
-        this.e_defense = 0;
-        this.dodge = 70;
-    }
-}
-
-class Sorceress {
-    constructor(name){
-       this.name = name;
-       this.proff = 'Sorceress';
-       this.hp = 70;
-       this.ep = 150;
-       this.attack = 40;
-       this.defense = 5;
-       this.e_defense = 20;
-       this.dodge = 10;
-    }
-}
-
-class Archer {
-    constructor(name){
-        this.name = name;
-        this.proff = 'Archer';
-        this.hp = 100;
-        this.ep = 50;
-        this.attack = 30;
-        this.defense = 15;
-        this.e_defense = 15;
-        this.dodge = 40;
-    }
-}
-
-//Function creating Player1
-const cp1 = () => {
-    const name = document.getElementById('name1').value;
-    const proff = eval(document.getElementById('proff1').value);
-    window.p1 = new proff(name);
-    //Displaying name of freshly created player (checking if player was created)
-    document.getElementById("player1").innerHTML = p1.name + " created";
-}
-
-
-
-//Function creating Player2
-const cp2 = () => {
-    const name = document.getElementById('name2').value;
-    const proff = eval(document.getElementById('proff2').value);
-    window.p2 = new proff(name);
-    //Displaying name of freshly created player (checking if player was created)
-    document.getElementById("player2").innerHTML = p2.name + " created";
-}
-
-//Saving player1 and player2 to local storage
-const saveplayers = () => {
-    console.log(p1);
-    console.log(p2);
-    localStorage.setItem("sp1", JSON.stringify(p1));
-    localStorage.setItem("sp2", JSON.stringify(p2));
-    document.getElementById("gamesaved").innerHTML = "Game saved";
+    //h1 is for manipulating and testing hero object in console
+    h1 = hero;
+    //console.log(JSON.stringify(hero));
     
+    //Displaying name of freshly created hero (if paragraph displaying hero was created already, remove it)
+   
+    if ($('displayHeroParagraph')) $('displayHeroParagraph').remove();
+    if ($('save-game')) $('save-game').remove();
+    if ($('game-saved')) $('game-saved').remove();
+
+    if ($('load-game')) $('load-game').remove();
+    if ($('game-loaded')) $('game-loaded').remove();
+    if ($('action-menu-btn')) $('action-menu-btn').remove();
+
+    displayHeroCreated();
+    createSaveLoadActionMenuButtons();
 }
 
-//Loading player1 and player2 from local storage
-const loadplayers = () =>{
-    const sp1 = JSON.parse(localStorage.getItem("sp1"));
-    const sp2 = JSON.parse(localStorage.getItem("sp2"));
-    if (sp1 != null && sp1 != undefined){
-        //I don't understand exactly why but declaring this as "p1 = sp1" (previous code) instead of "window.p1 = sp1", accessing p1 from another file is throwing "ReferenceError: p1 is not defined" 
-        window.p1 = sp1;
-        console.log(p1);
-        document.getElementById("gameloaded").innerHTML = p1.name + " loaded!";
-    } else {
-        console.log("Error during loading Player 1!");
+export const createLoadedHero = () =>{
+    $('load-game').disabled = true;
+    const load = loadHero();
+    
+    if (load === null || load === undefined) {
+        return alert('No save found! First start New Game and save game.');
     }
-    if (sp2 != null && sp2 != undefined){
-        //I don't understand exactly why but declaring this as "p2 = sp2" (previous code) instead of "window.p2 = sp2", accessing p2 from another file is throwing "ReferenceError: p2 is not defined"
-        window.p2 = sp2;
-        console.log(p2);
-        document.getElementById("gameloaded").innerHTML += " " + p2.name + " loaded!";
+
+    const [...loadTemplate] = [
+        load.name,
+        load.max_hp,
+        load.max_ep,
+        load.hp,
+        load.ep, 
+        load.dmg_physical, 
+        load.dmg_energy, 
+        load.defense_p, 
+        load.defense_e, 
+        load.dodge, 
+        load.exp, 
+        load.gold, 
+        load.lvl
+    ];
+    
+    if (load != null && load != undefined){
+        if (load.prof === CLASSES.assassin.prof )   hero = new Assassin (...loadTemplate);
+        if (load.prof === CLASSES.barbarian.prof)   hero = new Barbarian(...loadTemplate);
+        if (load.prof === CLASSES.paladin.prof  )   hero = new Paladin  (...loadTemplate);
+        if (load.prof === CLASSES.sorceress.prof)   hero = new Sorceress(...loadTemplate);
+
+        hero.equipmentSlots = load.equipmentSlots;
+        hero.consumables = load.consumables;
+        hero.inventory = load.inventory;
+    
+        h1 = hero;
+        console.log(`${hero.name}, the ${hero.prof}.`)
+        //console.log(getHero());
+
+        actionMenu();
     } else {
-        console.log("Error during loading Player 2!");
+        $("game-loaded").textContent = `Error during loading the game.`;
     }
+}
+
+export const getHero = () =>{
+    return hero;
 }
