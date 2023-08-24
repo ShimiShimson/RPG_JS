@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Hero Creation and Battle System</title>
-</head>
 <body>
 
 <h1>Hero Creation and Battle System</h1>
