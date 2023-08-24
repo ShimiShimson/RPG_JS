@@ -3,6 +3,7 @@
 <body>
 
 <h1>Hero Creation and Battle System</h1>
+<h1>Can I change sth?</h1>
 
 <p>A simple web application for hero creation and battle simulation, built using HTML, CSS, and JavaScript. This project demonstrates the use of ES6 modules, event listeners, and basic game mechanics.</p>
 
